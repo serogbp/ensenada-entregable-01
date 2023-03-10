@@ -3,5 +3,6 @@
 	"useTabs": true,
 	"tabWidth": 4,
 	"semi": false,
-	"singleQuote": false
+	"singleQuote": false,
+	"singleAttributePerLine": true
 }
