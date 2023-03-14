@@ -12,6 +12,10 @@
 	margin: 2% 0px 10% 0px;
 }
 
+button {
+	margin: 1%;
+}
+
 [hidden] {
 	display: none !important;
 }
