@@ -11,8 +11,554 @@
 			content="width=device-width, initial-scale=1.0"
 		/>
 		<title>Feed</title>
+		<link
+			rel="stylesheet"
+			href="../public/css/bootstrap.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="../public/css/global.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="../public/css/feed.css"
+		/>
 	</head>
-	<body>
-		<p>Trabajo en progreso!</p>
+	<body class="min-vh-100 bg-light">
+		<header
+			class="d-flex bg-white p-2 align-content-center align-items-center justify-content-between shadow-sm"
+		>
+			<!-- LOGO -->
+			<p class="h2 font-family--jetbrains-mono">
+				<strong>//TECLA</strong>_SOCIAL
+			</p>
+
+			<div class="d-lg-flex d-none gap-2">
+				<!-- 🔍 Search bar -->
+				<div
+					class="p-3 pe-5 bg-light rounded-5 gap-2 justify-content-center align-content-center align-items-center d-flex"
+				>
+					<i class="bi bi-search"></i>
+					<p class="m-0">Start typing to search...</p>
+				</div>
+				<!-- 🔵⏹🔵 Blue center icons-->
+				<div class="header__icons-container d-lg-flex d-none">
+					<div class="icon-wrapper">
+						<i class="icon bi bi-house"></i>
+					</div>
+					<div class="icon-wrapper">
+						<i class="icon bi bi-lightning-charge"></i>
+					</div>
+					<div class="icon-wrapper">
+						<i class="icon bi bi-camera-video"></i>
+					</div>
+					<div class="icon-wrapper">
+						<i class="icon bi bi-person"></i>
+					</div>
+					<div class="icon-wrapper">
+						<i class="icon bi bi-bag"></i>
+					</div>
+				</div>
+			</div>
+
+			<!-- 🔵🔵➡ Blue right icons -->
+			<div class="header__icons-container d-lg-flex d-none">
+				<i class="icon icon--primary bi bi-bell"></i>
+				<i class="icon icon--primary bi bi-chat-left"></i>
+				<i class="icon icon--primary bi bi-gear"></i>
+				<img
+					class="icon rounded-circle"
+					src="https://img.freepik.com/premium-psd/3d-illustration-man-cartoon-close-up-portrait-standing-man-with-sunglasses-mustache-pink-background-3d-avatar-ui-ux_1020-5093.jpg"
+					alt="Usuario"
+				/>
+			</div>
+
+			<!-- ⚪⚪⚪ Gray icons-->
+			<div class="header__icons-container d-lg-none d-flex">
+				<div class="icon-wrapper icon-wrapper--small">
+					<i class="icon--small bi bi-chat"></i>
+				</div>
+				<div class="icon-wrapper icon-wrapper--small">
+					<i class="icon--small bi bi-camera-video"></i>
+				</div>
+				<div class="icon-wrapper icon-wrapper--small">
+					<i class="icon--small bi bi-search"></i>
+				</div>
+				<!-- 🍔 menu -->
+				<i class="icon--smal bi bi-list"></i>
+			</div>
+		</header>
+
+		<!-- Main content -->
+		<div class="d-flex gap-3 p-3 justify-content-center">
+			<!-- 🎯 Left Nav Bar -->
+			<nav class="d-none d-lg-flex flex-column gap-3">
+				<!-- 📄 Nuevos Feeds -->
+				<div class="card">
+					<strong>Nuevos Feeds</strong>
+					<!-- Item -->
+					<div class="d-flex gap-2 align-items-center">
+						<div class="icon-wrapper">
+							<i class="icon bi bi-tv"></i>
+						</div>
+						<p class="m-0">Noticias</p>
+					</div>
+					<!-- Item -->
+					<div class="d-flex gap-2 align-items-center">
+						<div class="icon-wrapper">
+							<i class="icon bi bi-award"></i>
+						</div>
+						<p class="m-0">Badges</p>
+					</div>
+					<!-- Item -->
+					<div class="d-flex gap-2 align-items-center">
+						<div class="icon-wrapper">
+							<i class="icon bi bi-bicycle"></i>
+						</div>
+						<p class="m-0">Explore Stories</p>
+					</div>
+					<!-- Item -->
+					<div class="d-flex gap-2 align-items-center">
+						<div class="icon-wrapper">
+							<i class="icon bi bi-lightning-charge"></i>
+						</div>
+						<p class="m-0">Popular Groups</p>
+					</div>
+					<!-- Item -->
+					<div class="d-flex gap-2 align-items-center">
+						<div class="icon-wrapper">
+							<i class="icon bi bi-person"></i>
+						</div>
+						<p class="m-0">Author Profile</p>
+					</div>
+				</div>
+				<!-- 📄 More Pages -->
+				<div class="card">
+					<strong>More Pages</strong>
+					<!-- Item -->
+					<div class="d-flex gap-2 align-items-center">
+						<div class="icon-wrapper">
+							<i class="icon bi bi-archive"></i>
+						</div>
+						<p class="m-0">Email Box</p>
+					</div>
+					<!-- Item -->
+					<div class="d-flex gap-2 align-items-center">
+						<div class="icon-wrapper">
+							<i class="icon bi bi-house"></i>
+						</div>
+						<p class="m-0">Near Hotel</p>
+					</div>
+					<!-- Item -->
+					<div class="d-flex gap-2 align-items-center">
+						<div class="icon-wrapper">
+							<i class="icon bi bi-geo-alt"></i>
+						</div>
+						<p class="m-0">Latest Event</p>
+					</div>
+					<!-- Item -->
+					<div class="d-flex gap-2 align-items-center">
+						<div class="icon-wrapper">
+							<i class="icon bi bi-youtube"></i>
+						</div>
+						<p class="m-0">Live Stream</p>
+					</div>
+				</div>
+				<!-- 📄 Account -->
+				<div class="card">
+					<strong>Account</strong>
+					<!-- Item -->
+					<div class="d-flex gap-2 align-items-center">
+						<div class="icon-wrapper">
+							<i class="icon bi bi-gear"></i>
+						</div>
+						<p class="m-0">Settings</p>
+					</div>
+					<!-- Item -->
+					<div class="d-flex gap-2 align-items-center">
+						<div class="icon-wrapper">
+							<i class="icon bi bi-pie-chart"></i>
+						</div>
+						<p class="m-0">Analytics</p>
+					</div>
+					<!-- Item -->
+					<div class="d-flex gap-2 align-items-center">
+						<div class="icon-wrapper">
+							<i class="icon bi bi-chat-left"></i>
+						</div>
+						<p class="m-0">Chat</p>
+					</div>
+				</div>
+			</nav>
+
+			<!-- 💥 Feed -->
+			<main class="feed d-flex flex-column gap-3 overflow-auto">
+				<!-- 🎠 Carousel Stories -->
+				<div class="d-flex overflow-auto nowrap gap-2">
+					<div class="story">
+						<div class="avatar">
+							<i class="icon icon--primary bi bi-plus"></i>
+						</div>
+						<p>Add Story</p>
+					</div>
+					<div class="story story--image-background">
+						<div class="avatar avatar--image"></div>
+						<p>Nombre Apellido</p>
+					</div>
+					<div class="story story--image-background">
+						<div class="avatar avatar--image"></div>
+						<p>Nombre Apellido</p>
+					</div>
+					<div class="story story--image-background">
+						<div class="avatar avatar--image"></div>
+						<p>Nombre Apellido</p>
+					</div>
+					<div class="story story--image-background">
+						<div class="avatar avatar--image"></div>
+						<p>Nombre Apellido</p>
+					</div>
+					<div class="story story--image-background">
+						<div class="avatar avatar--image"></div>
+						<p>Nombre Apellido</p>
+					</div>
+					<div class="story story--image-background">
+						<div class="avatar avatar--image"></div>
+						<p>Nombre Apellido</p>
+					</div>
+					<div class="story story--image-background">
+						<div class="avatar avatar--image"></div>
+						<p>Nombre Apellido</p>
+					</div>
+					<div class="story story--image-background">
+						<div class="avatar avatar--image"></div>
+						<p>Nombre Apellido</p>
+					</div>
+					<div class="story story--image-background">
+						<div class="avatar avatar--image"></div>
+						<p>Nombre Apellido</p>
+					</div>
+					<div class="story story--image-background">
+						<div class="avatar avatar--image"></div>
+						<p>Nombre Apellido</p>
+					</div>
+					<div class="story story--image-background">
+						<div class="avatar avatar--image"></div>
+						<p>Nombre Apellido</p>
+					</div>
+					<div class="story story--image-background">
+						<div class="avatar avatar--image"></div>
+						<p>Nombre Apellido</p>
+					</div>
+				</div>
+
+				<!-- 📝 Posts -->
+				<div class="flex-col">
+					<!-- Create Post -->
+					<div class="card flex-col">
+						<div class="d-flex align-items-center gap-3">
+							<div class="icon-wrapper">
+								<i class="icon bi bi-pencil"></i>
+							</div>
+							<p class="mb-0">Create Post</p>
+						</div>
+						<!-- Text Area -->
+						<div class="card">
+							<div class="flex gap-3 flex-nowrap">
+								<p>What's on you mind?</p>
+							</div>
+						</div>
+						<!-- Card footer -->
+						<div class="d-flex justify-content-between">
+							<div class="d-flex gap-3">
+								<!-- Item -->
+								<div class="d-flex gap-2 align-items-center">
+									<div class="icon-wrapper">
+										<i class="icon bi bi-camera-video"></i>
+									</div>
+									<p class="m-0 d-none d-lg-block">
+										Live Video
+									</p>
+								</div>
+								<!-- Item -->
+								<div class="d-flex gap-2 align-items-center">
+									<div class="icon-wrapper">
+										<i class="icon bi bi-image"></i>
+									</div>
+									<p class="m-0 d-none d-lg-block">
+										Photo/Video
+									</p>
+								</div>
+								<!-- Item -->
+								<div class="d-flex gap-2 align-items-center">
+									<div class="icon-wrapper">
+										<i class="icon bi bi-camera"></i>
+									</div>
+									<p class="m-0 d-none d-lg-block">
+										Feeling/Activity
+									</p>
+								</div>
+							</div>
+							<div class="icon-wrapper">
+								<i class="icon bi bi-three-dots"></i>
+							</div>
+						</div>
+					</div>
+					<!-- POST -->
+					<div class="post card">
+						<!-- User info -->
+						<div class="post__user-info">
+							<div class="d-flex gap-4">
+								<div class="avatar avatar--image"></div>
+								<div class="doble-texto">
+									<p>Nombre Apellido</p>
+									<p>3 hour ago</p>
+								</div>
+							</div>
+
+							<div class="icon-wrapper">
+								<i class="icon bi bi-three-dots"></i>
+							</div>
+						</div>
+						<!-- Post content -->
+						<div class="post__content">
+							<p>
+								Lorem ipsum dolor, sit amet consectetur
+								adipisicing elit. Sint necessitatibus quia
+								neque, doloremque nostrum et quaerat dolore
+								dolor odio, accusamus adipisci recusandae facere
+								provident asperiores ipsa numquam dolorem
+								cupiditate quas?
+							</p>
+						</div>
+					</div>
+					<!-- POST -->
+					<div class="post card">
+						<!-- User info -->
+						<div class="post__user-info">
+							<div class="d-flex gap-4">
+								<div class="avatar avatar--image"></div>
+								<div class="doble-texto">
+									<p>Nombre Apellido</p>
+									<p>3 hour ago</p>
+								</div>
+							</div>
+
+							<div class="icon-wrapper">
+								<i class="icon bi bi-three-dots"></i>
+							</div>
+						</div>
+						<!-- Post content -->
+						<div class="post__content">
+							<p>
+								Lorem ipsum dolor, sit amet consectetur
+								adipisicing elit. Sint necessitatibus quia
+								neque, doloremque nostrum et quaerat dolore
+								dolor odio, accusamus adipisci recusandae facere
+								provident asperiores ipsa numquam dolorem
+								cupiditate quas?
+							</p>
+						</div>
+					</div>
+					<!-- POST -->
+					<div class="post card">
+						<!-- User info -->
+						<div class="post__user-info">
+							<div class="d-flex gap-4">
+								<div class="avatar avatar--image"></div>
+								<div class="doble-texto">
+									<p>Nombre Apellido</p>
+									<p>3 hour ago</p>
+								</div>
+							</div>
+
+							<div class="icon-wrapper">
+								<i class="icon bi bi-three-dots"></i>
+							</div>
+						</div>
+						<!-- Post content -->
+						<div class="post__content">
+							<p>
+								Lorem ipsum dolor, sit amet consectetur
+								adipisicing elit. Sint necessitatibus quia
+								neque, doloremque nostrum et quaerat dolore
+								dolor odio, accusamus adipisci recusandae facere
+								provident asperiores ipsa numquam dolorem
+								cupiditate quas?
+							</p>
+						</div>
+					</div>
+					<!-- POST -->
+					<div class="post card">
+						<!-- User info -->
+						<div class="post__user-info">
+							<div class="d-flex gap-4">
+								<div class="avatar avatar--image"></div>
+								<div class="doble-texto">
+									<p>Nombre Apellido</p>
+									<p>3 hour ago</p>
+								</div>
+							</div>
+
+							<div class="icon-wrapper">
+								<i class="icon bi bi-three-dots"></i>
+							</div>
+						</div>
+						<!-- Post content -->
+						<div class="post__content">
+							<p>
+								Lorem ipsum dolor, sit amet consectetur
+								adipisicing elit. Sint necessitatibus quia
+								neque, doloremque nostrum et quaerat dolore
+								dolor odio, accusamus adipisci recusandae facere
+								provident asperiores ipsa numquam dolorem
+								cupiditate quas?
+							</p>
+						</div>
+					</div>
+					<!-- POST -->
+					<div class="post card">
+						<!-- User info -->
+						<div class="post__user-info">
+							<div class="d-flex gap-4">
+								<div class="avatar avatar--image"></div>
+								<div class="doble-texto">
+									<p>Nombre Apellido</p>
+									<p>3 hour ago</p>
+								</div>
+							</div>
+
+							<div class="icon-wrapper">
+								<i class="icon bi bi-three-dots"></i>
+							</div>
+						</div>
+						<!-- Post content -->
+						<div class="post__content">
+							<p>
+								Lorem ipsum dolor, sit amet consectetur
+								adipisicing elit. Sint necessitatibus quia
+								neque, doloremque nostrum et quaerat dolore
+								dolor odio, accusamus adipisci recusandae facere
+								provident asperiores ipsa numquam dolorem
+								cupiditate quas?
+							</p>
+						</div>
+					</div>
+				</div>
+			</main>
+
+			<aside class="d-none d-xl-flex flex-column gap-3">
+				<!-- Peticiones de amistad -->
+				<div class="card gap-4">
+					<strong>Peticiones de amistad</strong>
+					<!-- Item -->
+					<div class="d-flex flex-column gap-2">
+						<div class="d-flex gap-4">
+							<div class="avatar avatar--image"></div>
+							<div class="doble-texto">
+								<p>Nombre Apellido</p>
+								<p>12 amigos en común</p>
+							</div>
+						</div>
+						<div class="d-flex gap-4">
+							<button class="btn btn-primary rounded-4">
+								Aceptar
+							</button>
+							<button class="btn btn-outline-primary rounded-4">
+								Rechazar
+							</button>
+						</div>
+					</div>
+					<!-- Item -->
+					<div class="d-flex flex-column gap-2">
+						<div class="d-flex gap-4">
+							<div class="avatar avatar--image"></div>
+							<div class="doble-texto">
+								<p>Nombre Apellido</p>
+								<p>12 amigos en común</p>
+							</div>
+						</div>
+						<div class="d-flex gap-4">
+							<button class="btn btn-primary rounded-4">
+								Aceptar
+							</button>
+							<button class="btn btn-outline-primary rounded-4">
+								Rechazar
+							</button>
+						</div>
+					</div>
+					<!-- Item -->
+					<div class="d-flex flex-column gap-2">
+						<div class="d-flex gap-4">
+							<div class="avatar avatar--image"></div>
+							<div class="doble-texto">
+								<p>Nombre Apellido</p>
+								<p>12 amigos en común</p>
+							</div>
+						</div>
+						<div class="d-flex gap-4">
+							<button class="btn btn-primary rounded-4">
+								Aceptar
+							</button>
+							<button class="btn btn-outline-primary rounded-4">
+								Rechazar
+							</button>
+						</div>
+					</div>
+				</div>
+				<!-- Eventos -->
+				<div class="card gap-4">
+					<strong>Eventos</strong>
+					<!-- Item -->
+					<div class="d-flex gap-2">
+						<!-- Cuadrado -->
+						<div class="event bg-danger">
+							<p class="h5">MAR</p>
+							<p class="h4">17</p>
+						</div>
+						<div class="doble-texto">
+							<strong>Entregable 01</strong>
+							<p>amet consectetur adipisicing</p>
+						</div>
+					</div>
+					<!-- Item -->
+					<div class="d-flex gap-2">
+						<!-- Cuadrado -->
+						<div class="event bg-success">
+							<p class="h5">ABR</p>
+							<p class="h4">22</p>
+						</div>
+						<div class="doble-texto">
+							<strong>Lorem ipsum dolor sit</strong>
+							<p>amet consectetur adipisicing</p>
+						</div>
+					</div>
+				</div>
+			</aside>
+		</div>
+
+		<footer class="d-flex p-4 bg-black text-white">
+			<p class="h4 font-family--jetbrains-mono">
+				<strong>//TECLA</strong>_SOCIAL
+			</p>
+		</footer>
+
+		<!-- Bottom Nav bar 📱 -->
+		<div
+			class="fixed-bottom d-flex justify-content-between bg-primary d-lg-none px-4 py-2"
+		>
+			<i class="icon icon--white bi bi-house"></i>
+			<i class="icon icon--white bi bi-box-seam"></i>
+			<i class="icon icon--white bi bi-layout-text-sidebar-reverse"></i>
+			<i class="icon icon--white bi bi-layers"></i>
+			<img
+				class="icon rounded-circle"
+				src="https://img.freepik.com/premium-psd/3d-illustration-man-cartoon-close-up-portrait-standing-man-with-sunglasses-mustache-pink-background-3d-avatar-ui-ux_1020-5093.jpg"
+				alt="Usuario"
+			/>
+		</div>
 	</body>
 </html>

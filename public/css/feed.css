@@ -1,0 +1,159 @@
+:root {
+	--color-primary: #1e74fd;
+	--color-logo: #1ad62d;
+}
+
+header {
+	position: sticky;
+	top: 0;
+	z-index: 9999;
+}
+
+.header__title {
+	color: var(--color-primary);
+}
+
+.header__icons-container {
+	align-items: center;
+	gap: 1rem;
+}
+
+.feed {
+	max-width: 50rem;
+}
+
+.icon-wrapper {
+	width: 2.5rem;
+	height: 2.5rem;
+	display: flex;
+	justify-content: center;
+	border-radius: 100%;
+	background-color: #f8f9fa;
+}
+
+.icon-wrapper--small {
+	padding: .25rem;
+}
+
+.icon {
+	/* Bootstrap icon size */
+	font-size: 1.5rem;
+}
+
+img.icon {
+	width: 2rem;
+	height: 2rem;
+}
+
+.icon--small {
+	font-size: 1rem;
+}
+
+.icon--primary {
+	color: var(--color-primary);
+}
+
+.icon--white {
+	color: white;
+}
+
+.icon--green {
+	color: var(--color-logo);
+}
+
+.story {
+	min-width: 10rem;
+	height: 14rem;
+	border-radius: .8rem;
+	background-color: black;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	color: white;
+	font-weight: bold;
+	font-size: .8rem;
+	gap: .5rem;
+}
+
+.story--image-background {
+	background-image: url(https://unsplash.com/photos/r1SwcagHVG0/download?ixid=MnwxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjc4NDUwNDIw&force=true&w=640);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.avatar {
+	border-radius: 100%;
+	background-color: white;
+	width: 3rem;
+	height: 3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.avatar--image {
+	background-image: url(https://unsplash.com/photos/X6Uj51n5CE8/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8OHx8cG9ydHJhaXR8ZW58MHx8fHwxNjc4Mzc0ODY2&force=true&w=640);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.flex-col {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.card {
+	padding: 1rem;
+	background: white;
+	border-radius: .8rem;
+}
+
+.post__user-info {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.doble-texto p {
+	margin: 0;
+}
+
+.doble-texto p:first-child {
+	font-weight: bold;
+}
+
+.doble-texto p:nth-child(2) {
+	color: gray;
+	font-size: .8rem;
+}
+
+.post__content {
+	padding: 1rem;
+}
+
+.new-message {
+	bottom: 24px;
+	right: 24px;
+	width: 16rem;
+	position: fixed;
+	margin: 1rem;
+}
+
+.event {
+	width: 4rem;
+	height: 4rem;
+	border-radius: 25%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	color: white;
+}
+
+.event p {
+	margin: 0;
+}
