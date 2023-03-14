@@ -19,68 +19,68 @@
 		</p>
 	</header>
 
-	<main class="d-flex flex-grow-1  bg-tecla-teal">
-		<!-- <div> -->
-		<div class="card-user bg-tecla-white "> <!--  d-flex justify-content-center align-items-center -->
+	<main class="d-flex flex-grow-1 justify-content-center align-items-center bg-tecla-teal">
+		<!-- tarjeta datos de usuario -->
+		<div class="card-user bg-tecla-white m-5">
 			<p class="h6 font-family--jetbrains-mono d-flex justify-content-center">Modificar perfil de usuario</p>
-			<div class="left-column d-inline-flex justify-content-between  align-item-start ">
-				<form>
-
-					<div class="mb-3">
-						<input type="text" class="form-control" id="name" placeholder="Nombre" required>
-					</div>
-					<div class="row g-3">
-						<div class="col">
+			<!-- columna de la izqda con los datos -->
+			<div class="d-flex align-content-start gap-5 flex-column flex-lg-row">
+				<div class="left-column d-flex order-1 order-lg-0 justify-content-evenly  align-self-start ">
+					<form>
+						<div class="mb-3">
+							<input type="text" class="form-control" id="name" placeholder="Nombre">
+						</div>
+						<div class="mb-3">
 							<input type="text" class="form-control" placeholder="Primer Apellido"
 								aria-label="Primer Apellido">
 						</div>
-						<div class="col">
+						<div class="mb-3">
 							<input type="text" class="form-control" placeholder="Segundo Apellido"
 								aria-label="Segundo Apellido">
 						</div>
-					</div>
-					<div class="row g-3">
-						<div class="col">
-							<input type="text" class="form-control" placeholder="Ciudad" aria-label="Ciudad">
+						<div class="row mb-3">
+							<div class="col">
+								<input type="text" class="form-control" placeholder="Ciudad" aria-label="Ciudad">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control" placeholder="Pais" aria-label="Pais">
+							</div>
 						</div>
-						<div class="col">
-							<input type="text" class="form-control" placeholder="Pais" aria-label="Pais">
+						<div class="mb-3">
+							<input type="url" class="form-control" id="linkedin" placeholder="LinkedIn">
 						</div>
-					</div>
-					<div class="mb-3">
-						<input type="url" class="form-control" id="linkedin" placeholder="LindeIn">
-					</div>
-					<div class="form-floating">
-						<textarea class="form-control" placeholder="Estudios" id="Studies"
-							style="height: 100px"></textarea>
-						<label for="Studies">Estudios</label>
-					</div>
-					<div class="form-floating">
-						<textarea class="form-control" placeholder="Aficiones" id="hobbies"
-							style="height: 100px"></textarea>
-						<label for="hobbies">Aficiones</label>
-					</div>
-					<div class="mb-3">
-						<input type="email" class="form-control" id="email" placeholder="name@example.com">
-					</div>
-					<div class="col-12">
-						<button type="submit" class="btn btn-primary">Guardar</button>
-					</div>
-				</form>
-			</div>
-			<div class="right-column  d-inline-flex flex-column justify-content-between align-item-start">
-				<!--  d-flex flex-column -->
-				<div class="d-flex align-content-center"><!-- class="d-flex flex-column"-->
-					<img src="/public/images/profile-icon.jpg" class="profile rounded-circle" alt="profile-icon">
+						<div class="form-floating mb-3">
+							<textarea class="form-control" placeholder="Estudios" id="Studies"
+								style="height: 100px"></textarea>
+							<label for="Studies">Estudios</label>
+						</div>
+						<div class="form-floating mb-3">
+							<textarea class="form-control" placeholder="Aficiones" id="hobbies"
+								style="height: 100px"></textarea>
+							<label for="hobbies">Aficiones</label>
+						</div>
+						<div class="mb-3">
+							<input type="email" class="form-control" id="email" placeholder="name@example.com">
+						</div>
+						<div class="d-flex justify-content-center">
+							<button type="button" class="btn btn-primary"
+								onclick="window.location.href ='perfil-de-usuario.html'">Guardar</button>
+						</div>
+					</form>
 				</div>
-
-				<div class=" input-group mb-3"><!--  d-flex flex-column -->
-					<input type="file" class="form-control" id="inputGroupFile02">
-					<label class="input-group-text btn btn-primary" for="inputGroupFile02">Modificar</label>
+				<!-- columna dcha foto perfil -->
+				<div class="right-column order-0 order-lg-1 d-flex flex-column justify-content-start align-item-start">
+					<div class="d-flex justify-content-center">
+						<img src="/public/images/profile-icon.jpg" class="profile rounded-circle" alt="profile-icon">
+					</div>
+					<div class="d-flex justify-content-center">
+						<label class="btn btn-primary">Modificar
+							<input type="file" hidden>
+						</label>
+					</div>
 				</div>
 			</div>
 		</div>
-		<!-- </div> -->
 
 	</main>
 	<footer class="d-flex p-4 bg-black text-white">
