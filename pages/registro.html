@@ -10,9 +10,73 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0"
 		/>
-		<title>Nuevo Usuario</title>
+		<title>Tecla Social</title>
+		<link
+			rel="stylesheet"
+			href="/public/css/bootstrap.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="/public/css/global.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="/public/css/modificar-perfil-de-usuario.css"
+		/>
 	</head>
-	<body>
-		<p>Trabajo en progreso!</p>
+
+	<body class="d-flex flex-column min-vh-100">
+		<header class="d-flex p-4">
+			<p class="h2 font-family--jetbrains-mono">
+				<strong>//TECLA</strong>_SOCIAL
+			</p>
+		</header>
+
+		<main
+			class="d-flex flex-grow-1 justify-content-center align-items-center bg-tecla-teal"
+		>
+			<!-- tarjeta datos de usuario -->
+			<div class="card-user bg-tecla-white shadow">
+				<p
+					class="h4 font-family--jetbrains-mono d-flex justify-content-center mb-4"
+				>
+					Registro de usuario
+				</p>
+				<div class="d-flex flex-column">
+					<form action="/pages/feed.html">
+						<div class="mb-3">
+							<input
+								type="email"
+								class="form-control"
+								id="email"
+								placeholder="Correo"
+								required
+							/>
+						</div>
+						<div class="mb-3">
+							<input
+								type="password"
+								class="form-control"
+								id="password"
+								placeholder="Contraseña"
+								required
+							/>
+						</div>
+
+						<button
+							type="submit"
+							class="btn btn-primary"
+						>
+							Registrarse
+						</button>
+					</form>
+				</div>
+			</div>
+		</main>
+		<footer class="d-flex p-4 bg-black text-white">
+			<p class="h4 font-family--jetbrains-mono">
+				<strong>//TECLA</strong>_SOCIAL
+			</p>
+		</footer>
 	</body>
 </html>
