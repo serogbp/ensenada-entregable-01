@@ -27,176 +27,101 @@
 			rel="stylesheet"
 			href="../public/css/feed.css"
 		/>
+		<script src="../public/js/bootstrap.bundle.js"></script>
 	</head>
 	<body class="min-vh-100 bg-light">
-		<header
-			class="d-flex bg-white p-2 align-content-center align-items-center justify-content-between shadow-sm"
-		>
-			<!-- LOGO -->
-			<p class="h2 font-family--jetbrains-mono">
-				<strong>//TECLA</strong>_SOCIAL
-			</p>
-
-			<div class="d-lg-flex d-none gap-2">
-				<!-- 🔍 Search bar -->
-				<div
-					class="p-3 pe-5 bg-light rounded-5 gap-2 justify-content-center align-content-center align-items-center d-flex"
-				>
-					<i class="bi bi-search"></i>
-					<p class="m-0">Start typing to search...</p>
-				</div>
-				<!-- 🔵⏹🔵 Blue center icons-->
-				<div class="header__icons-container d-lg-flex d-none">
-					<div class="icon-wrapper">
-						<i class="icon bi bi-house"></i>
-					</div>
-					<div class="icon-wrapper">
-						<i class="icon bi bi-lightning-charge"></i>
-					</div>
-					<div class="icon-wrapper">
-						<i class="icon bi bi-camera-video"></i>
-					</div>
-					<div class="icon-wrapper">
-						<i class="icon bi bi-person"></i>
-					</div>
-					<div class="icon-wrapper">
-						<i class="icon bi bi-bag"></i>
-					</div>
-				</div>
-			</div>
-
-			<!-- 🔵🔵➡ Blue right icons -->
-			<div class="header__icons-container d-lg-flex d-none">
-				<i class="icon icon--primary bi bi-bell"></i>
-				<i class="icon icon--primary bi bi-chat-left"></i>
-				<i class="icon icon--primary bi bi-gear"></i>
-				<img
-					class="icon rounded-circle"
-					src="https://img.freepik.com/premium-psd/3d-illustration-man-cartoon-close-up-portrait-standing-man-with-sunglasses-mustache-pink-background-3d-avatar-ui-ux_1020-5093.jpg"
-					alt="Usuario"
-				/>
-			</div>
-
-			<!-- ⚪⚪⚪ Gray icons-->
-			<div class="header__icons-container d-lg-none d-flex">
-				<div class="icon-wrapper icon-wrapper--small">
-					<i class="icon--small bi bi-chat"></i>
-				</div>
-				<div class="icon-wrapper icon-wrapper--small">
-					<i class="icon--small bi bi-camera-video"></i>
-				</div>
-				<div class="icon-wrapper icon-wrapper--small">
-					<i class="icon--small bi bi-search"></i>
-				</div>
-				<!-- 🍔 menu -->
-				<i class="icon--smal bi bi-list"></i>
-			</div>
-		</header>
-
-		<!-- Main content -->
-		<div class="d-flex gap-3 p-3 justify-content-center">
-			<!-- 🎯 Left Nav Bar -->
-			<nav class="d-none d-lg-flex flex-column gap-3">
-				<!-- 📄 Nuevos Feeds -->
-				<div class="card">
-					<strong>Nuevos Feeds</strong>
-					<!-- Item -->
-					<div class="d-flex gap-2 align-items-center">
-						<div class="icon-wrapper">
-							<i class="icon bi bi-tv"></i>
+		<!-- Header -->
+		<header class="sticky-top shadow-sm">
+			<nav class="navbar navbar-expand-lg bg-body-tertiary">
+				<div class="container-fluid">
+					<a
+						class="navbar-brand font-family--jetbrains-mono"
+						href="#"
+						><!-- LOGO -->
+						<strong>//TECLA</strong>_SOCIAL
+					</a>
+					<button
+						class="navbar-toggler"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div
+						class="collapse navbar-collapse justify-content-end"
+						id="navbarSupportedContent"
+					>
+						<div class="text-start d-lg-none mt-4 overflow-scroll">
+							<!-- Lista -->
+							<ul class="nav-list list-unstyled card">
+								<p class="h5 mb-1">Enlaces</p>
+								<li>🏠 Tu perfil</li>
+								<li>💃 Amigos</li>
+								<li>📜 Anuncios</li>
+								<li>🎙 Podcast</li>
+								<li>🔑 Tags</li>
+								<li>📊 Noticias</li>
+								<li>💡 FAQ</li>
+								<li>💬 Publicaciones</li>
+								<li>📖 Guías</li>
+							</ul>
 						</div>
-						<p class="m-0">Noticias</p>
-					</div>
-					<!-- Item -->
-					<div class="d-flex gap-2 align-items-center">
-						<div class="icon-wrapper">
-							<i class="icon bi bi-award"></i>
-						</div>
-						<p class="m-0">Badges</p>
-					</div>
-					<!-- Item -->
-					<div class="d-flex gap-2 align-items-center">
-						<div class="icon-wrapper">
-							<i class="icon bi bi-bicycle"></i>
-						</div>
-						<p class="m-0">Explore Stories</p>
-					</div>
-					<!-- Item -->
-					<div class="d-flex gap-2 align-items-center">
-						<div class="icon-wrapper">
-							<i class="icon bi bi-lightning-charge"></i>
-						</div>
-						<p class="m-0">Popular Groups</p>
-					</div>
-					<!-- Item -->
-					<div class="d-flex gap-2 align-items-center">
-						<div class="icon-wrapper">
-							<i class="icon bi bi-person"></i>
-						</div>
-						<p class="m-0">Author Profile</p>
-					</div>
-				</div>
-				<!-- 📄 More Pages -->
-				<div class="card">
-					<strong>More Pages</strong>
-					<!-- Item -->
-					<div class="d-flex gap-2 align-items-center">
-						<div class="icon-wrapper">
-							<i class="icon bi bi-archive"></i>
-						</div>
-						<p class="m-0">Email Box</p>
-					</div>
-					<!-- Item -->
-					<div class="d-flex gap-2 align-items-center">
-						<div class="icon-wrapper">
-							<i class="icon bi bi-house"></i>
-						</div>
-						<p class="m-0">Near Hotel</p>
-					</div>
-					<!-- Item -->
-					<div class="d-flex gap-2 align-items-center">
-						<div class="icon-wrapper">
-							<i class="icon bi bi-geo-alt"></i>
-						</div>
-						<p class="m-0">Latest Event</p>
-					</div>
-					<!-- Item -->
-					<div class="d-flex gap-2 align-items-center">
-						<div class="icon-wrapper">
-							<i class="icon bi bi-youtube"></i>
-						</div>
-						<p class="m-0">Live Stream</p>
-					</div>
-				</div>
-				<!-- 📄 Account -->
-				<div class="card">
-					<strong>Account</strong>
-					<!-- Item -->
-					<div class="d-flex gap-2 align-items-center">
-						<div class="icon-wrapper">
-							<i class="icon bi bi-gear"></i>
-						</div>
-						<p class="m-0">Settings</p>
-					</div>
-					<!-- Item -->
-					<div class="d-flex gap-2 align-items-center">
-						<div class="icon-wrapper">
-							<i class="icon bi bi-pie-chart"></i>
-						</div>
-						<p class="m-0">Analytics</p>
-					</div>
-					<!-- Item -->
-					<div class="d-flex gap-2 align-items-center">
-						<div class="icon-wrapper">
-							<i class="icon bi bi-chat-left"></i>
-						</div>
-						<p class="m-0">Chat</p>
+						<form
+							class="d-flex"
+							role="search"
+						>
+							<input
+								class="form-control me-2"
+								type="search"
+								placeholder="Buscar"
+								aria-label="Buscar"
+							/>
+							<button
+								class="btn btn-outline-success"
+								type="submit"
+							>
+								Buscar
+							</button>
+						</form>
 					</div>
 				</div>
 			</nav>
+		</header>
 
-			<!-- 💥 Feed -->
-			<main class="feed d-flex flex-column gap-3 overflow-auto">
+		<!-- Main content -->
+		<nav class="d-flex gap-3 p-3 justify-content-center">
+			<!-- 🔴 Left Nav Bar -->
+			<div class="left-column d-none d-md-flex justify-content-end">
+				<div class="text-start">
+					<!-- Lista -->
+					<ul class="nav-list list-unstyled card">
+						<p class="h5 mb-1">Enlaces</p>
+						<li>🏠 Tu perfil</li>
+						<li>💃 Amigos</li>
+						<li>📜 Anuncios</li>
+						<li>🎙 Podcast</li>
+						<li>🔑 Tags</li>
+						<li>📊 Noticias</li>
+						<li>💡 FAQ</li>
+						<li>💬 Publicaciones</li>
+						<li>📖 Guías</li>
+					</ul>
+					<!-- Lista -->
+					<ul class="nav-list list-unstyled card">
+						<p class="h5 mb-1">Otros</p>
+						<li>👍 Código de conducta</li>
+						<li>🤓 Política de privacidad</li>
+						<li>👀 Términos de uso</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- 🔴 Feed -->
+			<main class="middle-column d-flex flex-column gap-3 overflow-auto">
 				<!-- 🎠 Carousel Stories -->
 				<div class="d-flex overflow-auto nowrap gap-2">
 					<div class="story">
@@ -256,14 +181,14 @@
 				</div>
 
 				<!-- 📝 Posts -->
-				<div class="flex-col">
+				<div class="flex-col posts">
 					<!-- Create Post -->
 					<div class="card flex-col">
 						<div class="d-flex align-items-center gap-3">
 							<div class="icon-wrapper">
 								<i class="icon bi bi-pencil"></i>
 							</div>
-							<p class="mb-0">Create Post</p>
+							<p class="mb-0">Nuevo post</p>
 						</div>
 						<!-- Text Area -->
 						<div class="card">
@@ -326,13 +251,67 @@
 						<!-- Post content -->
 						<div class="post__content">
 							<p>
-								Lorem ipsum dolor, sit amet consectetur
-								adipisicing elit. Sint necessitatibus quia
-								neque, doloremque nostrum et quaerat dolore
-								dolor odio, accusamus adipisci recusandae facere
-								provident asperiores ipsa numquam dolorem
-								cupiditate quas?
+								Un programador va al supermercado y su esposa le
+								dice:
 							</p>
+							<p>
+								"Ve al supermercado y compra una barra de pan. Y
+								si hay huevos, compra una docena".
+							</p>
+							<p>
+								El programador regresa del supermercado con 12
+								barras de pan.
+							</p>
+							<p class="text-primary">#chiste #chat-GPT</p>
+						</div>
+					</div>
+					<!-- POST -->
+					<div class="post card">
+						<!-- User info -->
+						<div class="post__user-info">
+							<div class="d-flex gap-4">
+								<div class="avatar avatar--image"></div>
+								<div class="doble-texto">
+									<p>Nombre Apellido</p>
+									<p>3 hour ago</p>
+								</div>
+							</div>
+
+							<div class="icon-wrapper">
+								<i class="icon bi bi-three-dots"></i>
+							</div>
+						</div>
+						<!-- Post content -->
+						<div class="post__content">
+							<p>¿Cómo se puede hacer reír a un programador?</p>
+							<p>Pídele que centre un botón en HTML sin CSS.</p>
+							<p class="text-primary">#chiste #chat-GPT</p>
+						</div>
+					</div>
+					<!-- POST -->
+					<div class="post card">
+						<!-- User info -->
+						<div class="post__user-info">
+							<div class="d-flex gap-4">
+								<div class="avatar avatar--image"></div>
+								<div class="doble-texto">
+									<p>Nombre Apellido</p>
+									<p>3 hour ago</p>
+								</div>
+							</div>
+
+							<div class="icon-wrapper">
+								<i class="icon bi bi-three-dots"></i>
+							</div>
+						</div>
+						<!-- Post content -->
+						<div class="post__content">
+							<p>¿Qué le dijo la función recursiva a su hija?</p>
+							<p>
+								"No te preocupes, algún día también podrás
+								llamarte a ti misma".
+							</p>
+							<p class="text-primary">#chiste #chat-GPT</p>
 						</div>
 					</div>
 					<!-- POST -->
@@ -354,13 +333,19 @@
 						<!-- Post content -->
 						<div class="post__content">
 							<p>
-								Lorem ipsum dolor, sit amet consectetur
-								adipisicing elit. Sint necessitatibus quia
-								neque, doloremque nostrum et quaerat dolore
-								dolor odio, accusamus adipisci recusandae facere
-								provident asperiores ipsa numquam dolorem
-								cupiditate quas?
+								Un programador va a la tienda de comestibles y
+								le pide al vendedor:
 							</p>
+							<p>"¿Me das una docena de huevos, por favor?"</p>
+							<p>
+								"Sí, claro, ¿te los envuelvo en un array o en un
+								objeto?"
+							</p>
+							<p>
+								"¡En un array, por favor! No soy tan fanático de
+								la Programación Orientada a Objetos."
+							</p>
+							<p class="text-primary">#chiste #chat-GPT</p>
 						</div>
 					</div>
 					<!-- POST -->
@@ -370,7 +355,7 @@
 							<div class="d-flex gap-4">
 								<div class="avatar avatar--image"></div>
 								<div class="doble-texto">
-									<p>Nombre Apellido</p>
+									<p>Angry Dev</p>
 									<p>3 hour ago</p>
 								</div>
 							</div>
@@ -382,78 +367,48 @@
 						<!-- Post content -->
 						<div class="post__content">
 							<p>
-								Lorem ipsum dolor, sit amet consectetur
-								adipisicing elit. Sint necessitatibus quia
-								neque, doloremque nostrum et quaerat dolore
-								dolor odio, accusamus adipisci recusandae facere
-								provident asperiores ipsa numquam dolorem
-								cupiditate quas?
+								No entiendo por qué la gente piensa que CSS Grid
+								es la respuesta a todos nuestros problemas de
+								diseño. Sí, es cierto que nos permite crear
+								diseños más complejos y flexibles, pero ¿a qué
+								costo? Es un infierno para escribir y mantener.
 							</p>
-						</div>
-					</div>
-					<!-- POST -->
-					<div class="post card">
-						<!-- User info -->
-						<div class="post__user-info">
-							<div class="d-flex gap-4">
-								<div class="avatar avatar--image"></div>
-								<div class="doble-texto">
-									<p>Nombre Apellido</p>
-									<p>3 hour ago</p>
-								</div>
-							</div>
-
-							<div class="icon-wrapper">
-								<i class="icon bi bi-three-dots"></i>
-							</div>
-						</div>
-						<!-- Post content -->
-						<div class="post__content">
 							<p>
-								Lorem ipsum dolor, sit amet consectetur
-								adipisicing elit. Sint necessitatibus quia
-								neque, doloremque nostrum et quaerat dolore
-								dolor odio, accusamus adipisci recusandae facere
-								provident asperiores ipsa numquam dolorem
-								cupiditate quas?
+								¿Por qué tenemos que crear tantas líneas de
+								código solo para posicionar un elemento en una
+								cuadrícula? Y, ¿por qué a veces simplemente no
+								funciona? ¿Por qué Grid es tan complicado de
+								usar y entender? ¿Por qué es tan difícil alinear
+								elementos y hacer que se vean bien en todos los
+								dispositivos?
 							</p>
-						</div>
-					</div>
-					<!-- POST -->
-					<div class="post card">
-						<!-- User info -->
-						<div class="post__user-info">
-							<div class="d-flex gap-4">
-								<div class="avatar avatar--image"></div>
-								<div class="doble-texto">
-									<p>Nombre Apellido</p>
-									<p>3 hour ago</p>
-								</div>
-							</div>
-
-							<div class="icon-wrapper">
-								<i class="icon bi bi-three-dots"></i>
-							</div>
-						</div>
-						<!-- Post content -->
-						<div class="post__content">
 							<p>
-								Lorem ipsum dolor, sit amet consectetur
-								adipisicing elit. Sint necessitatibus quia
-								neque, doloremque nostrum et quaerat dolore
-								dolor odio, accusamus adipisci recusandae facere
-								provident asperiores ipsa numquam dolorem
-								cupiditate quas?
+								Y no me hagas empezar con la compatibilidad del
+								navegador. No puedo creer que todavía tenga que
+								escribir hacks para que mi diseño funcione en
+								diferentes navegadores.
+							</p>
+							<p>
+								La verdad es que CSS Grid es solo una moda
+								pasajera y, en el fondo, nunca será una
+								herramienta práctica y fácil de usar para
+								diseñadores y desarrolladores. Es un dolor de
+								cabeza total.
+							</p>
+							<p class="text-primary">
+								#ProblemasConGridCSS #PesadillaDeDiseñoCSS
+								#LuchasConHTMLyCSS
 							</p>
 						</div>
 					</div>
 				</div>
 			</main>
 
-			<aside class="d-none d-xl-flex flex-column gap-3">
+			<!-- 🔴 Aside -->
+			<aside class="right-column d-none d-xl-flex flex-column gap-3">
 				<!-- Peticiones de amistad -->
 				<div class="card gap-4">
-					<strong>Peticiones de amistad</strong>
+					<p class="h5">Peticiones de amistad</p>
 					<!-- Item -->
 					<div class="d-flex flex-column gap-2">
 						<div class="d-flex gap-4">
@@ -464,11 +419,15 @@
 							</div>
 						</div>
 						<div class="d-flex gap-4">
-							<button class="btn btn-primary rounded-4">
-								Aceptar
+							<button
+								class="btn btn-outline-primary rounded-circle"
+							>
+								<i class="icon bi bi-check-lg"></i>
 							</button>
-							<button class="btn btn-outline-primary rounded-4">
-								Rechazar
+							<button
+								class="btn btn-outline-danger rounded-circle"
+							>
+								<i class="icon bi bi-x-lg"></i>
 							</button>
 						</div>
 					</div>
@@ -482,11 +441,15 @@
 							</div>
 						</div>
 						<div class="d-flex gap-4">
-							<button class="btn btn-primary rounded-4">
-								Aceptar
+							<button
+								class="btn btn-outline-primary rounded-circle"
+							>
+								<i class="icon bi bi-check-lg"></i>
 							</button>
-							<button class="btn btn-outline-primary rounded-4">
-								Rechazar
+							<button
+								class="btn btn-outline-danger rounded-circle"
+							>
+								<i class="icon bi bi-x-lg"></i>
 							</button>
 						</div>
 					</div>
@@ -500,18 +463,22 @@
 							</div>
 						</div>
 						<div class="d-flex gap-4">
-							<button class="btn btn-primary rounded-4">
-								Aceptar
+							<button
+								class="btn btn-outline-primary rounded-circle"
+							>
+								<i class="icon bi bi-check-lg"></i>
 							</button>
-							<button class="btn btn-outline-primary rounded-4">
-								Rechazar
+							<button
+								class="btn btn-outline-danger rounded-circle"
+							>
+								<i class="icon bi bi-x-lg"></i>
 							</button>
 						</div>
 					</div>
 				</div>
 				<!-- Eventos -->
 				<div class="card gap-4">
-					<strong>Eventos</strong>
+					<p class="h5">Eventos</p>
 					<!-- Item -->
 					<div class="d-flex gap-2">
 						<!-- Cuadrado -->
@@ -538,7 +505,7 @@
 					</div>
 				</div>
 			</aside>
-		</div>
+		</nav>
 
 		<footer class="d-flex p-4 bg-black text-white">
 			<p class="h4 font-family--jetbrains-mono">
@@ -548,7 +515,7 @@
 
 		<!-- Bottom Nav bar 📱 -->
 		<div
-			class="fixed-bottom d-flex justify-content-between bg-primary d-lg-none px-4 py-2"
+			class="position-sticky fixed-bottom d-flex justify-content-between bg-tecla-blue d-lg-none px-4 py-2"
 		>
 			<i class="icon icon--white bi bi-house"></i>
 			<i class="icon icon--white bi bi-box-seam"></i>
@@ -556,7 +523,7 @@
 			<i class="icon icon--white bi bi-layers"></i>
 			<img
 				class="icon rounded-circle"
-				src="https://img.freepik.com/premium-psd/3d-illustration-man-cartoon-close-up-portrait-standing-man-with-sunglasses-mustache-pink-background-3d-avatar-ui-ux_1020-5093.jpg"
+				src="https://img.freepik.com/psd-premium/ilustracion-3d-hombre-caucasico-sonriente-retrato-cerca-dibujos-animados-hombre-caucasico-pie-sobre-fondo-amarillo-avatar-3d-ui-ux_1020-5081.jpg"
 				alt="Usuario"
 			/>
 		</div>
