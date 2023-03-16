@@ -152,3 +152,14 @@ img.icon {
 .event p {
 	margin: 0;
 }
+
+.friend-card {
+	min-width: 15rem;
+}
+
+@media screen and (max-width: 527px) {
+	.friend-card {
+		width: 100%;
+	}
+
+}
