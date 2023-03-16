@@ -1,25 +1,32 @@
-:root {
-	--color-primary: #1e74fd;
-	--color-logo: #1ad62d;
+.nav-list>* {
+	padding: 0.5rem 1rem;
 }
 
-header {
-	position: sticky;
-	top: 0;
-	z-index: 9999;
+.nav-list>li {
+	border-radius: 0.5rem;
+	transition: all 0.1s ease-in-out;
 }
 
-.header__title {
-	color: var(--color-primary);
+.nav-list>li:hover {
+	background-color: var(--tecla-blue-light);
+	cursor: pointer;
+	color: var(--tecla-white);
 }
 
-.header__icons-container {
-	align-items: center;
-	gap: 1rem;
+.left-column {
+	min-width: 15rem;
 }
 
-.feed {
+.middle-column {
 	max-width: 50rem;
+}
+
+.right-column {
+	min-width: 15rem;
+}
+
+.posts {
+	min-height: min-content;
 }
 
 .icon-wrapper {
@@ -57,10 +64,6 @@ img.icon {
 	color: white;
 }
 
-.icon--green {
-	color: var(--color-logo);
-}
-
 .story {
 	min-width: 10rem;
 	height: 14rem;
@@ -94,7 +97,7 @@ img.icon {
 }
 
 .avatar--image {
-	background-image: url(https://unsplash.com/photos/X6Uj51n5CE8/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8OHx8cG9ydHJhaXR8ZW58MHx8fHwxNjc4Mzc0ODY2&force=true&w=640);
+	background-image: url(https://img.freepik.com/psd-premium/ilustracion-3d-hombre-caucasico-sonriente-retrato-cerca-dibujos-animados-hombre-caucasico-pie-sobre-fondo-amarillo-avatar-3d-ui-ux_1020-5081.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -133,14 +136,6 @@ img.icon {
 
 .post__content {
 	padding: 1rem;
-}
-
-.new-message {
-	bottom: 24px;
-	right: 24px;
-	width: 16rem;
-	position: fixed;
-	margin: 1rem;
 }
 
 .event {
