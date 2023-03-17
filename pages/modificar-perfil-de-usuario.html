@@ -13,10 +13,47 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-	<header class="d-flex p-4">
+	<!-- 	<header class="d-flex p-4">
 		<p class="h2 font-family--jetbrains-mono">
 			<strong>//TECLA</strong>_SOCIAL
 		</p>
+	</header> -->
+	<header class="sticky-top shadow-sm">
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid">
+				<a class="navbar-brand font-family--jetbrains-mono" href="#"><!-- LOGO -->
+					<strong>//TECLA</strong>_SOCIAL
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+					<div class="text-start d-lg-none mt-4 overflow-scroll">
+						<!-- Lista -->
+						<ul class="nav-list list-unstyled card">
+							<p class="h5 mb-1">Enlaces</p>
+							<li>🏠 Tu perfil</li>
+							<li>💃 Amigos</li>
+							<li>📜 Anuncios</li>
+							<li>🎙 Podcast</li>
+							<li>🔑 Tags</li>
+							<li>📊 Noticias</li>
+							<li>💡 FAQ</li>
+							<li>💬 Publicaciones</li>
+							<li>📖 Guías</li>
+						</ul>
+					</div>
+					<form class="d-flex" role="search">
+						<input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" />
+						<button class="btn btn-outline-success" type="submit">
+							Buscar
+						</button>
+					</form>
+				</div>
+			</div>
+		</nav>
 	</header>
 
 	<main class="d-flex flex-grow-1 justify-content-center align-items-center bg-tecla-teal">
@@ -47,12 +84,20 @@
 							</div>
 						</div>
 						<div class="mb-3">
+							<input type="url" class="form-control" id="year" placeholder="Edad">
+						</div>
+						<div class="mb-3">
 							<input type="url" class="form-control" id="linkedin" placeholder="LinkedIn">
 						</div>
 						<div class="form-floating mb-3">
 							<textarea class="form-control" placeholder="Estudios" id="Studies"
 								style="height: 100px"></textarea>
 							<label for="Studies">Estudios</label>
+						</div>
+						<div class="form-floating mb-3">
+							<textarea class="form-control" placeholder="Idiomas" id="Languages"
+								style="height: 100px"></textarea>
+							<label for="Languages">Idiomas</label>
 						</div>
 						<div class="form-floating mb-3">
 							<textarea class="form-control" placeholder="Aficiones" id="hobbies"
