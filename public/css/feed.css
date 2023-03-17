@@ -154,7 +154,7 @@ img.icon {
 }
 
 .friend-card {
-	min-width: 15rem;
+	min-width: 12rem;
 }
 
 @media screen and (max-width: 527px) {
