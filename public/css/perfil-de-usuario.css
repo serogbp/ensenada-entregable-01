@@ -18,3 +18,36 @@
 .btn {
 	margin: 2% 4% 0% 0%;
 }
+
+.menu-left {
+	--bs-card-border-width: var(--bs-border-width);
+	border-radius: 0.8rem;
+	/* background-color: white; */
+	height: fit-content;
+}
+
+.data {
+	border-radius: 0.8rem;
+	background-color: #f8f9fa;
+}
+
+.data .p {
+	font-family: jetbrains-mono;
+}
+
+.card-1 {
+	border-radius: 0.8rem;
+	background-color: white;
+	height: fit-content;
+}
+
+.list {
+	border-radius: 0.8rem;
+	margin-bottom: 0;
+}
+
+.list:hover {
+	background-color: var(--tecla-blue-light);
+	cursor: pointer;
+	color: var(--tecla-white);
+}
