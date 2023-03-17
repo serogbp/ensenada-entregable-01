@@ -2,12 +2,12 @@
 	padding: 0.5rem 1rem;
 }
 
-.nav-list>li {
+.nav-list>li, .nav-list>a {
 	border-radius: 0.5rem;
 	transition: all 0.1s ease-in-out;
 }
 
-.nav-list>li:hover {
+.nav-list>li:hover, .nav-list>a:hover {
 	background-color: var(--tecla-blue-light);
 	cursor: pointer;
 	color: var(--tecla-white);
