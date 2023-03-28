@@ -16,11 +16,6 @@
 </head>
 
 <body class="min-vh-100 bg-light">
-	<!-- 	<header class="d-flex p-4">
-		<p class="h2 font-family--jetbrains-mono">
-			<strong>//TECLA</strong>_SOCIAL
-		</p>
-	</header> -->
 	<header class="sticky-top shadow-sm">
 		<nav class="navbar navbar-expand-lg bg-body-tertiary">
 			<div class="container-fluid">
@@ -79,7 +74,24 @@
 							onclick="window.location.href ='modificar-perfil-de-usuario.html'">Editar perfil</button>
 
 						<button type="button" class="btn btn-outline-danger"
-							onclick="window.location.href ='modificar-perfil-de-usuario.html'">Eliminar perfil</button>
+							onclick="document.getElementById('id01').style.display='block'">Eliminar perfil</button>
+						<div id="id01" class="modal">
+							<span onclick="document.getElementById('id01').style.display='none'" class="close"
+								title="Close Modal">×</span>
+							<form class="modal-content">
+								<div>
+									<h1>Eliminar cuenta</h1>
+									<p>Seguro que desea eliminar la cuenta?</p>
+
+									<div class="clearfix">
+										<button type="button"
+											onclick="document.getElementById('id01').style.display='none'"
+											class="cancelbtn">Cancelar</button>
+										<button type="button" id="deleteUser" class="deletebtn">Confirmar</button>
+									</div>
+								</div>
+							</form>
+						</div>
 					</div>
 
 				</div>
@@ -204,8 +216,8 @@
 							<p class="m-0 p-2">LinkedIn: </p>
 						</div>
 						<div class="col-lg-8 data align-items-center text-break">
-							<p class="m-0 p-2 userData">
-								<a></a>
+							<p class="m-0 p-2 ">
+								<a class="userData" href="https://es.linkedin.com/"></a>
 							</p>
 						</div>
 					</div>
@@ -226,7 +238,7 @@
 		</div>
 	</main>
 
-	<script src="/public/js/perfil-usuario.js"></script>
+	<script type="module" src="/public/js/perfil-usuario.js"></script>
 
 	<footer class="d-flex p-4 bg-black text-white">
 		<p class="h4 font-family--jetbrains-mono">
