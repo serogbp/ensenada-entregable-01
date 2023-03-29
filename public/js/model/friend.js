@@ -24,16 +24,22 @@ export const addFriends = (newFriends) => {
 	drawFriends(friendsSorted);
 };
 
+export const updateSortType = (type) => {
+	sortType = type;
+	sortFriends();
+	drawFriends(friendsSorted);
+}
+
 const sortFriends = () => {
 	switch (sortType) {
 		case SORT_TYPE.MANUAL:
 			friendsSorted = [...friends];
 			break;
 		case SORT_TYPE.NAME:
-			friendsSorted = [...friends.sort((a, b) => a.name.first.localeCompare(b.name.first))];
+			friendsSorted = [...friends].sort((a, b) => a.name.first.localeCompare(b.name.first));
 			break;
 		case SORT_TYPE.USERNAME:
-			friendsSorted = [...friends.sort((a, b) => a.login.username.localeCompare(b.login.username))];
+			friendsSorted = [...friends].sort((a, b) => a.login.username.localeCompare(b.login.username));
 			break;
 		default:
 			friendsSorted = [...friends];

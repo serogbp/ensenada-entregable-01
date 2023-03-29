@@ -6,8 +6,8 @@ const createFriendElement = (friendInfo) => {
 	element.innerHTML = `
 		<img src="${friendInfo.picture.large}" alt="${friendInfo.name.first} ${friendInfo.name.last}" class="avatar"/>
 		<div class="doble-texto">
-			<p>${friendInfo.name.first} ${friendInfo.name.last}</p>
-			<p>@${friendInfo.login.username}</p>
+			<p class="text-break">${friendInfo.name.first} ${friendInfo.name.last}</p>
+			<p class="text-break">@${friendInfo.login.username}</p>
 		</div>
 	`;
 	return element;
