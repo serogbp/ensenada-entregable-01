@@ -1,13 +1,13 @@
 :root {
-	--tecla-white: #F7F7F7;
-	--tecla-pink: #F59FC7;
-	--tecla-teal: #79C7C7;
-	--tecla-blue-light: #99CCFF;
-	--tecla-orange: #FF6633;
-	--tecla-yellow: #FFFF00;
-	--tecla-blue: #0066CC;
-	--tecla-blueish: #0073B4;
-	--tecla-purple: #7809E6;
+	--tecla-white: #f7f7f7;
+	--tecla-pink: #f59fc7;
+	--tecla-teal: #79c7c7;
+	--tecla-blue-light: #99ccff;
+	--tecla-orange: #ff6633;
+	--tecla-yellow: #ffff00;
+	--tecla-blue: #0066cc;
+	--tecla-blueish: #0073b4;
+	--tecla-purple: #7809e6;
 }
 
 .bg-tecla-white {
@@ -89,11 +89,10 @@
 @font-face {
 	font-family: JetBrains Mono;
 	src: url(/public/fonts/JetBrainsMono-VariableFont_wght.ttf);
-
 }
 
 .font-family--jetbrains-mono {
-	font-family: 'JetBrains Mono', monospace;
+	font-family: "JetBrains Mono", monospace;
 }
 
 .font-bold {
@@ -110,7 +109,7 @@
 	border: 3px solid black;
 	border-radius: 50px;
 	padding: 1rem 2rem 1rem 2rem;
-	transition: all .2s ease-in-out;
+	transition: all 0.2s ease-in-out;
 	align-self: start;
 	font-size: 1.5rem;
 }
@@ -118,7 +117,6 @@
 .btn-tecla:hover {
 	background-color: black;
 	color: white;
-
 }
 
 a {
