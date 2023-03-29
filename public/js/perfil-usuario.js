@@ -1,50 +1,65 @@
-
 import { users as _users } from './users-data.js';
 let users = _users;
 
 let idUser = 1;
+let user;
 
-function userData(idUser) {
-    const result = users.find(({ id }) => id === idUser);
+const findUser = (idUser) => {
+    user = users.find(user => user.id === idUser);
+}
 
-    document.getElementsByClassName('userData')[0].innerHTML = `${result.name.toUpperCase()} ${result.surname.toUpperCase()}`;
-    document.getElementsByClassName('userData')[1].innerHTML = `${result.role}`;
-    document.getElementsByClassName('userData')[2].innerHTML = `${result.name}`;
-    document.getElementsByClassName('userData')[3].innerHTML = `${result.surname}`;
-    document.getElementsByClassName('userData')[4].innerHTML = `${result.age}`;
-    document.getElementsByClassName('userData')[5].innerHTML = `${result.city}`;
-    document.getElementsByClassName('userData')[6].innerHTML = `${result.country}`;
-    document.getElementsByClassName('userData')[7].innerHTML = `${result.studies}`;
-    document.getElementsByClassName('userData')[8].innerHTML = `${result.languages}`;
-    document.getElementsByClassName('userData')[9].innerHTML = `${result.linkedin}`;
-    document.getElementsByClassName('userData')[10].innerHTML = `${result.hobbies}`;
-
+const userData = (idUser) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            findUser(idUser);
+            if (!user) {
+                reject(new Error("Usuario no encontrado"));
+            }
+            else {
+                document.getElementsByClassName('userData')[0].innerHTML = `${user.name.toUpperCase()} ${user.surname.toUpperCase()}`;
+                document.getElementsByClassName('userData')[1].innerHTML = `${user.role}`;
+                document.getElementsByClassName('userData')[2].innerHTML = `${user.name}`;
+                document.getElementsByClassName('userData')[3].innerHTML = `${user.surname}`;
+                document.getElementsByClassName('userData')[4].innerHTML = `${user.age}`;
+                document.getElementsByClassName('userData')[5].innerHTML = `${user.city}`;
+                document.getElementsByClassName('userData')[6].innerHTML = `${user.country}`;
+                document.getElementsByClassName('userData')[7].innerHTML = `${user.studies}`;
+                document.getElementsByClassName('userData')[8].innerHTML = `${user.languages}`;
+                document.getElementsByClassName('userData')[9].innerHTML = `${user.linkedin}`;
+                document.getElementsByClassName('userData')[10].innerHTML = `${user.hobbies}`;
+                resolve();
+            }
+        }, 5);
+    })
 }
 
 userData(idUser);
 
-//TODO => implementar promesas en borrar cuenta
-//TODO => revisar link a landing page
-
-
 const delUser = document.getElementById('deleteUser');
 
-const deleteUser = async (idDelete) => {
-    users.splice(users.indexOf(users.find(({ id }) => id === idDelete)), 1);
-
-}
-
-const callbackLanding = () => {
-    window.location.href = './index.html';
+const deleteUser = (idUser) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            findUser(idUser);
+            if (!user) {
+                reject(new Error("Usuario no encontrado"));
+            }
+            else {
+                users.splice(users.indexOf(user.id), 1);
+                resolve();
+            }
+        }, 1000);
+    });
 }
 
 const onClickConfirm = async () => {
-    await setTimeout(() => {
-        deleteUser(idUser);
-    }, 5000);
-    callbackLanding();
-
+    try {
+        await deleteUser(idUser);
+        window.location.href = './registro.html';
+    } catch (err) {
+        alert(err.message);
+        window.location.href = './perfil-de-usuario.html'
+    }
 }
-
 
 delUser.addEventListener("click", onClickConfirm);
