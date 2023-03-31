@@ -5,7 +5,7 @@ export const getRandomUser = async () => {
 };
 
 export const getRandomUsers = async (amount) => {
-	const result = await fetch(`https://randomuser.me/api?results=${amount}`);
+	const result = await fetch(`https://randomuser.me/api/?results=${amount}`);
 	const { results } = await result.json();
 	return results;
 };
