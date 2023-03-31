@@ -101,7 +101,7 @@
 
 		<!-- 🔴 Lista amigos -->
 		<div class="middle-column d-flex flex-column gap-3">
-			<div class="p-4">
+			<div>
 				<label for="sort-type" class="text-stone-50">Ordenar por:</label>
 				<select id="sort-type" name="sort-type" class="rounded p-1">
 					<option value="manual">Orden de llegada</option>
@@ -109,7 +109,7 @@
 					<option value="username">Username</option>
 				</select>
 			</div>
-			<div id="friend-list-wrapper" class="d-flex flex-wrap gap-3 justify-content-center">
+			<div id="friend-list-wrapper" class="d-flex flex-wrap gap-3 ">
 
 			</div>
 		</div>
@@ -132,18 +132,16 @@
 
 	<script type="module">
 		import { addFriends, addFriend, updateSortType } from "../public/js/model/friend.js";
-		import { getRandomUser } from "../public/js/api/random-user.js";
+		import { getRandomUsers } from "../public/js/api/random-user.js";
 
 		document.getElementById("sort-type").addEventListener("change", (e) => {
 			updateSortType(e.target.value);
 		});
 
-		const FRIEND_COUNT = 12;
+		// Generar usuarios aleatorios
+		const friends = await getRandomUsers(30);
+		addFriends(friends);
 
-		for (let i = 0; i < FRIEND_COUNT; i++) {
-			const friend = await getRandomUser();
-			addFriend(friend);
-		}
 	</script>
 </body>
 

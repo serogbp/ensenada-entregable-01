@@ -19,7 +19,7 @@ export const addFriend = (friend) => {
 };
 
 export const addFriends = (newFriends) => {
-	friends = [...newFriends];
+	friends = [...friends, ...newFriends];
 	sortFriends();
 	drawFriends(friendsSorted);
 };
