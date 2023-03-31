@@ -1,15 +1,15 @@
-.nav-list > * {
+.nav-list>* {
 	padding: 0.5rem 1rem;
 }
 
-.nav-list > li,
-.nav-list > a {
+.nav-list>li,
+.nav-list>a {
 	border-radius: 0.5rem;
 	transition: all 0.1s ease-in-out;
 }
 
-.nav-list > li:hover,
-.nav-list > a:hover {
+.nav-list>li:hover,
+.nav-list>a:hover {
 	background-color: var(--tecla-blue-light);
 	cursor: pointer;
 	color: var(--tecla-white);
@@ -136,9 +136,6 @@ img.icon {
 	font-size: 0.8rem;
 }
 
-.post__content {
-	padding: 1rem;
-}
 
 .event {
 	width: 4rem;
