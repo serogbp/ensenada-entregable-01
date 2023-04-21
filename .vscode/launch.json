@@ -8,8 +8,9 @@
 			"name": "Launch Chrome",
 			"request": "launch",
 			"type": "chrome",
-			"url": "http://10.211.55.4:5500/pages/modificar-perfil-de-usuario.html",
-			"webRoot": "${workspaceFolder}"
+			"url": "http://10.211.55.4:5501/Frontend/index.html",
+			"webRoot": "${workspaceFolder}",
+			"runtimeArgs": ["--disable-web-security"]
 		}
 	]
 }
