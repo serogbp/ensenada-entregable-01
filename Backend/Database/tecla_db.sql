@@ -28,11 +28,11 @@ CREATE DATABASE tecla_db;
 --
 
 CREATE TABLE `posts` (
-  `post_id` int(11) NOT NULL,
-  `likes` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `publishDate` date NOT NULL,
-  `content` varchar(140) NOT NULL
+	`post_id` int(11) NOT NULL,
+	`likes` int(11) NOT NULL,
+	`user_id` int(11) DEFAULT NULL,
+	`publishDate` date NOT NULL,
+	`content` varchar(140) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -50,21 +50,21 @@ INSERT INTO `posts` (`post_id`, `likes`, `user_id`, `publishDate`, `content`) VA
 --
 
 CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `surname1` varchar(20) NOT NULL,
-  `surname2` varchar(20) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL,
-  `pass` varchar(10) NOT NULL,
-  `age` int(11) DEFAULT NULL,
-  `city` varchar(15) DEFAULT NULL,
-  `country` varchar(15) DEFAULT NULL,
-  `studies` varchar(150) DEFAULT NULL,
-  `languages` varchar(50) DEFAULT NULL,
-  `linkedin` varchar(25) DEFAULT NULL,
-  `hobbies` varchar(50) DEFAULT NULL,
-  `role` varchar(25) DEFAULT NULL
+	`user_id` int(11) NOT NULL,
+	`name` varchar(20) NOT NULL,
+	`surname1` varchar(20) NOT NULL,
+	`surname2` varchar(20) NOT NULL,
+	`username` varchar(20) NOT NULL,
+	`email` varchar(20) NOT NULL,
+	`pass` varchar(10) NOT NULL,
+	`age` int(11) DEFAULT NULL,
+	`city` varchar(15) DEFAULT NULL,
+	`country` varchar(15) DEFAULT NULL,
+	`studies` varchar(150) DEFAULT NULL,
+	`languages` varchar(50) DEFAULT NULL,
+	`linkedin` varchar(25) DEFAULT NULL,
+	`hobbies` varchar(50) DEFAULT NULL,
+	`role` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -82,18 +82,18 @@ INSERT INTO `users` (`user_id`, `name`, `surname1`, `surname2`, `username`, `ema
 -- Indices de la tabla `posts`
 --
 ALTER TABLE `posts`
-  ADD PRIMARY KEY (`post_id`),
-  ADD KEY `FK_UserPost` (`user_id`);
+	ADD PRIMARY KEY (`post_id`),
+	ADD KEY `FK_UserPost` (`user_id`);
 
 --
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `pass` (`pass`),
-  ADD UNIQUE KEY `linkedin` (`linkedin`);
+	ADD PRIMARY KEY (`user_id`),
+	ADD UNIQUE KEY `username` (`username`),
+	ADD UNIQUE KEY `email` (`email`),
+	ADD UNIQUE KEY `pass` (`pass`),
+	ADD UNIQUE KEY `linkedin` (`linkedin`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -103,13 +103,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+	MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+	MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
@@ -119,7 +119,7 @@ ALTER TABLE `users`
 -- Filtros para la tabla `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `FK_UserPost` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+	ADD CONSTRAINT `FK_UserPost` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
