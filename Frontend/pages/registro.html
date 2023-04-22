@@ -26,22 +26,23 @@
 
 		<main class="d-flex flex-grow-1 justify-content-center align-items-center bg-tecla-teal">
 			<!-- tarjeta datos de usuario -->
-			<div class="card-login card-user bg-tecla-white shadow p-4">
+			<div class="card-login card-user bg-tecla-white shadow p-4 m-4">
 				<p class="h5 font-family--jetbrains-mono d-flex justify-content-center mb-4">Registro de usuario</p>
 				<div class="d-flex flex-column gap-3">
-					<form action="/pages/feed.html">
-						<div class="mb-3">
-							<input type="email" class="form-control" id="email" placeholder="Correo" required />
-						</div>
-						<div class="mb-3">
-							<input
-								type="password"
-								class="form-control"
-								id="password"
-								placeholder="Contraseña"
-								required
-							/>
-						</div>
+					<form action="/pages/feed.html" class="d-flex flex-column gap-4">
+						<input type="email" class="form-control" id="email" placeholder="Correo" required />
+						<input type="password" class="form-control" id="password" placeholder="Contraseña" required />
+						<input type="text" class="form-control" id="name" placeholder="Nombre" />
+						<input type="text" class="form-control" id="surname1" placeholder="Primer apellido" />
+						<input type="text" class="form-control" id="surname2" placeholder="Segundo apellido" />
+						<input type="number" class="form-control" id="age" placeholder="Edad" />
+						<input type="text" class="form-control" id="city" placeholder="Ciudad" />
+						<input type="text" class="form-control" id="country" placeholder="País" />
+						<input type="text" class="form-control" id="studies" placeholder="Estudios" />
+						<input type="text" class="form-control" id="languages" placeholder="Lenguajes" />
+						<input type="text" class="form-control" id="linkedin" placeholder="LinkedIn" />
+						<input type="text" class="form-control" id="hobbies" placeholder="Hobbies" />
+						<input type="text" class="form-control" id="role" placeholder="Rol" />
 
 						<button type="submit" class="btn btn-primary">Registrarse</button>
 					</form>

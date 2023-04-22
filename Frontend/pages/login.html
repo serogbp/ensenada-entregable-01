@@ -29,24 +29,9 @@
 			<div class="card-login card-user bg-tecla-white shadow p-4">
 				<p class="h5 font-family--jetbrains-mono d-flex justify-content-center mb-4">Inicio de sesión</p>
 				<div class="d-flex flex-column gap-3">
-					<form action="/pages/feed.html">
-						<div class="mb-3">
-							<input type="text" class="form-control" id="usuario" placeholder="Usuario" required />
-						</div>
-						<div class="mb-3">
-							<input
-								type="password"
-								class="form-control"
-								id="contrasena"
-								placeholder="Contraseña"
-								required
-							/>
-						</div>
-						<div class="mb-3 d-flex gap-2">
-							<label class="form-check-label" for="recordar">¿Recordar sesión?</label>
-							<input class="form-check-input" type="checkbox" value="" name="recordar" />
-						</div>
-
+					<form action="/pages/feed.html" class="d-flex flex-column gap-4">
+						<input type="text" class="form-control" id="usuario" placeholder="Usuario" required />
+						<input type="password" class="form-control" id="contrasena" placeholder="Contraseña" required />
 						<button type="submit" class="btn btn-primary">Iniciar sesión</button>
 					</form>
 
