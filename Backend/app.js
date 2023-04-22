@@ -1,5 +1,6 @@
 //Fichero donde se levanta el servidor
 import loginRouter from "./Routes/login.routes.js";
+import registerRouter from "./Routes/register.routes.js";
 import express from "express";
 import cors from "cors";
 
@@ -27,6 +28,7 @@ class App {
 
 	routes() {
 		this.app.use("/login", loginRouter);
+		this.app.use("/register", registerRouter);
 	}
 
 	settings() {
