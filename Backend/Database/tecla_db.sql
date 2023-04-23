@@ -21,6 +21,7 @@ SET time_zone = "+00:00";
 -- Base de datos: `tecla_db`
 --
 CREATE DATABASE tecla_db;
+USE tecla_db;
 -- --------------------------------------------------------
 
 --
