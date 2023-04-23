@@ -57,7 +57,7 @@ CREATE TABLE `users` (
 	`surname2` varchar(20) NOT NULL,
 	`username` varchar(20) NOT NULL,
 	`email` varchar(20) NOT NULL,
-	`pass` varchar(10) NOT NULL,
+	`password` varchar(10) NOT NULL,
 	`age` int(11) DEFAULT NULL,
 	`city` varchar(15) DEFAULT NULL,
 	`country` varchar(15) DEFAULT NULL,
@@ -72,8 +72,9 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`user_id`, `name`, `surname1`, `surname2`, `username`, `email`, `pass`, `age`, `city`, `country`, `studies`, `languages`, `linkedin`, `hobbies`, `role`) VALUES
-(1, 'Manuel', 'Fernandez', 'Fernandez', 'MaFeFe', 'mimail@mail.com', 'teclaPassw', 30, 'Gijon', 'España', 'DAM DAW', 'Castellano Ingles Aleman Italiano', 'https://www.linkedin.com/', 'Ciclismo Senderismo', 'Software Developer');
+INSERT INTO `users` (`user_id`, `name`, `surname1`, `surname2`, `username`, `email`, `password`, `age`, `city`, `country`, `studies`, `languages`, `linkedin`, `hobbies`, `role`) VALUES
+(1, 'Manuel', 'Fernandez', 'Fernandez', 'MaFeFe', 'mimail@mail.com', 'teclaPassw', 30, 'Gijon', 'España', 'DAM DAW', 'Castellano Ingles Aleman Italiano', 'https://www.linkedin.com/', 'Ciclismo Senderismo', 'Software Developer'),
+(2, 'Test', 'Test', 'Test', 'test', 'test', 'test', 2000, 'Gijon', 'España', 'DAM DAW', 'Castellano', 'test', 'Nada', 'Software Developer');
 
 --
 -- Índices para tablas volcadas
@@ -93,7 +94,7 @@ ALTER TABLE `users`
 	ADD PRIMARY KEY (`user_id`),
 	ADD UNIQUE KEY `username` (`username`),
 	ADD UNIQUE KEY `email` (`email`),
-	ADD UNIQUE KEY `pass` (`pass`),
+	ADD UNIQUE KEY `password` (`password`),
 	ADD UNIQUE KEY `linkedin` (`linkedin`);
 
 --
