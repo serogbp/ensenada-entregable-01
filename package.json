@@ -1,5 +1,8 @@
 {
 	"scripts": {
 		"dev": "npx nodemon ./Backend/app.js"
+	},
+	"dependencies": {
+		"mysql": "^2.18.1"
 	}
 }
