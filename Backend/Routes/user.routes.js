@@ -1,9 +1,11 @@
 import { Router } from "express";
-import { getUser, updateUSer } from "../Services/user.service.js";
+import { getUser, updateUser } from "../Services/user.service.js";
 
 const router = Router();
 
 router
-	.route("/:username")
+	.route("/:email") // TODO cambiar a username cuando lo podamos usar
 	.get(getUser) // pantalla perfil usuario
-	.patch(updateUSer); // pantalla modificar usuario
+	.patch(updateUser); // pantalla modificar usuario
+
+export default router;

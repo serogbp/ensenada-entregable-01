@@ -73,7 +73,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `surname1`, `surname2`, `username`, `email`, `password`, `age`, `city`, `country`, `studies`, `languages`, `linkedin`, `hobbies`, `role`) VALUES
-(1, 'Manuel', 'Fernandez', 'Fernandez', 'MaFeFe', 'mimail@mail.com', 'teclaPassw', 30, 'Gijon', 'España', 'DAM DAW', 'Castellano Ingles Aleman Italiano', 'https://www.linkedin.com/', 'Ciclismo Senderismo', 'Software Developer'),
+(1, 'Manuel', 'Fernandez', 'Fernandez', 'MaFeFe', 'tecla@tecla.com', 'tecla', 30, 'Gijon', 'España', 'DAM DAW', 'Castellano Ingles Aleman Italiano', 'https://www.linkedin.com/', 'Ciclismo Senderismo', 'Software Developer'),
 (2, 'Test', 'Test', 'Test', 'test', 'test', 'test', 2000, 'Gijon', 'España', 'DAM DAW', 'Castellano', 'test', 'Nada', 'Software Developer');
 
 --

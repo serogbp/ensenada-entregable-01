@@ -6,8 +6,10 @@ export const getUser = async (request, response) => {
 		const connection = await connect();
 
 		const [rows, fields] = await connection.query("SELECT * FROM users WHERE email = ?", [email]);
+		if (rows.isEmpty) return response.status(404).json({ msg: "El usuario no existe" });
+
 		const user = rows[0];
-		return response.sendStatus(200).send(user);
+		return response.status(200).json(user);
 	} catch (err) {
 		return response.status(500).json({ msg: `Error actualizando el usuario: ${err.message}` });
 	}

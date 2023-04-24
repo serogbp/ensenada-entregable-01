@@ -2,40 +2,9 @@ let user;
 
 // cargar emailLogged desde localstorage y liberarlo
 const getMail = () => {
-	emailLogged = JSON.parse(localStorage.getItem("emailLogged"));
+	const emailLogged = JSON.parse(localStorage.getItem("emailLogged"));
 	return emailLogged;
 };
-
-//mostrar datos
-/* const userData = () => {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			getMail();
-			if (!user) {
-				reject(new Error("Usuario no encontrado"));
-			} else {
-				document.getElementsByClassName("loadData")[0].value = ` ${user.name}`;
-				document.getElementsByClassName("loadData")[1].value = ` ${user.surname1}`;
-				document.getElementsByClassName("loadData")[2].value = ` ${user.surname2}`;
-				document.getElementsByClassName("loadData")[3].value = ` ${user.city}`;
-				document.getElementsByClassName("loadData")[4].value = ` ${user.country}`;
-				document.getElementsByClassName("loadData")[5].value = ` ${user.age}`;
-				document.getElementsByClassName("loadData")[6].value = ` ${user.linkedin}`;
-				document.getElementsByClassName("loadData")[7].value = ` ${user.studies}`;
-				document.getElementsByClassName("loadData")[8].value = ` ${user.languages}`;
-				document.getElementsByClassName("loadData")[9].value = ` ${user.hobbies}`;
-				document.getElementsByClassName("loadData")[10].value = ` ${user.email}`;
-				resolve();
-			}
-		}, 5);
-	});
-};
-
-userData(); */
-
-//TODO => botton guardar que modifique el array
-
-const elementUser = document.getElementById("saveBtn");
 
 const getUserData = () => {
 	let newUser = {};
@@ -67,7 +36,7 @@ const renderUserData = (user) => {
 	document.getElementById("languages").value = user.languages;
 	document.getElementById("hobbies").value = user.hobbies;
 	document.getElementById("email").value = user.email;
-	document.getElementById("role").value = user.role;
+	document.getElementById("rol").value = user.role;
 };
 
 const saveUser = () => {
@@ -75,20 +44,6 @@ const saveUser = () => {
 	console.log(localStorage.getItem("user"));
 	window.location.href = "./perfil-de-usuario.html";
 };
-
-elementUser.addEventListener("click", saveUser);
-
-fetch(`http://localhost:3000/user/${getMail()}`, {
-	method: "GET",
-	headers: {
-		"Content-Type": "application/json",
-	},
-	body: JSON.stringify(body),
-})
-	.then((response) => response.json())
-	.then((data) => {
-		renderUserData(data);
-	});
 
 const updateUser = (updatedUser) => {
 	fetch(`http://localhost:3000/user/${getMail()}`, {
@@ -99,3 +54,15 @@ const updateUser = (updatedUser) => {
 		body: JSON.stringify(updatedUser),
 	}).then(rs);
 };
+
+const elementUser = document.getElementById("saveBtn");
+elementUser.addEventListener("click", saveUser);
+
+const email = localStorage.getItem("emailLogged");
+const params = new URLSearchParams({ email: email });
+fetch(`http://localhost:3000/user/${email}`, {
+	method: "GET",
+}).then(async (response) => {
+	const json = await response.json();
+	renderUserData(json);
+});
