@@ -22,15 +22,7 @@
 						><!-- LOGO -->
 						<strong>//TECLA</strong>_SOCIAL
 					</a>
-					<button
-						class="navbar-toggler"
-						type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent"
-						aria-expanded="false"
-						aria-label="Toggle navigation"
-					>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="spHelp" class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
@@ -74,128 +66,61 @@
 					<div class="left-column d-flex order-1 order-lg-0 justify-content-evenly align-self-start">
 						<form>
 							<div class="mb-3">
-								<input
-									type="text"
-									class="form-control loadData"
-									id="name"
-									placeholder="Nombre"
-									value=""
-								/>
+								<input type="text" class="form-control loadData" id="name" placeholder="Nombre" value="" />
 								<span class="spHelp">Nombre</span>
 							</div>
 							<div class="mb-3">
-								<input
-									type="text"
-									class="form-control loadData"
-									id="surname1"
-									placeholder="Primer Apellido"
-									aria-label="Primer Apellido"
-									value=""
-								/>
+								<input type="text" class="form-control loadData" id="surname1" placeholder="Primer Apellido" aria-label="Primer Apellido" value="" />
 								<span class="spHelp">Primer apellido</span>
 							</div>
 							<div class="mb-3">
-								<input
-									type="text"
-									class="form-control loadData"
-									id="surname2"
-									placeholder="Segundo Apellido"
-									aria-label="Segundo Apellido"
-									value=""
-								/>
+								<input type="text" class="form-control loadData" id="surname2" placeholder="Segundo Apellido" aria-label="Segundo Apellido" value="" />
 								<span class="spHelp">Segundo apellido</span>
 							</div>
 							<div class="row mb-3">
 								<div class="col">
-									<input
-										type="text"
-										class="form-control loadData"
-										id="city"
-										placeholder="Ciudad"
-										aria-label="Ciudad"
-									/>
+									<input type="text" class="form-control loadData" id="city" placeholder="Ciudad" aria-label="Ciudad" />
 									<span class="spHelp">Ciudad</span>
 								</div>
 								<div class="col">
-									<input
-										type="text"
-										class="form-control loadData"
-										id="country"
-										placeholder="Pais"
-										aria-label="Pais"
-										data-tip="Pais"
-									/>
+									<input type="text" class="form-control loadData" id="country" placeholder="Pais" aria-label="Pais" data-tip="Pais" />
 									<span class="spHelp">Pais</span>
 								</div>
 							</div>
 							<div class="mb-3">
-								<input
-									type="text"
-									id="age"
-									class="form-control loadData"
-									id="year"
-									placeholder="Edad"
-								/>
+								<input type="text" id="age" class="form-control loadData" id="year" placeholder="Edad" />
 								<span class="spHelp">Edad</span>
 							</div>
 							<div class="mb-3">
-								<input
-									type="url"
-									id="linkedin"
-									class="form-control loadData"
-									id="linkedin"
-									placeholder="LinkedIn"
-								/>
+								<input type="url" id="linkedin" class="form-control loadData" id="linkedin" placeholder="LinkedIn" />
 								<span class="spHelp">LinkedIn</span>
 							</div>
+							<div class="mb-3">
+								<input type="url" id="rol" class="form-control loadData" id="rol" placeholder="Rol" />
+								<span class="spHelp">Rol</span>
+							</div>
 							<div class="form-floating mb-3">
-								<textarea
-									class="form-control loadData"
-									placeholder="Estudios"
-									id="studies"
-									style="height: 100px"
-								></textarea>
+								<textarea class="form-control loadData" placeholder="Estudios" id="studies" style="height: 100px"></textarea>
 								<label for="Studies">Estudios</label>
 							</div>
 							<div class="form-floating mb-3">
-								<textarea
-									class="form-control loadData"
-									placeholder="Idiomas"
-									id="languages"
-									style="height: 100px"
-								></textarea>
+								<textarea class="form-control loadData" placeholder="Idiomas" id="languages" style="height: 100px"></textarea>
 								<label for="Languages">Idiomas</label>
 							</div>
 							<div class="form-floating mb-3">
-								<textarea
-									class="form-control loadData"
-									placeholder="Aficiones"
-									id="hobbies"
-									style="height: 100px"
-								></textarea>
+								<textarea class="form-control loadData" placeholder="Aficiones" id="hobbies" style="height: 100px"></textarea>
 								<label for="hobbies">Aficiones</label>
 							</div>
 							<div class="mb-3">
-								<input
-									type="email"
-									class="form-control loadData"
-									id="email"
-									placeholder="name@example.com"
-								/>
+								<input type="email" class="form-control loadData" id="email" placeholder="name@example.com" />
 								<span class="spHelp">Email</span>
 							</div>
 						</form>
 					</div>
 					<!-- columna dcha foto perfil -->
-					<div
-						class="right-column order-0 order-lg-1 d-flex flex-column justify-content-start align-item-start"
-					>
+					<div class="right-column order-0 order-lg-1 d-flex flex-column justify-content-start align-item-start">
 						<div class="d-flex justify-content-center">
-							<img
-								src="/public/images/profile-icon.jpg"
-								class="profile rounded-circle"
-								alt="profile-icon"
-							/>
+							<img src="/public/images/profile-icon.jpg" class="profile rounded-circle" alt="profile-icon" />
 						</div>
 						<div class="d-flex justify-content-center">
 							<label class="btn m-2 btn-outline-dark"
@@ -208,13 +133,7 @@
 				<!-- botones -->
 				<div class="d-flex justify-content-center">
 					<button id="saveBtn" class="btn m-2 btn-primary">Guardar</button>
-					<button
-						type="button"
-						class="btn m-2 btn-danger"
-						onclick="window.location.href ='perfil-de-usuario.html'"
-					>
-						Cancelar
-					</button>
+					<button type="button" class="btn m-2 btn-danger" onclick="window.location.href ='perfil-de-usuario.html'">Cancelar</button>
 				</div>
 			</div>
 		</main>
@@ -229,9 +148,7 @@
 		<div class="position-sticky fixed-bottom d-flex justify-content-around bg-tecla-blue d-lg-none px-4 py-2">
 			<a href="/pages/feed.html"><i class="icon icon--white bi bi-house-fill"></i></a>
 			<a href="/pages/lista-de-amigos.html"><i class="icon icon--white bi bi-people-fill"></i></a>
-			<a href="/pages/perfil-de-usuario.html">
-				<img class="icon rounded-circle" src="/public/images/profile-icon.jpg" alt="Usuario"
-			/></a>
+			<a href="/pages/perfil-de-usuario.html"> <img class="icon rounded-circle" src="/public/images/profile-icon.jpg" alt="Usuario" /></a>
 		</div>
 	</body>
 </html>

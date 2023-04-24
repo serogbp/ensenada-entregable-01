@@ -1,21 +1,16 @@
 let user;
 
-/* const findUser = (idUser) => {
-	user = users.find((user) => user.id === idUser);
-	return user;
-}; */
-
-// cargar datos desde localstorage y liberarlo
-const loadUser = () => {
-	user = JSON.parse(localStorage.getItem("user"));
-	return user;
+// cargar emailLogged desde localstorage y liberarlo
+const getMail = () => {
+	emailLogged = JSON.parse(localStorage.getItem("emailLogged"));
+	return emailLogged;
 };
 
 //mostrar datos
-const userData = () => {
+/* const userData = () => {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
-			loadUser();
+			getMail();
 			if (!user) {
 				reject(new Error("Usuario no encontrado"));
 			} else {
@@ -36,13 +31,13 @@ const userData = () => {
 	});
 };
 
-userData();
+userData(); */
 
 //TODO => botton guardar que modifique el array
 
-const eleUser = document.getElementById("saveBtn");
+const elementUser = document.getElementById("saveBtn");
 
-const getUser = () => {
+const getUserData = () => {
 	let newUser = {};
 	newUser.name = document.getElementById("name").value;
 	newUser.surname1 = document.getElementById("surname1").value;
@@ -55,8 +50,24 @@ const getUser = () => {
 	newUser.languages = document.getElementById("languages").value;
 	newUser.hobbies = document.getElementById("hobbies").value;
 	newUser.email = document.getElementById("email").value;
-	newUser.role = user.role;
+	newUser.role = document.getElementById("rol").value;
 	return newUser;
+};
+
+const renderUserData = (user) => {
+	let newUser = {};
+	document.getElementById("name").value = user.name;
+	document.getElementById("surname1").value = user.surname1;
+	document.getElementById("surname2").value = user.surname2;
+	document.getElementById("city").value = user.city;
+	document.getElementById("country").value = user.country;
+	document.getElementById("age").value = user.age;
+	document.getElementById("linkedin").value = user.linkedin;
+	document.getElementById("studies").value = user.studies;
+	document.getElementById("languages").value = user.languages;
+	document.getElementById("hobbies").value = user.hobbies;
+	document.getElementById("email").value = user.email;
+	document.getElementById("role").value = user.role;
 };
 
 const saveUser = () => {
@@ -65,6 +76,26 @@ const saveUser = () => {
 	window.location.href = "./perfil-de-usuario.html";
 };
 
-eleUser.addEventListener("click", saveUser);
+elementUser.addEventListener("click", saveUser);
 
-//TODO => si hay tiempo, que se modifique la foto.
+fetch(`http://localhost:3000/user/${getMail()}`, {
+	method: "GET",
+	headers: {
+		"Content-Type": "application/json",
+	},
+	body: JSON.stringify(body),
+})
+	.then((response) => response.json())
+	.then((data) => {
+		renderUserData(data);
+	});
+
+const updateUser = (updatedUser) => {
+	fetch(`http://localhost:3000/user/${getMail()}`, {
+		method: "PATCH",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(updatedUser),
+	}).then(rs);
+};

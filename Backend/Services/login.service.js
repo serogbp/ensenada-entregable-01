@@ -21,7 +21,7 @@ export const isUser = async (request, response) => {
 
 	// TODO try catch
 	const connection = await connect();
-	const [rows, fields] = await connection.query("SELECT * FROM users");
+	const [rows, fields] = await connection.query("SELECT email, password FROM users");
 
 	const userEmail = rows.find((item) => item.email === email.toLowerCase());
 	if (userEmail && userEmail.password === password) {
