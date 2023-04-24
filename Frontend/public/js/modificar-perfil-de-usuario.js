@@ -59,7 +59,6 @@ const elementUser = document.getElementById("saveBtn");
 elementUser.addEventListener("click", saveUser);
 
 const email = localStorage.getItem("emailLogged");
-const params = new URLSearchParams({ email: email });
 fetch(`http://localhost:3000/user/${email}`, {
 	method: "GET",
 }).then(async (response) => {
