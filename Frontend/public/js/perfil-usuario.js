@@ -1,9 +1,23 @@
+const deleteUser = (emailUser) => {
+	fetch(`http://localhost:3000/user/${emailUser}`, {
+		method: "DELETE",
+	}).then(async (response) => {
+		if (response.status === 200) {
+			window.location.href = "/index.html";
+		} else {
+			const data = await response.json();
+			alert(`Error eliminando el usuario: ${data.msg}`);
+			window.location.href = "./perfil-de-usuario.html";
 		}
 	});
 };
 
+const onClickConfirm = async () => {
+	deleteUser(localStorage.getItem("emailLogged"));
+};
 
 const delUser = document.getElementById("deleteUser");
+delUser.addEventListener("click", onClickConfirm);
 
 const renderUserData = (user) => {
 	const userDataElements = document.getElementsByClassName("userData");

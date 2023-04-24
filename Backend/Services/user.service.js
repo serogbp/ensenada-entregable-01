@@ -26,3 +26,14 @@ export const updateUser = async (request, response) => {
 		return response.status(500).json({ msg: `Error actualizando el usuario: ${err.message}` });
 	}
 };
+
+export const deleteUser = async (request, response) => {
+	const email = request.params.email;
+	try {
+		const connection = await connect();
+		await connection.query("DELETE FROM users WHERE email = ?", [email]);
+		return response.sendStatus(200);
+	} catch (err) {
+		return response.status(500).json({ msg: `Error borrando el usuario: ${err.message}` });
+	}
+};
