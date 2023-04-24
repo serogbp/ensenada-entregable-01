@@ -17,7 +17,12 @@ document.querySelector("form").addEventListener("submit", function (event) {
 			if (response.status === 200) {
 				window.location.href = "/pages/feed.html";
 			} else {
-				alert("Credenciales inválidas");
+				const data = await response.json();
+				let errorMessage = "";
+				Object.values(data.errors).forEach((error) => {
+					errorMessage += `${error.path}: ${error.msg}\n`;
+				});
+				alert(errorMessage);
 			}
 		})
 		.catch((error) => {
