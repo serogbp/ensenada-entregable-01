@@ -2,11 +2,11 @@ import { connect } from "../Database/mysql.js";
 import { validationResult } from "express-validator";
 
 export const getUser = async (request, response) => {
-	const email = request.params.email;
+	const user_id = request.params.user_id;
 	try {
 		const connection = await connect();
 
-		const [rows, fields] = await connection.query("SELECT * FROM users WHERE email = ?", [email]);
+		const [rows, fields] = await connection.query("SELECT * FROM users WHERE user_id = ?", [user_id]);
 		if (rows.isEmpty) return response.status(404).json({ msg: "El usuario no existe" });
 
 		const user = rows[0];
@@ -23,11 +23,11 @@ export const updateUser = async (request, response) => {
 		return response.status(400).json({ msg: `Error en los siguientes campos: ${fieldNames}` });
 	}
 
-	const email = request.params.email;
+	const user_id = request.params.user_id;
 	const { name, surname1, surname2, username, age, city, country, studies, role, languages, linkedin, hobbies } = request.body;
 	try {
 		const connection = await connect();
-		await connection.query("UPDATE users SET name= ?, surname1 = ?, surname2 = ?, age = ?, city = ?, country = ?, studies = ?, role = ?, languages = ?, linkedin = ?, hobbies = ? WHERE email = ?", [name, surname1, surname2, age, city, country, studies, role, languages, linkedin, hobbies, email]);
+		await connection.query("UPDATE users SET name= ?, surname1 = ?, surname2 = ?, age = ?, city = ?, country = ?, studies = ?, role = ?, languages = ?, linkedin = ?, hobbies = ? WHERE user_id = ?", [name, surname1, surname2, age, city, country, studies, role, languages, linkedin, hobbies, email]);
 		return response.sendStatus(200);
 	} catch (err) {
 		return response.status(500).json({ msg: `Error actualizando el usuario: ${err.message}` });
@@ -35,10 +35,10 @@ export const updateUser = async (request, response) => {
 };
 
 export const deleteUser = async (request, response) => {
-	const email = request.params.email;
+	const user_id = request.params.user_id;
 	try {
 		const connection = await connect();
-		await connection.query("DELETE FROM users WHERE email = ?", [email]);
+		await connection.query("DELETE FROM users WHERE user_id = ?", [user_id]);
 		return response.sendStatus(200);
 	} catch (err) {
 		return response.status(500).json({ msg: `Error borrando el usuario: ${err.message}` });

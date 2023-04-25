@@ -1,5 +1,5 @@
-const deleteUser = (emailUser) => {
-	fetch(`http://localhost:3000/user/${emailUser}`, {
+const deleteUser = (user_id) => {
+	fetch(`http://localhost:3000/user/${user_id}`, {
 		method: "DELETE",
 	}).then(async (response) => {
 		if (response.status === 200) {
@@ -14,7 +14,7 @@ const deleteUser = (emailUser) => {
 };
 
 const onClickConfirm = async () => {
-	deleteUser(localStorage.getItem("emailLogged"));
+	deleteUser(localStorage.getItem("idLogged"));
 };
 
 const delUser = document.getElementById("deleteUser");
@@ -35,8 +35,8 @@ const renderUserData = (user) => {
 	userDataElements[10].innerHTML = `${user.hobbies}`;
 };
 
-const email = localStorage.getItem("emailLogged");
-fetch(`http://localhost:3000/user/${email}`, {
+const user_id = localStorage.getItem("idLogged");
+fetch(`http://localhost:3000/user/${user_id}`, {
 	method: "GET",
 }).then(async (response) => {
 	const json = await response.json();

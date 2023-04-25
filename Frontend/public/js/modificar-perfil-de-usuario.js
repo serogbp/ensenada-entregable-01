@@ -1,8 +1,8 @@
 let user;
 
 // cargar emailLogged desde localstorage y liberarlo
-const getMail = () => {
-	const emailLogged = localStorage.getItem("emailLogged");
+const getIdLogged = () => {
+	const emailLogged = localStorage.getItem("idLogged");
 	return emailLogged;
 };
 
@@ -39,7 +39,7 @@ const renderUserData = (user) => {
 };
 
 const updateUser = (updatedUser) => {
-	fetch(`http://localhost:3000/user/${getMail()}`, {
+	fetch(`http://localhost:3000/user/${getIdLogged()}`, {
 		method: "PATCH",
 		headers: {
 			"Content-Type": "application/json",
@@ -60,8 +60,8 @@ elementUser.addEventListener("click", () => {
 	updateUser(getUserData());
 });
 
-const email = localStorage.getItem("emailLogged");
-fetch(`http://localhost:3000/user/${email}`, {
+const user_id = localStorage.getItem("idLogged");
+fetch(`http://localhost:3000/user/${user_id}`, {
 	method: "GET",
 }).then(async (response) => {
 	const json = await response.json();

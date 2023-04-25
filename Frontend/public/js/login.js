@@ -15,7 +15,7 @@ document.querySelector("form").addEventListener("submit", function (event) {
 	})
 		.then(async (response) => {
 			if (response.status === 200) {
-				localStorage.setItem("emailLogged", body.email);
+				localStorage.setItem("idLogged", body.user_id);
 				window.location.href = "/pages/feed.html";
 			} else {
 				const data = await response.json();
