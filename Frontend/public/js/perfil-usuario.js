@@ -4,6 +4,7 @@ const deleteUser = (emailUser) => {
 	}).then(async (response) => {
 		if (response.status === 200) {
 			window.location.href = "/index.html";
+			localStorage.removeItem("emailLogged");
 		} else {
 			const data = await response.json();
 			alert(`Error eliminando el usuario: ${data.msg}`);
