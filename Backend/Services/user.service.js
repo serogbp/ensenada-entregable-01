@@ -1,4 +1,5 @@
 import { connect } from "../Database/mysql.js";
+import { validationResult } from "express-validator";
 
 export const getUser = async (request, response) => {
 	const email = request.params.email;
@@ -16,6 +17,12 @@ export const getUser = async (request, response) => {
 };
 
 export const updateUser = async (request, response) => {
+	const validationResults = validationResult(request);
+	if (!validationResults.isEmpty()) {
+		const fieldNames = validationResults.errors.map((error) => error.path).join();
+		return response.status(400).json({ msg: `Error en los siguientes campos: ${fieldNames}` });
+	}
+
 	const email = request.params.email;
 	const { name, surname1, surname2, username, age, city, country, studies, role, languages, linkedin, hobbies } = request.body;
 	try {

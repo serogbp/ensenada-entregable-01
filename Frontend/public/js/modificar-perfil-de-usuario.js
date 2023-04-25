@@ -2,7 +2,7 @@ let user;
 
 // cargar emailLogged desde localstorage y liberarlo
 const getMail = () => {
-	const emailLogged = JSON.parse(localStorage.getItem("emailLogged"));
+	const emailLogged = localStorage.getItem("emailLogged");
 	return emailLogged;
 };
 
@@ -24,7 +24,6 @@ const getUserData = () => {
 };
 
 const renderUserData = (user) => {
-	let newUser = {};
 	document.getElementById("name").value = user.name;
 	document.getElementById("surname1").value = user.surname1;
 	document.getElementById("surname2").value = user.surname2;
@@ -39,12 +38,6 @@ const renderUserData = (user) => {
 	document.getElementById("rol").value = user.role;
 };
 
-const saveUser = () => {
-	localStorage.setItem("user", JSON.stringify(getUser()));
-	console.log(localStorage.getItem("user"));
-	window.location.href = "./perfil-de-usuario.html";
-};
-
 const updateUser = (updatedUser) => {
 	fetch(`http://localhost:3000/user/${getMail()}`, {
 		method: "PATCH",
@@ -52,11 +45,20 @@ const updateUser = (updatedUser) => {
 			"Content-Type": "application/json",
 		},
 		body: JSON.stringify(updatedUser),
-	}).then(rs);
+	}).then(async (response) => {
+		if (response.status === 200) {
+			window.location.href = "/pages/perfil-de-usuario.html";
+		} else {
+			const data = await response.json();
+			alert(data.msg);
+		}
+	});
 };
 
 const elementUser = document.getElementById("saveBtn");
-elementUser.addEventListener("click", saveUser);
+elementUser.addEventListener("click", () => {
+	updateUser(getUserData());
+});
 
 const email = localStorage.getItem("emailLogged");
 fetch(`http://localhost:3000/user/${email}`, {
