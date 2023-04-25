@@ -19,11 +19,7 @@ document.querySelector("form").addEventListener("submit", function (event) {
 				window.location.href = "/pages/feed.html";
 			} else {
 				const data = await response.json();
-				let errorMessage = "";
-				Object.values(data.errors).forEach((error) => {
-					errorMessage += `${error.path}: ${error.msg}\n`;
-				});
-				alert(errorMessage);
+				alert(data.msg);
 			}
 		})
 		.catch((error) => {

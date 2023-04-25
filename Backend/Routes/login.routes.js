@@ -7,7 +7,7 @@ const router = Router();
 // prettier-ignore
 router.route("/").post(
 	body("email").isEmail().escape(),
-	body("password").isLength({ max: 10 }).escape(),
+	body("password").escape(),
 	isUser
 );
 
