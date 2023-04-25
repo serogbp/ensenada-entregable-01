@@ -1,17 +1,26 @@
-export const register = (request, response) => {
-	const { email, password } = request.body;
+import { validationResult } from "express-validator";
+import { User } from "../Database/Models/User.js";
+import { connect } from "../Database/mysql.js";
 
-	// Nulos
-	if (!email || !passwrod) return response.status(400).json({ msg: "All fields required" });
-	// Longitud
-	if (email.length > 50) return response.status(400).json({ msg: "Email too long" });
-	if (password.length > 10) return response.status(400).json({ msg: "Password too long" });
+export const register = async (request, response) => {
+	const validationResults = validationResult(request);
+	if (!validationResults.isEmpty()) {
+		const fieldNames = validationResults.errors.map((error) => error.path).join();
+		return response.status(400).json({ msg: `Error en los siguientes campos: ${fieldNames}` });
+	}
 
-	// Mail formato valido
-	const regexMail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-	if (!regexMail.test(email)) return response.status(400).json({ msg: "Invalid email" });
+	const user = new User(request.body);
 
-	//TODO alamcenar esto en la BD
+	try {
+		const connection = await connect();
+		const [rows, fields] = await connection.execute(
+			`INSERT INTO users (name, surname1, surname2, username, email, password, age, city, country, studies, languages, linkedin, hobbies, role)
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )`,
+			[user.name, user.surname1, user.surname2, user.username, user.email, user.password, user.age, user.city, user.country, user.studies, user.languages, user.linkedin, user.hobbies, user.role]
+		);
+	} catch (error) {
+		return response.status(500).json({ msg: "No se ha podido registrar. Por favor, vuelva ha intentarlo mas tarde." });
+	}
 
-	return response.status(200);
+	return response.sendStatus(200);
 };

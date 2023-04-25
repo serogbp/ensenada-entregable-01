@@ -1,21 +1,5 @@
 export class User {
-	constructor(
-		id,
-		name,
-		surname1,
-		surname2,
-		username,
-		age,
-		city,
-		country,
-		studies,
-		role,
-		languages,
-		email,
-		linkedin,
-		hobbies,
-		password
-	) {
+	constructor({ id, name, surname1, surname2, username, age, city, country, studies, role, languages, email, linkedin, hobbies, password }) {
 		this.id = id;
 		this.name = name;
 		this.surname1 = surname1;
