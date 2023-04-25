@@ -1,11 +1,10 @@
 const form = document.querySelector("form");
 form.addEventListener("submit", (event) => {
-	createUser(event);
+	event.preventDefault();
+	createUser();
 });
 
-const createUser = (event) => {
-	event.preventDefault();
-
+const createUser = () => {
 	form.querySelectorAll("input");
 	const user = {
 		email: form[0].value,
