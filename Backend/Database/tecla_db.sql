@@ -26,8 +26,13 @@ USE `tecla_db`;
 --
 -- Usuarios: `tecla_admin`
 --
-CREATE USER 'tecla_admin'@'localhost' IDENTIFIED BY 'tecla';
-GRANT ALL ON *.* TO 'tecla_admin';
+-- CREATE USER 'tecla_admin'@'localhost' IDENTIFIED BY 'tecla';
+-- GRANT ALL ON *.* TO 'tecla_admin';
+
+-- prueba
+-- CREATE USER 'tecla_admin'@'%' IDENTIFIED BY 'password';
+-- GRANT ALL PRIVILEGES ON tecla_db.* TO 'tecla_admin'@'%';
+-- FLUSH PRIVILEGES;
 -- --------------------------------------------------------
 
 --
@@ -79,20 +84,20 @@ INSERT INTO `posts` (`post_id`, `likes`, `user_id`, `publishDate`, `content`) VA
 
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `surname1` varchar(20) NOT NULL,
-  `surname2` varchar(20) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `email` varchar(100) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `surname1` varchar(150) NOT NULL,
+  `surname2` varchar(150) NOT NULL,
+  `username` varchar(150) NOT NULL,
+  `email` varchar(150) NOT NULL,
   `password` varchar(10) NOT NULL,
   `age` int(11) DEFAULT NULL,
-  `city` varchar(15) DEFAULT NULL,
-  `country` varchar(15) DEFAULT NULL,
+  `city` varchar(150) DEFAULT NULL,
+  `country` varchar(150) DEFAULT NULL,
   `studies` varchar(150) DEFAULT NULL,
-  `languages` varchar(50) DEFAULT NULL,
-  `linkedin` varchar(25) DEFAULT NULL,
-  `hobbies` varchar(50) DEFAULT NULL,
-  `role` varchar(25) DEFAULT NULL,
+  `languages` varchar(150) DEFAULT NULL,
+  `linkedin` varchar(150) DEFAULT NULL,
+  `hobbies` varchar(150) DEFAULT NULL,
+  `role` varchar(150) DEFAULT NULL,
   `picture` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
