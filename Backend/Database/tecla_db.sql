@@ -27,7 +27,7 @@ USE `tecla_db`;
 -- Usuarios: `tecla_admin`
 --
 CREATE USER 'tecla_admin'@'localhost' IDENTIFIED BY 'tecla';
-GRANT ALL ON tecla_db TO 'tecla_admin';
+GRANT ALL ON *.* TO 'tecla_admin';
 -- --------------------------------------------------------
 
 --
@@ -83,7 +83,7 @@ CREATE TABLE `users` (
   `surname1` varchar(20) NOT NULL,
   `surname2` varchar(20) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `password` varchar(10) NOT NULL,
   `age` int(11) DEFAULT NULL,
   `city` varchar(15) DEFAULT NULL,
@@ -101,15 +101,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `surname1`, `surname2`, `username`, `email`, `password`, `age`, `city`, `country`, `studies`, `languages`, `linkedin`, `hobbies`, `role`, `picture`) VALUES
-(1, 'Sarah ', 'King', 'King', 'beautifulfrog544', 'sarah.king@example.c', 'onlyme', 34, 'Canterbury', 'United Kingdom', 'no se', 'GB', 'beautifulfrog544', 'no se', 'no se', 'https://randomuser.me/api/portraits/women/25.jpg'),
-(2, 'Stella ', 'Edwards', 'Edwards', 'tinycat710', 'stella.edwards@examp', 'loretta', 32, 'Upper Hutt', 'New Zealand', 'no se', 'NZ', 'tinycat710', 'no se', 'no se', 'https://randomuser.me/api/portraits/women/77.jpg'),
-(3, 'Eline ', 'Faure', 'Faure', 'blackbutterfly301', 'eline.faure@example.', 'pumpkin', 63, 'Aulnay-sous-Boi', 'France', 'no se', 'FR', 'blackbutterfly301', 'no se', 'no se', 'https://randomuser.me/api/portraits/women/89.jpg'),
-(4, 'Pius ', 'Perrin', 'Perrin', 'brownzebra139', 'pius.perrin@example.', 'amateurs', 76, 'Oberrieden', 'Switzerland', 'no se', 'CH', 'brownzebra139', 'no se', 'no se', 'https://randomuser.me/api/portraits/men/75.jpg'),
-(5, 'Arthur ', 'Harvey', 'Harvey', 'biglion614', 'arthur.harvey@exampl', 'senior', 54, 'Bowral', 'Australia', 'no se', 'AU', 'biglion614', 'no se', 'no se', 'https://randomuser.me/api/portraits/men/36.jpg'),
-(6, 'Lada ', 'Ninković', 'Ninković', 'lazybear860', 'lada.ninkovic@exampl', 'brigitte', 29, 'Titel', 'Serbia', 'no se', 'RS', 'lazybear860', 'no se', 'no se', 'https://randomuser.me/api/portraits/women/83.jpg'),
-(7, 'Jens-Peter ', 'Kämpf', 'Kämpf', 'ticklishmouse502', 'jens-peter.kampf@exa', 'thongs', 59, 'Arnstein', 'Germany', 'no se', 'DE', 'ticklishmouse502', 'no se', 'no se', 'https://randomuser.me/api/portraits/men/31.jpg'),
-(8, 'Alfred ', 'Mortensen', 'Mortensen', 'tinyrabbit949', 'alfred.mortensen@exa', 'change', 33, 'Viby J.', 'Denmark', 'no se', 'DK', 'tinyrabbit949', 'no se', 'no se', 'https://randomuser.me/api/portraits/men/33.jpg'),
-(9, 'Fatih ', 'Erberk', 'Erberk', 'lazybear759', 'fatih.erberk@example', 'aussie', 74, 'Yozgat', 'Turkey', 'no se', 'TR', 'lazybear759', 'no se', 'no se', 'https://randomuser.me/api/portraits/men/42.jpg');
+(1, 'Sarah ', 'King', 'King', 'beautifulfrog544', 'sarah.king@example.com', 'onlyme', 34, 'Canterbury', 'United Kingdom', 'no se', 'GB', 'beautifulfrog544', 'no se', 'no se', 'https://randomuser.me/api/portraits/women/25.jpg'),
+(2, 'Stella ', 'Edwards', 'Edwards', 'tinycat710', 'stella.edwards@example.com', 'loretta', 32, 'Upper Hutt', 'New Zealand', 'no se', 'NZ', 'tinycat710', 'no se', 'no se', 'https://randomuser.me/api/portraits/women/77.jpg'),
+(3, 'Eline ', 'Faure', 'Faure', 'blackbutterfly301', 'eline.faure@example.com.', 'pumpkin', 63, 'Aulnay-sous-Boi', 'France', 'no se', 'FR', 'blackbutterfly301', 'no se', 'no se', 'https://randomuser.me/api/portraits/women/89.jpg'),
+(4, 'Pius ', 'Perrin', 'Perrin', 'brownzebra139', 'pius.perrin@example.com', 'amateurs', 76, 'Oberrieden', 'Switzerland', 'no se', 'CH', 'brownzebra139', 'no se', 'no se', 'https://randomuser.me/api/portraits/men/75.jpg'),
+(5, 'Arthur ', 'Harvey', 'Harvey', 'biglion614', 'arthur.harvey@example.com', 'senior', 54, 'Bowral', 'Australia', 'no se', 'AU', 'biglion614', 'no se', 'no se', 'https://randomuser.me/api/portraits/men/36.jpg'),
+(6, 'Lada ', 'Ninković', 'Ninković', 'lazybear860', 'lada.ninkovic@example.com', 'brigitte', 29, 'Titel', 'Serbia', 'no se', 'RS', 'lazybear860', 'no se', 'no se', 'https://randomuser.me/api/portraits/women/83.jpg'),
+(7, 'Jens-Peter ', 'Kämpf', 'Kämpf', 'ticklishmouse502', 'jens-peter.kampf@example.com', 'thongs', 59, 'Arnstein', 'Germany', 'no se', 'DE', 'ticklishmouse502', 'no se', 'no se', 'https://randomuser.me/api/portraits/men/31.jpg'),
+(8, 'Alfred ', 'Mortensen', 'Mortensen', 'tinyrabbit949', 'alfred.mortensen@example.com', 'change', 33, 'Viby J.', 'Denmark', 'no se', 'DK', 'tinyrabbit949', 'no se', 'no se', 'https://randomuser.me/api/portraits/men/33.jpg'),
+(9, 'Fatih ', 'Erberk', 'Erberk', 'lazybear759', 'fatih.erberk@example.com', 'aussie', 74, 'Yozgat', 'Turkey', 'no se', 'TR', 'lazybear759', 'no se', 'no se', 'https://randomuser.me/api/portraits/men/42.jpg');
 
 --
 -- Índices para tablas volcadas
