@@ -5,7 +5,6 @@ export const connect = () => {
 	const connection = mysql.createConnection({
 		host: config.bd.host,
 		user: config.bd.user,
-		password: config.bd.password,
 		database: config.bd.database,
 	});
 
