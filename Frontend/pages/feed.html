@@ -20,15 +20,7 @@
 						><!-- LOGO -->
 						<strong>//TECLA</strong>_SOCIAL
 					</a>
-					<button
-						class="navbar-toggler"
-						type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent"
-						aria-expanded="false"
-						aria-label="Toggle navigation"
-					>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
@@ -147,6 +139,7 @@
 				</div>
 
 				<!-- 📝 Posts -->
+				<div id="post-creator" class="flex-col posts"></div>
 				<div id="post-wrapper" class="flex-col posts"></div>
 			</main>
 
@@ -279,9 +272,7 @@
 		<div class="position-sticky fixed-bottom d-flex justify-content-around bg-tecla-blue d-lg-none px-4 py-2">
 			<a href="/pages/feed.html"><i class="icon icon--white bi bi-house-fill"></i></a>
 			<a href="/pages/lista-de-amigos.html"><i class="icon icon--white bi bi-people-fill"></i></a>
-			<a href="/pages/perfil-de-usuario.html"
-				><img class="icon rounded-circle" src="/public/images/profile-icon.jpg" alt="Usuario"
-			/></a>
+			<a href="/pages/perfil-de-usuario.html"><img class="icon rounded-circle" src="/public/images/profile-icon.jpg" alt="Usuario" /></a>
 		</div>
 
 		<script type="module">
@@ -290,6 +281,10 @@
 			import { getUnsplashImage } from "../public/js/api/unsplash.js";
 			import { getPosts } from "../public/js/api/mocki.js";
 			import handleScroll from "../public/js/common/handleScroll.js";
+
+			// Renderizar creador de post
+			import { renderElement } from "../public/js/view/feed/createPost.js";
+			renderElement();
 
 			const SPINNER_WRAPPER = document.getElementById("spinner-wrapper");
 			const toggleSpinner = () => SPINNER_WRAPPER.classList.toggle("visually-hidden");

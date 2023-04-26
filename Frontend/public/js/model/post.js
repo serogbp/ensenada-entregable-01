@@ -1,4 +1,4 @@
-import { drawPosts } from "../view/feed.js";
+import { drawPosts } from "../view/feed/post.js";
 /*
 interface Post {
 	user: RandomUser

@@ -3,23 +3,15 @@ const POST_WRAPPER = document.getElementById("post-wrapper");
 const createPostElement = (post) => {
 	const element = document.createElement("div");
 	element.classList.add("card", "post", "rounded-3", "p-0");
-	if (post.content.imageUrl !== "") element.appendChild(postImage(post.content.imageUrl));
 
 	const elementBody = document.createElement("div");
 	elementBody.classList.add("p-4", "d-flex", "flex-column", "gap-3");
 	elementBody.appendChild(postHeader(post.user));
 	elementBody.appendChild(postContent(post.content));
+	elementBody.appendChild(postFooter(post));
 
 	element.appendChild(elementBody);
 
-	return element;
-};
-
-const postImage = (url) => {
-	const element = document.createElement("img");
-	element.classList.add("rounded-top-3");
-	element.src = url;
-	element.alt = "Imagen del post";
 	return element;
 };
 
@@ -31,8 +23,9 @@ const postHeader = (user) => {
 		<img class="avatar" src="${user.picture.large}" alt="Imagen del usuario"/>
 		<div class="doble-texto">
 			<p>${user.name.first} ${user.name.last}</p>
-			<p>${user.login.username}</p>
+			<p>@${user.login.username}</p>
 		</div>
+		<div class="text-danger">TODO fechaPublicacion</div>
 	</div>
 
 	<div class="icon-wrapper">
@@ -44,14 +37,49 @@ const postHeader = (user) => {
 
 const postContent = (post) => {
 	const element = document.createElement("div");
-	element.classList.add("d-flex", "flex-column", "gap-2");
+	element.classList.add("d-flex", "flex-column", "gap-2", "mt-2");
 
 	element.innerHTML = `
-		<p class="h3">${post.title}</p>
-		<div class="d-flex flex-wrap gap-2">
-			${post.tags.map((tag) => `<p class="badge text-bg-light mb-0">${tag}</p>`).join("")}
-		</div>
+		<p class="m-0">${post.title}</p>
+
 	`;
+	return element;
+};
+
+const postFooter = (post) => {
+	const element = document.createElement("div");
+	element.appendChild(heart());
+	return element;
+};
+
+const heart = () => {
+	let clicked = false;
+
+	const element = document.createElement("i");
+	element.classList.add("icon", "bi", "bi-heart");
+	element.style.padding = ".5rem .5rem .5rem 0";
+
+	// Rellenar corazón y cambiar color
+	// TODO Hacer fetch para añadir like
+	element.addEventListener("click", () => {
+		clicked = !clicked;
+		element.classList.toggle("bi-heart");
+		element.classList.toggle("bi-heart-fill");
+		element.classList.add("text-danger");
+	});
+
+	// Hover: cambiar color y aumentar contorno
+	element.addEventListener("mouseover", () => {
+		if (clicked) return;
+		element.classList.toggle("text-danger");
+	});
+
+	// Blur: cambiar color y disminuir contorno
+	element.addEventListener("mouseout", () => {
+		if (clicked) return;
+		element.classList.toggle("text-danger");
+	});
+
 	return element;
 };
 
