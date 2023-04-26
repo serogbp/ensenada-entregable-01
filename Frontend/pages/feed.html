@@ -282,71 +282,76 @@
 			import { getPosts } from "../public/js/api/mocki.js";
 			import handleScroll from "../public/js/common/handleScroll.js";
 
-			// Renderizar creador de post
+			// Renderizar elemento creador de post
 			import { renderElement } from "../public/js/view/feed/createPost.js";
 			renderElement();
 
 			const SPINNER_WRAPPER = document.getElementById("spinner-wrapper");
 			const toggleSpinner = () => SPINNER_WRAPPER.classList.toggle("visually-hidden");
 
-			/*
-				Esta página usa 2 APIs:
-				- API de randomuser.me para generar usuarios aleatorios
-				- API personalizada creada en mocki.io para obtener títulos y tags de posts scrapeados de dev.to
-				Ya que la API de mocki te devuelve siempre un array con los mismos 50 posts, obtenemos esos posts y de paso generamos 50 usuarios aleatorios.
-			*/
-			const posts = await getPosts();
-			posts.sort(() => Math.random() - 0.5); // shuffle posts
-			const users = await getRandomUsers(posts.length);
+			const user_id = localStorage.getItem("idLogged");
+			fetch(`http://localhost:3000/post/${user_id}`, {
+				method: "GET",
+			})
+				.then(async (response) => {
+					if (response.status === 200) {
+						const body = await response.json();
+						addPosts(body);
+					} else {
+						const data = await response.json();
+						alert(data.msg);
+					}
+				})
+				.catch((err) => console.log(err));
 
-			const getPostData = async () => {
-				if (users.length === 0 || posts.length === 0) {
-					document.removeEventListener("scroll", scrollCallback);
-					document.getElementById("no-more-posts").classList.toggle("visually-hidden");
-					throw Error("No hay mas posts");
-				}
+			// const getPostData = async () => {
+			// 	if (users.length === 0 || posts.length === 0) {
+			// 		document.removeEventListener("scroll", scrollCallback);
+			// 		document.getElementById("no-more-posts").classList.toggle("visually-hidden");
+			// 		throw Error("No hay mas posts");
+			// 	}
 
-				const user = users.pop();
-				const post = posts.pop();
+			// 	const user = users.pop();
+			// 	const post = posts.pop();
 
-				const newPost = {
-					user: user,
-					content: {
-						title: post.title,
-						tags: post.tags,
-						imageUrl: post.imageUrl,
-					},
-				};
+			// 	const newPost = {
+			// 		user: user,
+			// 		content: {
+			// 			title: post.title,
+			// 			tags: post.tags,
+			// 			imageUrl: post.imageUrl,
+			// 		},
+			// 	};
 
-				return newPost;
-			};
+			// 	return newPost;
+			// };
 
-			const createPosts = async (amount) => {
-				Promise.all([...Array(amount)].map(() => getPostData()))
-					.then((posts) => addPosts(posts))
-					.catch((err) => {});
-			};
+			// const createPosts = async (amount) => {
+			// 	Promise.all([...Array(amount)].map(() => getPostData()))
+			// 		.then((posts) => addPosts(posts))
+			// 		.catch((err) => {});
+			// };
 
 			// Iniciamos la página creando n posts manualmente
-			createPosts(5);
+			// createPosts(5);
 
-			const scrollCallback = () => {
-				handleScroll(async () => {
-					if (isLoadingNewPost) return;
-					isLoadingNewPost = true;
-					toggleSpinner();
+			// const scrollCallback = () => {
+			// 	handleScroll(async () => {
+			// 		if (isLoadingNewPost) return;
+			// 		isLoadingNewPost = true;
+			// 		toggleSpinner();
 
-					// Simular delay en la carga de nuevos posts
-					setTimeout(async () => {
-						await createPosts(5);
-						toggleSpinner();
-						isLoadingNewPost = false;
-					}, 1000);
-				});
-			};
+			// 		// Simular delay en la carga de nuevos posts
+			// 		setTimeout(async () => {
+			// 			await createPosts(5);
+			// 			toggleSpinner();
+			// 			isLoadingNewPost = false;
+			// 		}, 1000);
+			// 	});
+			// };
 
-			let isLoadingNewPost = false;
-			document.addEventListener("scroll", scrollCallback);
+			// let isLoadingNewPost = false;
+			// document.addEventListener("scroll", scrollCallback);
 		</script>
 	</body>
 </html>

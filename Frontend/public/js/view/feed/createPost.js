@@ -1,5 +1,5 @@
 const POST_CREATOR = document.getElementById("post-creator");
-const MAX_CHARACTERS = 140;
+const MAX_CHARACTERS = 280;
 
 const createElement = () => {
 	const element = document.createElement("div");
