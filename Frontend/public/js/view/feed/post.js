@@ -6,8 +6,8 @@ const createPostElement = (post) => {
 
 	const elementBody = document.createElement("div");
 	elementBody.classList.add("p-4", "d-flex", "flex-column", "gap-3");
-	elementBody.appendChild(postHeader(post.user));
-	elementBody.appendChild(postContent(post.content));
+	elementBody.appendChild(postHeader(post));
+	elementBody.appendChild(postContent(post));
 	elementBody.appendChild(postFooter(post));
 
 	element.appendChild(elementBody);
@@ -15,15 +15,15 @@ const createPostElement = (post) => {
 	return element;
 };
 
-const postHeader = (user) => {
+const postHeader = (post) => {
 	const element = document.createElement("div");
 	element.classList.add("post__user-info");
 	element.innerHTML = `
 	<div class="d-flex gap-4">
-		<img class="avatar" src="${user.picture.large}" alt="Imagen del usuario"/>
+		<img class="avatar" src="${post.picture}" alt="Imagen del usuario"/>
 		<div class="doble-texto">
-			<p>${user.name.first} ${user.name.last}</p>
-			<p>@${user.login.username}</p>
+			<p>${post.name} ${post.name}</p>
+			<p>@${post.username}</p>
 		</div>
 		<div class="text-danger">TODO fechaPublicacion</div>
 	</div>
@@ -40,7 +40,7 @@ const postContent = (post) => {
 	element.classList.add("d-flex", "flex-column", "gap-2", "mt-2");
 
 	element.innerHTML = `
-		<p class="m-0">${post.title}</p>
+		<p class="m-0">${post.content}</p>
 
 	`;
 	return element;
