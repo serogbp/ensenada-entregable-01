@@ -213,14 +213,14 @@ ALTER TABLE `users`
 -- Filtros para la tabla `friends`
 --
 ALTER TABLE `friends`
-  ADD CONSTRAINT `FK_receiver` FOREIGN KEY (`receptor_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_sender` FOREIGN KEY (`sender_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_receiver` FOREIGN KEY (`receptor_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_sender` FOREIGN KEY (`sender_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `FK_UserPost` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_UserPost` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
