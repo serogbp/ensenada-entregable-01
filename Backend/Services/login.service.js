@@ -27,7 +27,7 @@ export const isUser = async (request, response) => {
 		// Comprobar credenciales válidas
 		const userEmail = rows.find((item) => item.email === email.toLowerCase());
 		if (userEmail && userEmail.password === password) {
-			response.sendStatus(200);
+			response.status(200).json({ user_id: rows[0].user_id });
 		} else {
 			// ⚠ Si queremos enviar un status custom y un json, tenemos que usar status().
 			// Si usamos sendStatus(), no podemos enviar el json porque ya envió la respuesta

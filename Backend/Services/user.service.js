@@ -24,10 +24,10 @@ export const updateUser = async (request, response) => {
 	}
 
 	const user_id = request.params.user_id;
-	const { name, surname1, surname2, username, age, city, country, studies, role, languages, linkedin, hobbies } = request.body;
+	const { email, name, surname1, surname2, username, age, city, country, studies, role, languages, linkedin, hobbies } = request.body;
 	try {
 		const connection = await connect();
-		await connection.query("UPDATE users SET name= ?, surname1 = ?, surname2 = ?, age = ?, city = ?, country = ?, studies = ?, role = ?, languages = ?, linkedin = ?, hobbies = ? WHERE user_id = ?", [name, surname1, surname2, age, city, country, studies, role, languages, linkedin, hobbies, email]);
+		await connection.query("UPDATE users SET name= ?, surname1 = ?, surname2 = ?, age = ?, city = ?, country = ?, studies = ?, role = ?, languages = ?, linkedin = ?, hobbies = ?, email = ? WHERE user_id = ?", [name, surname1, surname2, age, city, country, studies, role, languages, linkedin, hobbies, email, user_id]);
 		return response.sendStatus(200);
 	} catch (err) {
 		return response.status(500).json({ msg: `Error actualizando el usuario: ${err.message}` });

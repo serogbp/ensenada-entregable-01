@@ -5,7 +5,7 @@ import { checkUser } from "../Middleware/user.middleware.js";
 const router = Router();
 
 router
-	.route("/:id") // TODO cambiar a username cuando lo podamos usar, y cambiarlo de cada funcion en user.service
+	.route("/:user_id") // TODO cambiar a username cuando lo podamos usar, y cambiarlo de cada funcion en user.service
 	.get(getUser) // pantalla perfil usuario
 	.patch(checkUser(), updateUser) // pantalla modificar usuario
 	.delete(deleteUser); // pantalla modificar usuario
