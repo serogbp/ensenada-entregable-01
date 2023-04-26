@@ -59,7 +59,7 @@ export const getFriends = async (request, response) => {
 		const connection = await connect();
 		const [rows, fields] = await connection.query(
 			`
-			SELECT users.name, users.surname1, users.surname2, users.picture, users.username
+			SELECT users.user_id, users.name, users.surname1, users.surname2, users.picture, users.username
 			FROM users
 			INNER JOIN friends ON friends.receptor_id = users.user_id
 			WHERE friends.sender_id = ? AND friends.status = ?

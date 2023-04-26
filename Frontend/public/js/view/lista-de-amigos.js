@@ -1,7 +1,6 @@
 const LIST_WRAPPER = document.getElementById("friend-list-wrapper");
-
 const createFriendElement = (friendData) => {
-	const element = document.createElement("div");
+	const element = document.createElement("a");
 	element.classList.add(...["friend-card", "card", "d-flex", "flex-column", "gap-2", "align-items-center"]);
 	element.style.width = "2rem";
 	element.innerHTML = `
@@ -11,6 +10,7 @@ const createFriendElement = (friendData) => {
 			<p class="text-break">@${friendData.username}</p>
 		</div>
 	`;
+	element.href = `/pages/perfil-de-usuario.html?user_id=${friendData.user_id}`;
 	return element;
 };
 
