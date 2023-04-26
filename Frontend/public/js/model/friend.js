@@ -1,5 +1,7 @@
 import { drawFriends } from "../view/lista-de-amigos.js";
 
+fetchFriends();
+
 let friends = [];
 let friendsSorted = [];
 
@@ -28,7 +30,7 @@ export const updateSortType = (type) => {
 	sortType = type;
 	sortFriends();
 	drawFriends(friendsSorted);
-}
+};
 
 const sortFriends = () => {
 	switch (sortType) {
@@ -36,13 +38,28 @@ const sortFriends = () => {
 			friendsSorted = [...friends];
 			break;
 		case SORT_TYPE.NAME:
-			friendsSorted = [...friends].sort((a, b) => a.name.first.localeCompare(b.name.first));
+			friendsSorted = [...friends].sort((a, b) => a.name.localeCompare(b.name));
 			break;
 		case SORT_TYPE.USERNAME:
-			friendsSorted = [...friends].sort((a, b) => a.login.username.localeCompare(b.login.username));
+			friendsSorted = [...friends].sort((a, b) => a.username.localeCompare(b.username));
 			break;
 		default:
 			friendsSorted = [...friends];
 			break;
 	}
 };
+
+function fetchFriends() {
+	const user_id = localStorage.getItem("idLogged");
+	fetch(`http://localhost:3000/user/${user_id}/friends`, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	}).then(async (response) => {
+		if (response.status === 200) {
+			const body = await response.json();
+			addFriends(body);
+		}
+	});
+}

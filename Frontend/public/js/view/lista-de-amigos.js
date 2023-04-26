@@ -1,13 +1,14 @@
 const LIST_WRAPPER = document.getElementById("friend-list-wrapper");
 
-const createFriendElement = (friendInfo) => {
+const createFriendElement = (friendData) => {
 	const element = document.createElement("div");
 	element.classList.add(...["friend-card", "card", "d-flex", "flex-column", "gap-2", "align-items-center"]);
+	element.style.width = "2rem";
 	element.innerHTML = `
-		<img src="${friendInfo.picture.large}" alt="${friendInfo.name.first} ${friendInfo.name.last}" class="avatar"/>
+		<img src="${friendData.picture}" alt="${friendData.name} ${friendData.surname1} ${friendData.surname2}" class="avatar"/>
 		<div class="doble-texto">
-			<p class="text-break">${friendInfo.name.first} ${friendInfo.name.last}</p>
-			<p class="text-break">@${friendInfo.login.username}</p>
+			<p class="text-break">${friendData.name} ${friendData.surname1} ${friendData.surname2} </p>
+			<p class="text-break">@${friendData.username}</p>
 		</div>
 	`;
 	return element;
