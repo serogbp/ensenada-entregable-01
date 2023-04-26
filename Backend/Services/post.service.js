@@ -22,7 +22,7 @@ export const getPosts = async (request, response) => {
 			FROM friends
 			INNER JOIN posts ON posts.user_id = friends.receptor_id
 			INNER JOIN users ON posts.user_id = users.user_id
-			WHERE friends.sender_id = ? AND friends.status = 1;
+			WHERE friends.sender_id = ? AND friends.status = 1  ORDER BY publishDate DESC;
 		`,
 			[user_id, user_id]
 		);

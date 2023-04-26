@@ -25,7 +25,7 @@ const postHeader = (post) => {
 			<p>${post.name} ${post.name}</p>
 			<p>@${post.username}</p>
 		</div>
-		<div class="text-danger">TODO fechaPublicacion</div>
+		<div class="text-danger">${post.publishDate}</div>
 	</div>
 
 	<div class="icon-wrapper">
