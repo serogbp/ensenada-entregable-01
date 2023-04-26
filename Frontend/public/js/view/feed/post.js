@@ -22,7 +22,7 @@ const postHeader = (post) => {
 	<div class="d-flex gap-4">
 		<img class="avatar" src="${post.picture}" alt="Imagen del usuario"/>
 		<div class="doble-texto">
-			<p>${post.name} ${post.name}</p>
+			<p>${post.name} ${post.surname1} ${post.surname2}</p>
 			<p>@${post.username}</p>
 		</div>
 		<div class="text-danger">${post.publishDate}</div>
@@ -61,6 +61,26 @@ const heart = () => {
 
 	// Rellenar corazón y cambiar color
 	// TODO Hacer fetch para añadir like
+	/*
+NO SOY CAPAZ A CAPTURAR EL ID DEL POST AL QUE SE LE DA LIKE
+FALTA CREAR LA RUTA, me imagino será algo tipo post/:user_id/:post_id
+*/
+
+	fetch(``, {
+		method: "PATCH",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(),
+	}).then(async (response) => {
+		if (response.status === 200) {
+			/* window.location.href = "/pages/perfil-de-usuario.html"; */
+		} else {
+			const data = await response.json();
+			alert(data.msg);
+		}
+	});
+
 	element.addEventListener("click", () => {
 		clicked = !clicked;
 		element.classList.toggle("bi-heart");

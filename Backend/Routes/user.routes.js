@@ -10,8 +10,13 @@ router
 	.patch(checkUser(), updateUser) // pantalla modificar usuario
 	.delete(deleteUser); // pantalla modificar usuario
 
-router.route("/:user_id/friends").get(getFriends); // pantalla lista amigos
-router.route("/:user_id/friends/:friend_id").get(getUser); // pantalla perfil amigo
+// prettier-ignore
+router.route("/:user_id/friends")
+	.get(getFriends); // pantalla lista amigos
+
+// prettier-ignore
+router.route("/:user_id/friends/:friend_id")
+	.get(getUser); // pantalla perfil amigo
 
 export default router;
 

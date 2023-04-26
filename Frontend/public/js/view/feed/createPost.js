@@ -19,10 +19,10 @@ const createElement = () => {
 	// Listener TextArea para contar caracteres
 	const textarea = element.querySelector("textarea");
 	const counterElement = element.querySelector(".counter");
-	let counter = 140;
+	let counter = 270;
 	["keydown", "keyup"].forEach((callbackfn) =>
 		textarea.addEventListener(callbackfn, (e) => {
-			counter = 140 - e.target.value.length;
+			counter = 270 - e.target.value.length;
 			counterElement.innerText = counter;
 
 			let style = "black";
@@ -39,7 +39,25 @@ const createElement = () => {
 			return;
 		}
 		if (counter >= 0) {
-			alert("TODO fetch");
+			const idLogged = localStorage.getItem("idLogged");
+			const content = textarea.value;
+			fetch(`http://localhost:3000/post/${idLogged}`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					user_id: idLogged,
+					content: content,
+				}),
+			}).then(async (response) => {
+				if (response.status === 200) {
+					window.location.href = "/pages/feed.html";
+				} else {
+					const data = await response.json();
+					alert(data.msg);
+				}
+			});
 			return;
 		}
 		if (counter < 0) {

@@ -32,3 +32,30 @@ export const getPosts = async (request, response) => {
 		return response.status(500).json({ msg: `Error obteniendo los posts: ${err.message}` });
 	}
 };
+
+export const savePost = async (request, response) => {
+	/* 	const validationResults = validationResult(request);
+	if (!validationResults.isEmpty()) {
+		const fieldNames = validationResults.errors.map((error) => error.path).join();
+		return response.status(400).json({ msg: `Error en los siguientes campos: ${fieldNames}` });
+	} */
+	const { user_id, content } = request.body;
+	try {
+		const connection = await connect();
+		await connection.execute(`INSERT INTO posts (user_id, content, likes) VALUES (?, ?, 0)`, [user_id, content]);
+	} catch (error) {
+		return response.status(500).json({ msg: "No se ha podido guardar la publicación. Por favor, vuelva ha intentarlo mas tarde." });
+	}
+	return response.sendStatus(200);
+};
+
+export const saveLike = async (request, response) => {
+	const post_id = request.body.post_id;
+	try {
+		const connection = await connect();
+		await connection.execute(`UPDATE posts SET likes = likes + 1 WHERE post_id = ?`, [post_id]);
+	} catch (error) {
+		return response.status(500).json({ msg: "Error al guardar like" });
+	}
+	return response.sendStatus(200);
+};

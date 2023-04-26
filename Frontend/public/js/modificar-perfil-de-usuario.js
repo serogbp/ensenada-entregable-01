@@ -2,8 +2,8 @@ let user;
 
 // cargar emailLogged desde localstorage y liberarlo
 const getIdLogged = () => {
-	const emailLogged = localStorage.getItem("idLogged");
-	return emailLogged;
+	const idLogged = localStorage.getItem("idLogged");
+	return idLogged;
 };
 
 const getUserData = () => {
