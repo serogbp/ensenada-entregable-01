@@ -32,8 +32,7 @@ const createUser = () => {
 		body: JSON.stringify(user),
 	}).then(async (response) => {
 		if (response.status === 200) {
-			localStorage.setItem("idLogged", user.user_id);
-			window.location.href = "/pages/feed.html";
+			window.location.href = "/pages/login.html";
 		} else {
 			const data = await response.json();
 			alert(data.msg);

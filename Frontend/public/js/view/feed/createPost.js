@@ -8,7 +8,7 @@ const createElement = async () => {
 	element.classList.add("d-flex", "flex-column", "gap-4", "card");
 	element.innerHTML = `
 		<div class="d-flex gap-3 align-items-center">
-			<img class="avatar" src="${picture}" alt="Imagen del usuario"/>
+			<img class="avatar" src="${picture ?? ""}" alt="Imagen del usuario"/>
 			<p class="font-bold h5">Publicar un nuevo post</p>
 		</div>
 		<textarea id="create-post" name="create-post" autocomplete="off" placeholder="¿Qué está pasando?" class="p-3 rounded" style="height:100px;"></textarea>
@@ -82,5 +82,5 @@ const getPicture = async () => {
 		method: "GET",
 	});
 	const json = await response.json();
-	return json.picture;
+	return json.picture ?? "";
 };
