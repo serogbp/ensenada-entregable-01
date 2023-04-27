@@ -19,10 +19,10 @@ const createElement = () => {
 	// Listener TextArea para contar caracteres
 	const textarea = element.querySelector("textarea");
 	const counterElement = element.querySelector(".counter");
-	let counter = 270;
+	let counter = MAX_CHARACTERS;
 	["keydown", "keyup"].forEach((callbackfn) =>
 		textarea.addEventListener(callbackfn, (e) => {
-			counter = 270 - e.target.value.length;
+			counter = MAX_CHARACTERS - e.target.value.length;
 			counterElement.innerText = counter;
 
 			let style = "black";
