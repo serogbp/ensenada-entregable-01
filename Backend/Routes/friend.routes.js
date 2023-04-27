@@ -1,10 +1,13 @@
 import { Router } from "express";
-import { askFriend } from "../Services/friend.service.js";
+import { friendRequest } from "../Services/friend.service.js";
 
 const router = Router();
 
 // prettier-ignore
-router.route("/:receptor_id")
-	.post(askFriend);
+router.route("/")
+	.post(friendRequest);
+// prettier-ignore
+/* router.route("/:receptor_id")
+	.patch(acceptFriend); */
 
 export default router;

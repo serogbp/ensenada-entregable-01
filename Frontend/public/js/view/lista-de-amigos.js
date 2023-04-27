@@ -50,7 +50,8 @@ const createNoFriendElement = (friendData) => {
 		button.classList.add("btn", "btn-primary");
 		button.textContent = "Solicitar amistad";
 		// button.addEventListener("click", friendRequest);
-		button.addEventListener("click", () => alert("Solicitar amistad"));
+		const user_id = localStorage.getItem("idLogged");
+		button.addEventListener("click", () => friendRequest(user_id, friendData.user_id));
 	}
 
 	element.appendChild(button);
@@ -68,26 +69,24 @@ export const drawNoFriends = async (noFriends) => {
 	LIST_WRAPPER_NO_FRIENDS.appendChild(fragment);
 };
 
-// const friendRequest = (friendData) => {
-// 	// TODO el param cual?????
-// 	fetch(`http://localhost:3000/user/${friendData.user_id}/no_friends`, {
-// 		method: "POST",
-// 		headers: { "Content-Type": "application/json" },
-// 		body: JSON.stringify({
-// 			// TODO el body cual?????
-// 			sender_id: localStorage.getItem("idLogged"),
-// 			receiver_id: friendData.user_id,
-// 		}),
-// 	})
-// 		.then(async (response) => {
-// 			if (response.ok) {
-// 				location.reload();
-// 			} else {
-// 				const result = await response.json();
-// 				alert(result);
-// 			}
-// 		})
-// 		.catch((error) => {
-// 			console.log(error);
-// 		});
-// };
+const friendRequest = (sender_id, receptor_id) => {
+	fetch(`http://localhost:3000/friend/`, {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({
+			sender_id: sender_id,
+			receptor_id: receptor_id,
+		}),
+	})
+		.then(async (response) => {
+			if (response.ok) {
+				location.reload();
+			} else {
+				const result = await response.json();
+				alert(result);
+			}
+		})
+		.catch((error) => {
+			console.log(error);
+		});
+};

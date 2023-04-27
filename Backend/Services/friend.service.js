@@ -6,7 +6,7 @@ const FRIEND_STATUS = Object.freeze({
 	REJECTED: 2,
 });
 
-export const askFriend = async (request, response) => {
+export const friendRequest = async (request, response) => {
 	const { sender_id, receptor_id } = request.body;
 
 	try {
