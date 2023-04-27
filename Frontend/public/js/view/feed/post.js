@@ -41,14 +41,20 @@ const postContent = (post) => {
 
 	element.innerHTML = `
 		<p class="m-0">${post.content}</p>
-
 	`;
 	return element;
 };
 
 const postFooter = (post) => {
 	const element = document.createElement("div");
+	element.classList.add("d-flex", "gap-3", "align-items-center", "p-3");
 	element.appendChild(heart(post.post_id));
+
+	const likeCounter = document.createElement("p");
+	likeCounter.classList.add("m-0");
+	likeCounter.innerText = `${post.likes} ${post.likes == 1 ? "like" : "likes"}`;
+	element.appendChild(likeCounter);
+
 	return element;
 };
 
@@ -57,15 +63,9 @@ const heart = (post_id) => {
 
 	const element = document.createElement("i");
 	element.classList.add("icon", "bi", "bi-heart");
-	element.style.padding = ".5rem .5rem .5rem 0";
 
 	// Rellenar corazón y cambiar color
-	// TODO Hacer fetch para añadir like
-	/*
-NO SOY CAPAZ A CAPTURAR EL ID DEL POST AL QUE SE LE DA LIKE
-FALTA CREAR LA RUTA, me imagino será algo tipo post/:user_id/:post_id
-*/
-
+	// Hacer fetch para añadir like
 	element.addEventListener("click", () => {
 		insertLike(post_id, clicked ? LIKE_MODE.DISLIKE : LIKE_MODE.LIKE);
 		clicked = !clicked;
@@ -116,6 +116,7 @@ const insertLike = (post_id, mode) => {
 	})
 		.then(async (response) => {
 			if (response.status === 200) {
+				// TODO refrescar por js el corazon
 				/* window.location.href = "/pages/perfil-de-usuario.html"; */
 			} else {
 				const data = await response.json();
