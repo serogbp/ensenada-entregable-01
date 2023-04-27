@@ -82,7 +82,7 @@ CREATE TABLE `posts` (
   `post_id` int(11) NOT NULL,
   `likes` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `publishDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `publishDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `content` varchar(140) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
