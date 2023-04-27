@@ -14,11 +14,11 @@ export const getPosts = async (request, response) => {
 
 		const [rows, fields] = await connection.query(
 			`
-			SELECT users.name,users.surname1, users.surname2, users.username, users.picture, posts.likes, posts.content, posts.publishDate
+			SELECT users.name,users.surname1, users.surname2, users.username, users.picture, posts.likes, posts.content, posts.publishDate, posts.post_id
 			FROM users
 			INNER JOIN posts ON posts.user_id = users.user_id
 			WHERE posts.user_id = ?
-			UNION SELECT  users.name,users.surname1, users.surname2, users.username, users.picture, posts.likes, posts.content, posts.publishDate
+			UNION SELECT  users.name,users.surname1, users.surname2, users.username, users.picture, posts.likes, posts.content, posts.publishDate, posts.post_id
 			FROM friends
 			INNER JOIN posts ON posts.user_id = friends.receptor_id
 			INNER JOIN users ON posts.user_id = users.user_id
@@ -49,11 +49,20 @@ export const savePost = async (request, response) => {
 	return response.sendStatus(200);
 };
 
+const LIKE_MODE = Object.freeze({
+	LIKE: "like",
+	DISLIKE: "dislike",
+});
+
 export const saveLike = async (request, response) => {
-	const post_id = request.body.post_id;
+	const post_id = request.params.post_id;
+	const { mode } = request.body;
+
+	const modifier = mode === LIKE_MODE.LIKE ? "+ 1" : "- 1";
+
 	try {
 		const connection = await connect();
-		await connection.execute(`UPDATE posts SET likes = likes + 1 WHERE post_id = ?`, [post_id]);
+		await connection.execute(`UPDATE posts SET likes = likes ${modifier} WHERE post_id = ?`, [post_id]);
 	} catch (error) {
 		return response.status(500).json({ msg: "Error al guardar like" });
 	}

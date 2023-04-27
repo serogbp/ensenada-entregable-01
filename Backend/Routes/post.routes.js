@@ -6,7 +6,9 @@ const router = Router();
 
 // prettier-ignore
 router.route("/:user_id")
-	.get(body("content").isLength({max:280}).escape(),getPosts)
-	.post(savePost);
+	.get(body("content").isLength({max:280}).escape(),getPosts) // pantalla feed obtener posts
+	.post(savePost); // pantalla feed guardar post
+
+router.route("/like/:post_id").patch(saveLike); // dar like
 
 export default router;
