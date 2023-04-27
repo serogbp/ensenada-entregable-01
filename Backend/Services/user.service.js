@@ -71,3 +71,22 @@ export const getFriends = async (request, response) => {
 		return response.status(500).json({ msg: `Error obteniendo los usuarios: ${err.message}` });
 	}
 };
+
+export const getNoFriends = async (request, response) => {
+	// const user_id = request.params.user_id;
+	// try {
+	// 	const connection = await connect();
+	// 	const [rows, fields] = await connection.query(
+	// 		`
+	// 		SELECT users.user_id, users.name, users.surname1, users.surname2, users.picture, users.username
+	// 		FROM users
+	// 		INNER JOIN friends ON friends.receptor_id = users.user_id
+	// 		WHERE friends.sender_id = ? AND friends.status = ?
+	// 	`,
+	// 		[user_id, FRIEND_STATUS.PENDING]
+	// 	);
+	// 	return response.status(200).json(rows);
+	// } catch (error) {
+	// 	return response.status(500).json({ msg: `Error obteniendo los usuarios: ${err.message}` });
+	// }
+};

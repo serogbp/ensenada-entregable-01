@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getUser, updateUser, deleteUser, getFriends } from "../Services/user.service.js";
+import { getUser, updateUser, deleteUser, getFriends, getNoFriends } from "../Services/user.service.js";
 import { checkUser } from "../Middleware/user.middleware.js";
 
 const router = Router();
@@ -13,6 +13,10 @@ router
 // prettier-ignore
 router.route("/:user_id/friends")
 	.get(getFriends); // pantalla lista amigos
+
+// prettier-ignore
+router.route("/:user_id/no_friends")
+	.get(getNoFriends); // pantalla lista amigos
 
 // prettier-ignore
 router.route("/:user_id/friends/:friend_id")
