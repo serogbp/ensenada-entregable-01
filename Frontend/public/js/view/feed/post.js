@@ -25,7 +25,7 @@ const postHeader = (post) => {
 			<p>${post.name} ${post.surname1} ${post.surname2}</p>
 			<p>@${post.username}</p>
 		</div>
-		<div class="text-danger">${post.publishDate}</div>
+		<div>${moment(post.publishDate).format("MMM DD HH:ss")}</div>
 	</div>
 
 	<div class="icon-wrapper">
