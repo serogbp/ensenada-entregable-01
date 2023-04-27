@@ -34,11 +34,11 @@ export const getPosts = async (request, response) => {
 };
 
 export const savePost = async (request, response) => {
-	/* 	const validationResults = validationResult(request);
+	const validationResults = validationResult(request);
 	if (!validationResults.isEmpty()) {
 		const fieldNames = validationResults.errors.map((error) => error.path).join();
 		return response.status(400).json({ msg: `Error en los siguientes campos: ${fieldNames}` });
-	} */
+	}
 	const { user_id, content } = request.body;
 	try {
 		const connection = await connect();
