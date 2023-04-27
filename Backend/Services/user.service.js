@@ -79,15 +79,12 @@ export const getNoFriends = async (request, response) => {
 		const connection = await connect();
 		const [rows, fields] = await connection.query(
 			`
-			SELECT users.user_id, users.name, users.surname1, users.surname2, users.username, users.picture
+			SELECT users.user_id, users.name, users.surname1, users.surname2, users.username, users.picture, friends.status
 			FROM users
-			WHERE users.user_id NOT IN (
-				SELECT friends.receptor_id
-				FROM friends
-				WHERE friends.sender_id = ? AND friends.status = ?)
-			AND user_id !=?;
+			LEFT JOIN friends ON (users.user_id = friends.receptor_id AND friends.sender_id = ?) OR (users.user_id = friends.sender_id AND friends.receptor_id = ?)
+			WHERE (friends.status IS NULL OR friends.status != 1) AND users.user_id != ?;
 	 	`,
-			[user_id, FRIEND_STATUS.ACEPTED, user_id]
+			[user_id, user_id, user_id]
 		);
 		return response.status(200).json(rows);
 	} catch (error) {

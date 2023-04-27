@@ -1,4 +1,4 @@
-import { drawFriends } from "../view/lista-de-amigos.js";
+import { drawNoFriends } from "../view/lista-de-amigos.js";
 
 let friends = [];
 let friendsSorted = [];
@@ -15,19 +15,19 @@ export const getFriends = () => friendsSorted;
 export const addFriend = (friend) => {
 	friends.push(friend);
 	sortFriends();
-	drawFriends(friendsSorted);
+	drawNoFriends(friendsSorted);
 };
 
 export const addFriends = (newFriends) => {
 	friends = [...friends, ...newFriends];
 	sortFriends();
-	drawFriends(friendsSorted);
+	drawNoFriends(friendsSorted);
 };
 
 export const updateSortType = (type) => {
 	sortType = type;
 	sortFriends();
-	drawFriends(friendsSorted);
+	drawNoFriends(friendsSorted);
 };
 
 const sortFriends = () => {
@@ -47,16 +47,14 @@ const sortFriends = () => {
 	}
 };
 
-export function fetchFriends() {
+export function fetchNoFriends() {
 	const user_id = localStorage.getItem("idLogged");
-	fetch(`http://localhost:3000/user/${user_id}/friends`, {
+	fetch(`http://localhost:3000/user/${user_id}/no_friends`, {
 		method: "GET",
-	})
-		.then(async (response) => {
-			if (response.status === 200) {
-				const body = await response.json();
-				addFriends(body);
-			}
-		})
-		.catch((error) => console.log(error));
+	}).then(async (response) => {
+		if (response.status === 200) {
+			const body = await response.json();
+			addFriends(body);
+		}
+	});
 }

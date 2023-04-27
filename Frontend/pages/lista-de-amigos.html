@@ -102,6 +102,8 @@
 					</select>
 				</div>
 				<div id="friend-list-wrapper" class="d-flex flex-wrap gap-3"></div>
+				<p class="h3 mb-1 font-family--jetbrains-mono">Sugerencias de amistad</p>
+				<div id="no-friend-list-wrapper" class="d-flex flex-wrap gap-3"></div>
 			</div>
 		</main>
 
@@ -117,11 +119,15 @@
 		</div>
 
 		<script type="module">
-			import { updateSortType } from "../public/js/model/friend.js";
+			import { updateSortType, fetchFriends } from "../public/js/model/friend.js";
+			import { fetchNoFriends } from "../public/js/model/noFriend.js";
 
 			document.getElementById("sort-type").addEventListener("change", (e) => {
 				updateSortType(e.target.value);
 			});
+
+			fetchFriends();
+			fetchNoFriends();
 		</script>
 	</body>
 </html>
