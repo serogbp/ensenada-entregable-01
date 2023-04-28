@@ -33,6 +33,7 @@ const renderUserData = (user) => {
 	userDataElements[8].innerHTML = `${user.languages}`;
 	userDataElements[9].innerHTML = `${user.linkedin}`;
 	userDataElements[10].innerHTML = `${user.hobbies}`;
+	document.getElementById("avatar").src = user.picture;
 };
 
 // Obtener los parámetros de la url
