@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tecla Social</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
+		<link rel="stylesheet" href="../public/css/global.css" />
+		<link rel="stylesheet" href="../public/css/login.css" />
+		<link rel="stylesheet" href="../public/css/modificar-perfil-de-usuario.css" />
+	</head>
+
+	<body class="d-flex flex-column min-vh-100">
+		<!-- Header -->
+		<header>
+			<nav class="navbar navbar-expand-lg bg-white">
+				<div class="container-fluid">
+					<a class="navbar-brand font-family--jetbrains-mono" href="#"
+						><!-- LOGO -->
+						<strong>//TECLA</strong>_SOCIAL
+					</a>
+				</div>
+			</nav>
+		</header>
+
+		<main class="d-flex flex-grow-1 justify-content-center align-items-center bg-tecla-teal">
+			<!-- tarjeta datos de usuario -->
+			<div class="card-login card-user bg-tecla-white shadow p-4 m-4">
+				<p class="h5 font-family--jetbrains-mono d-flex justify-content-center mb-4">Registro de usuario</p>
+				<div class="d-flex flex-column gap-3">
+					<form class="d-flex flex-column gap-4">
+						<div>
+							<label class="required" for="email">Correo</label>
+							<input required maxlength="150" type="email" class="form-control" name="email" id="email" />
+						</div>
+						<div>
+							<label class="required" for="password">Contraseña</label>
+							<input required maxlength="150" type="password" class="form-control" name="password" id="password" />
+						</div>
+						<div>
+							<label class="required" for="username">Usuario</label>
+							<input required maxlength="150" type="text" class="form-control" name="username" id="username" />
+						</div>
+						<div>
+							<label class="required" for="name">Nombre</label>
+							<input required maxlength="150" type="text" class="form-control" name="name" id="name" />
+						</div>
+						<div>
+							<label class="required" for="surname1">Primer apellido</label>
+							<input required maxlength="150" type="text" class="form-control" name="surname1" id="surname1"" />
+						</div>
+						<div>
+							<label class="required" for="surname2">Segundo apellido</label>
+							<input required maxlength="150" type="text" class="form-control" name="surname2" id="surname2"" />
+						</div>
+						<div>
+							<label for="age">Edad</label>
+							<input maxlength="3" type="number" class="form-control" name="age" id="age" />
+						</div>
+						<div>
+							<label for="city">Ciudad</label>
+							<input maxlength="150" type="text" class="form-control" name="city" id="city" />
+						</div>
+						<div>
+							<label for="country">País</label>
+							<input maxlength="150" type="text" class="form-control" name="country" id="country" />
+						</div>
+						<div>
+							<label for="studies">Estudios</label>
+							<input maxlength="150" type="text" class="form-control" name="studies" id="studies" />
+						</div>
+						<div>
+							<label for="languages">Lenguajes</label>
+							<input maxlength="150" type="text" class="form-control" name="languages" id="languages" />
+						</div>
+						<div>
+							<label for="linkedin">LinkedIn</label>
+							<input maxlength="150" type="text" class="form-control" name="linkedin" id="linkedin" />
+						</div>
+						<div>
+							<label for="hobbies">Hobbies</label>
+							<input maxlength="150" type="text" class="form-control" name="hobbies" id="hobbies" />
+						</div>
+						<div>
+							<label for="role">Rol</label>
+							<input maxlength="150" type="text" class="form-control" name="role" id="role" />
+						</div>
+
+						<button type="submit" class="btn btn-primary">Registrarse</button>
+					</form>
+					<p>
+						¿Ya estás registrado?
+						<a class="link-primary text-decoration-underline" href="/pages/login.html">Iniciar sesión</a>
+					</p>
+				</div>
+			</div>
+		</main>
+		<footer class="d-flex p-4 bg-black text-white">
+			<p class="h4 font-family--jetbrains-mono"><strong>//TECLA</strong>_SOCIAL</p>
+		</footer>
+		<script src="../public/js/registro.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+	</body>
+</html>

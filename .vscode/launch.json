@@ -5,11 +5,32 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Launch Chrome",
+			"name": "Backend",
+			"program": "${workspaceFolder}/Backend/app.js",
+			"request": "launch",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"runtimeArgs": [
+				"./node_modules/nodemon/bin/nodemon.js"
+			],
+			"type": "node",
+		},
+		{
+			"name": "Frontend",
 			"request": "launch",
 			"type": "chrome",
-			"url": "http://localhost:5500/",
-			"webRoot": "${workspaceFolder}"
+			"url": "http://localhost:5500/index.html",
+			"webRoot": "${workspaceFolder}/Frontend"
+		}
+	],
+	"compounds": [
+		{
+			"name": "Frontend + Backend",
+			"configurations": [
+				"Frontend",
+				"Backend"
+			]
 		}
 	]
 }
