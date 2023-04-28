@@ -23,7 +23,7 @@ export const isUser = async (request, response) => {
 	try {
 		const connection = await connect();
 		const [rows, fields] = await connection.execute("SELECT email, password, user_id FROM users");
-
+		connection.end();
 		// Comprobar credenciales válidas
 		const userLogged = rows.find((item) => item.email === email.toLowerCase());
 		if (userLogged && userLogged.password === password) {

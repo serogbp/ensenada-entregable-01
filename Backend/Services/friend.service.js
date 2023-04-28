@@ -20,6 +20,7 @@ export const getRequest = async (request, response) => {
 			`,
 			[receptor_id, FRIEND_STATUS.PENDING]
 		);
+		connection.end();
 		return response.status(200).json(rows);
 	} catch (error) {
 		return response.status(500).json({ msg: "Error en la solicitud de amistad" });
@@ -38,6 +39,7 @@ export const createRequest = async (request, response) => {
 			`,
 			[sender_id, receptor_id, FRIEND_STATUS.PENDING]
 		);
+		connection.end();
 	} catch (error) {
 		return response.status(500).json({ msg: "Error en la solicitud de amistad" });
 	}
@@ -62,6 +64,7 @@ export const acceptFriend = async (request, response) => {
 			`,
 			[receptor_id, sender_id, FRIEND_STATUS.ACCEPTED]
 		);
+		connection.end();
 	} catch (error) {
 		return response.status(500).json({ msg: "Error en la solicitud de amistad" });
 	}
@@ -81,6 +84,7 @@ export const rejectFriend = async (request, response) => {
 			`,
 			[sender_id, receptor_id]
 		);
+		connection.end();
 	} catch (error) {
 		return response.status(500).json({ msg: "Error en la solicitud de amistad" });
 	}
