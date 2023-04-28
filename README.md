@@ -4,8 +4,8 @@
 
 - Colocar el .env en la raíz del proyecto
 - Instalar dependencias del Backend:
-  - cd Backend
-  - npm i
+  - `cd Backend`
+  - `npm i`
 - El script SQL se encuentra en la siguiente ruta: `/Backend/Database/tecla_db.sql`
 
 ## Propuesta de ejecución del proyecto
