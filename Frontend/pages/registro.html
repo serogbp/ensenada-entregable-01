@@ -30,20 +30,62 @@
 				<p class="h5 font-family--jetbrains-mono d-flex justify-content-center mb-4">Registro de usuario</p>
 				<div class="d-flex flex-column gap-3">
 					<form class="d-flex flex-column gap-4">
-						<input required maxlength="150" type="email" class="form-control" id="email" placeholder="Correo" required />
-						<input required maxlength="150" type="password" class="form-control" id="password" placeholder="Contraseña" required />
-						<input required maxlength="150" type="text" class="form-control" id="username" placeholder="Usuario" />
-						<input required maxlength="150" type="text" class="form-control" id="name" placeholder="Nombre" />
-						<input required maxlength="150" type="text" class="form-control" id="surname1" placeholder="Primer apellido" />
-						<input required maxlength="150" type="text" class="form-control" id="surname2" placeholder="Segundo apellido" />
-						<input maxlength="3" type="number" class="form-control" id="age" placeholder="Edad" />
-						<input maxlength="150" type="text" class="form-control" id="city" placeholder="Ciudad" />
-						<input maxlength="150" type="text" class="form-control" id="country" placeholder="País" />
-						<input maxlength="150" type="text" class="form-control" id="studies" placeholder="Estudios" />
-						<input maxlength="150" type="text" class="form-control" id="languages" placeholder="Lenguajes" />
-						<input maxlength="150" type="text" class="form-control" id="linkedin" placeholder="LinkedIn" />
-						<input maxlength="150" type="text" class="form-control" id="hobbies" placeholder="Hobbies" />
-						<input maxlength="150" type="text" class="form-control" id="role" placeholder="Rol" />
+						<div>
+							<label class="required" for="email">Correo</label>
+							<input required maxlength="150" type="email" class="form-control" name="email" id="email" />
+						</div>
+						<div>
+							<label class="required" for="password">Contraseña</label>
+							<input required maxlength="150" type="password" class="form-control" name="password" id="password" />
+						</div>
+						<div>
+							<label class="required" for="username">Usuario</label>
+							<input required maxlength="150" type="text" class="form-control" name="username" id="username" />
+						</div>
+						<div>
+							<label class="required" for="name">Nombre</label>
+							<input required maxlength="150" type="text" class="form-control" name="name" id="name" />
+						</div>
+						<div>
+							<label class="required" for="surname1">Primer apellido</label>
+							<input required maxlength="150" type="text" class="form-control" name="surname1" id="surname1"" />
+						</div>
+						<div>
+							<label class="required" for="surname2">Segundo apellido</label>
+							<input required maxlength="150" type="text" class="form-control" name="surname2" id="surname2"" />
+						</div>
+						<div>
+							<label for="age">Edad</label>
+							<input maxlength="3" type="number" class="form-control" name="age" id="age" />
+						</div>
+						<div>
+							<label for="city">Ciudad</label>
+							<input maxlength="150" type="text" class="form-control" name="city" id="city" />
+						</div>
+						<div>
+							<label for="country">País</label>
+							<input maxlength="150" type="text" class="form-control" name="country" id="country" />
+						</div>
+						<div>
+							<label for="studies">Estudios</label>
+							<input maxlength="150" type="text" class="form-control" name="studies" id="studies" />
+						</div>
+						<div>
+							<label for="languages">Lenguajes</label>
+							<input maxlength="150" type="text" class="form-control" name="languages" id="languages" />
+						</div>
+						<div>
+							<label for="linkedin">LinkedIn</label>
+							<input maxlength="150" type="text" class="form-control" name="linkedin" id="linkedin" />
+						</div>
+						<div>
+							<label for="hobbies">Hobbies</label>
+							<input maxlength="150" type="text" class="form-control" name="hobbies" id="hobbies" />
+						</div>
+						<div>
+							<label for="role">Rol</label>
+							<input maxlength="150" type="text" class="form-control" name="role" id="role" />
+						</div>
 
 						<button type="submit" class="btn btn-primary">Registrarse</button>
 					</form>

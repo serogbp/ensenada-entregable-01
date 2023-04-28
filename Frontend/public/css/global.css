@@ -123,3 +123,8 @@ a {
 	text-decoration: none;
 	color: inherit;
 }
+
+.required:after {
+	content: "*";
+	color: red;
+}
