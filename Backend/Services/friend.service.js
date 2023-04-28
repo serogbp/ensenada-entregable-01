@@ -3,7 +3,6 @@ import { connect } from "../Database/mysql.js";
 const FRIEND_STATUS = Object.freeze({
 	PENDING: 0,
 	ACCEPTED: 1,
-	REJECTED: 2,
 });
 
 export const getRequest = async (request, response) => {
@@ -76,9 +75,11 @@ export const rejectFriend = async (request, response) => {
 		const connection = await connect();
 
 		await connection.execute(
-			`UPDATE friends SET friends.status = ? WHERE friends.sender_id = ? AND friends.receptor_id = ?
+			`
+				DELETE 	FROM friends
+				WHERE friends.sender_id = ? AND friends.receptor_id = ?
 			`,
-			[FRIEND_STATUS.REJECTED, sender_id, receptor_id]
+			[sender_id, receptor_id]
 		);
 	} catch (error) {
 		return response.status(500).json({ msg: "Error en la solicitud de amistad" });

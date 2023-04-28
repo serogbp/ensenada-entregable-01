@@ -4,7 +4,6 @@ import { validationResult } from "express-validator";
 const FRIEND_STATUS = Object.freeze({
 	PENDING: 0,
 	ACCEPTED: 1,
-	REJECTED: 2,
 });
 
 export const getUser = async (request, response) => {
@@ -18,7 +17,7 @@ export const getUser = async (request, response) => {
 		const user = rows[0];
 		return response.status(200).json(user);
 	} catch (err) {
-		return response.status(500).json({ msg: `Error actualizando el usuario: ${err.message}` });
+		return response.status(500).json({ msg: `Error obteniendo el usuario: ${err.message}` });
 	}
 };
 
@@ -83,7 +82,7 @@ export const getNoFriends = async (request, response) => {
 			FROM users
 			LEFT JOIN friends ON (users.user_id = friends.receptor_id AND friends.sender_id = ?) OR (users.user_id = friends.sender_id AND friends.receptor_id = ?)
 			WHERE (friends.status IS NULL OR friends.status != 1) AND users.user_id != ?;
-	 	`,
+		`,
 			[user_id, user_id, user_id]
 		);
 		return response.status(200).json(rows);
