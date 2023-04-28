@@ -48,17 +48,18 @@ const postContent = (post) => {
 const postFooter = (post) => {
 	const element = document.createElement("div");
 	element.classList.add("d-flex", "gap-3", "align-items-center", "p-3");
-	element.appendChild(heart(post.post_id));
 
 	const likeCounter = document.createElement("p");
 	likeCounter.classList.add("m-0");
 	likeCounter.innerText = `${post.likes} ${post.likes == 1 ? "like" : "likes"}`;
+
+	element.appendChild(heart(post, likeCounter));
 	element.appendChild(likeCounter);
 
 	return element;
 };
 
-const heart = (post_id) => {
+const heart = (post, likeCounter) => {
 	let clicked = false;
 
 	const element = document.createElement("i");
@@ -67,14 +68,18 @@ const heart = (post_id) => {
 	// Rellenar corazón y cambiar color
 	// Hacer fetch para añadir like
 	element.addEventListener("click", () => {
-		insertLike(post_id, clicked ? LIKE_MODE.DISLIKE : LIKE_MODE.LIKE);
+		insertLike(post.post_id, clicked ? LIKE_MODE.DISLIKE : LIKE_MODE.LIKE);
 		clicked = !clicked;
 		element.classList.toggle("bi-heart");
 		element.classList.toggle("bi-heart-fill");
 		element.classList.add("text-danger");
+
+		let counter = post.likes;
+		if (clicked) counter++;
+		likeCounter.innerText = `${counter} ${post.likes == 1 ? "like" : "likes"}`;
 	});
 
-	// Hover: cambiar color y aumentar contorno
+	// Hover: cambiar color
 	element.addEventListener("mouseover", () => {
 		if (clicked) return;
 		element.classList.toggle("text-danger");
