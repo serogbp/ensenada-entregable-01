@@ -36,6 +36,7 @@ const renderUserData = (user) => {
 	document.getElementById("hobbies").value = user.hobbies;
 	document.getElementById("email").value = user.email;
 	document.getElementById("rol").value = user.role;
+	document.getElementById("avatar").src = user.picture;
 };
 
 const updateUser = (updatedUser) => {
