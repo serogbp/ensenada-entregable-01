@@ -1,8 +1,28 @@
 const form = document.querySelector("form");
 form.addEventListener("submit", (event) => {
 	event.preventDefault();
+	validacion();
 	createUser();
 });
+
+const validacion = () => {
+	//comprobar email
+
+	/* comprobar password
+	obligatorio // sin espacios en blanco // longitud max 10 y minima de 4 */
+
+	//prettier-ignore
+	if (
+		user.password == null ||
+		user.password == 0 ||
+		/^\s+$/.test(user.password) ||
+		user.password.length > 10 ||
+		user.password.length <= 4
+	) {
+		alert("Password incorrecta")
+		return false;
+	}
+};
 
 const createUser = () => {
 	form.querySelectorAll("input");

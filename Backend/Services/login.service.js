@@ -1,5 +1,7 @@
 import { validationResult } from "express-validator";
+import config from "../Settings/config.js";
 import { connect } from "../Database/mysql.js";
+import jwt from "jsonwebtoken";
 
 export const isUser = async (request, response) => {
 	// Recoger validaciones express-validator
@@ -27,7 +29,14 @@ export const isUser = async (request, response) => {
 		// Comprobar credenciales válidas
 		const userLogged = rows.find((item) => item.email === email.toLowerCase());
 		if (userLogged && userLogged.password === password) {
-			response.status(200).json({ user_id: userLogged.user_id });
+			var token = jwt.sign({ user_id: userLogged.user_id }, config.jwt.clave);
+			// response.status(200).json(token);
+			response.status(200).json({
+				token: token,
+				user_id: userLogged.user_id,
+			});
+
+			/* response.status(200).json({ user_id: userLogged.user_id }); */
 		} else {
 			// ⚠ Si queremos enviar un status custom y un json, tenemos que usar status().
 			// Si usamos sendStatus(), no podemos enviar el json porque ya envió la respuesta

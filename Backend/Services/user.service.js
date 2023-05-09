@@ -1,5 +1,7 @@
 import { connect } from "../Database/mysql.js";
 import { validationResult } from "express-validator";
+import jwt from "jsonwebtoken";
+import config from "../Settings/config.js";
 
 const FRIEND_STATUS = Object.freeze({
 	PENDING: 0,
@@ -7,7 +9,14 @@ const FRIEND_STATUS = Object.freeze({
 });
 
 export const getUser = async (request, response) => {
-	const user_id = request.params.user_id;
+	let user_id = request.params.user_id;
+
+	if (!user_id) {
+		const token = request.get("Authorization");
+		const decoded = jwt.verify(token, config.jwt.clave);
+		user_id = decoded.user_id;
+	}
+
 	try {
 		const connection = await connect();
 

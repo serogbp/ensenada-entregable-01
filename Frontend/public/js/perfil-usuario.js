@@ -40,18 +40,27 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 	get: (searchParams, prop) => searchParams.get(prop),
 });
 const friendID = params.user_id;
-const loggedUserID = localStorage.getItem("idLogged");
 
 // Esconder botones editar y eliminar si se muestra perfil de un amigo
 if (friendID) {
 	document.getElementById("editUser").style.display = "none";
-}
 
-// Cargar datos del usuario logeado o del amigo si se usan params en la url
-const user_id = friendID ? friendID : loggedUserID;
-fetch(`http://localhost:3000/user/${user_id}`, {
-	method: "GET",
-}).then(async (response) => {
-	const json = await response.json();
-	renderUserData(json);
-});
+	// Cargar datos amigo
+	fetch(`http://localhost:3000/user/${friendID}`, {
+		method: "GET",
+	}).then(async (response) => {
+		const json = await response.json();
+		renderUserData(json);
+	});
+} else {
+	// Cargar datos usuario logeado
+	fetch(`http://localhost:3000/user`, {
+		method: "GET",
+		headers: {
+			Authorization: `${localStorage.getItem("token")}`,
+		},
+	}).then(async (response) => {
+		const json = await response.json();
+		renderUserData(json);
+	});
+}
