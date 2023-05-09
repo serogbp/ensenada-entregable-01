@@ -15,6 +15,6 @@ export class User {
 		this.linkedin = linkedin;
 		this.hobbies = hobbies;
 		this.password = password;
-		this.picture = picture ?? "https://img.freepik.com/psd-premium/ilustracion-3d-hombre-caucasico-sonriente-retrato-cerca-dibujos-animados-hombre-caucasico-pie-sobre-fondo-amarillo-avatar-3d-ui-ux_1020-5081.jpg";
+		this.picture = "https://img.freepik.com/psd-premium/ilustracion-3d-hombre-caucasico-sonriente-retrato-cerca-dibujos-animados-hombre-caucasico-pie-sobre-fondo-amarillo-avatar-3d-ui-ux_1020-5081.jpg";
 	}
 }

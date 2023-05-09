@@ -26,6 +26,7 @@ export const getPosts = async (request, response) => {
 		`,
 			[user_id, user_id]
 		);
+		connection.end();
 		if (rows.isEmpty) return response.status(404).json({ msg: "No hay posts" });
 		return response.status(200).json(rows);
 	} catch (err) {
@@ -43,6 +44,7 @@ export const savePost = async (request, response) => {
 	try {
 		const connection = await connect();
 		await connection.execute(`INSERT INTO posts (user_id, content, likes) VALUES (?, ?, 0)`, [user_id, content]);
+		connection.end();
 	} catch (error) {
 		return response.status(500).json({ msg: "No se ha podido guardar la publicación. Por favor, vuelva ha intentarlo mas tarde." });
 	}
@@ -63,6 +65,7 @@ export const saveLike = async (request, response) => {
 	try {
 		const connection = await connect();
 		await connection.execute(`UPDATE posts SET likes = likes ${modifier} WHERE post_id = ?`, [post_id]);
+		connection.end();
 	} catch (error) {
 		return response.status(500).json({ msg: "Error al guardar like" });
 	}

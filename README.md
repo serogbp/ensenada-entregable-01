@@ -1,27 +1,16 @@
-# Cambios en el entregable 02
+# Entregable 03
 
-## Pantalla Login
+## Preparaciones antes de ejecutar
 
-- Comprobación de credenciales para acceder a la red social (**credenciales: tecla, tecla**)
+- Colocar el .env en la raíz del proyecto
+- Instalar dependencias del Backend:
+  - cd Backend
+  - npm i
+- El script SQL se encuentra en la siguiente ruta: `/Backend/Database/tecla_db.sql`
 
-## Pantalla Perfil de usuario
+## Propuesta de ejecución del proyecto
 
-- Cargar información del localstorage sobre el usuario mediante Javascript modificando el dom
+- Backend: `node Backend/app.js`
+- Frontend: usar Live Server
 
-- Funcionalidad simulación de borrar la cuenta del usuario. Abre un modal y si acepta te envía a la pantalla de registro, borrando del localstorage el usuario guardado. Utilización de promesas para simular asincronía de conexión.
-
-## Pantalla Modificar Perfil
-
-- Modificar información del usuario y guardar los cambios en el localstorage para posteriormente mostrarlo en la página de perfil de usuario. Utilización de timeout con promesas para simular asincronía de conexión.
-
-## Pantalla Feed
-
-- Cargar dinámicamente elementos html post mediante el uso de 2 APIs ([randomuser.me](https://randomuser.me/) y una personalizada hecha en [mocki.io](https://mocki.io/))
-
-- Se generan nuevos posts al hacer scroll hasta el final de la página
-
-## Pantalla Lista de amigos
-
-- Cargar la lista de amigos mediante fetch usando la API [randomuser.me](https://randomuser.me/)
-
-- Capacidad de ordenar la lista de diferentes formas
+También puedes lanzar ambos a la vez seleccionando "Frontend + Backend" en la sección "Run and Debug".

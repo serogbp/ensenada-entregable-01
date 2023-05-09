@@ -8,10 +8,6 @@ import friendRouter from "./Routes/friend.routes.js";
 import express from "express";
 import cors from "cors";
 
-/* var corsOptions = {
-	origin: "http://10.211.55.4:5500",
-}; */
-
 class App {
 	constructor() {
 		this.app = express();
@@ -40,13 +36,6 @@ class App {
 	settings() {
 		this.app.use(express.json());
 		this.app.use(cors());
-		/* 		this.app.use((request, response, next) => {
-			response.header("Access-Control-Allow-Origin", "*"); //origen
-			response.header("Access-Control-Allow-Credentials", "true");
-			response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-type, Acept"); //cabeceras que admite
-			response.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE"); //metodos que estan adimitos
-			next();
-		}); */
 	}
 }
 new App();
