@@ -30,13 +30,10 @@ export const isUser = async (request, response) => {
 		const userLogged = rows.find((item) => item.email === email.toLowerCase());
 		if (userLogged && userLogged.password === password) {
 			var token = jwt.sign({ user_id: userLogged.user_id }, config.jwt.clave);
-			// response.status(200).json(token);
 			response.status(200).json({
 				token: token,
 				user_id: userLogged.user_id,
 			});
-
-			/* response.status(200).json({ user_id: userLogged.user_id }); */
 		} else {
 			// ⚠ Si queremos enviar un status custom y un json, tenemos que usar status().
 			// Si usamos sendStatus(), no podemos enviar el json porque ya envió la respuesta

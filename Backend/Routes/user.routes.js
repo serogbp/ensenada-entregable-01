@@ -9,7 +9,7 @@ const router = Router();
 router
 	.route("/")
 	.get(isLogged, getUser) // pantalla perfil usuario
-	.patch(checkUser(), updateUser) // pantalla modificar usuario
+	.patch(isLogged, checkUser(), updateUser) // pantalla modificar usuario
 	.delete(deleteUser); // pantalla modificar usuario
 
 // prettier-ignore
@@ -25,9 +25,3 @@ router.route("/friends/:friend_id")
 	.get(getUser); // pantalla perfil amigo
 
 export default router;
-
-// localhost:5500/user
-// localhost:5500/user?id=1
-
-//perfil-de-usuario.html
-//perfil-de-usuario.html?id=1
