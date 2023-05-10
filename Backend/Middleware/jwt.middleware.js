@@ -14,6 +14,4 @@ export function isLogged(req, res, next) {
 			}
 		});
 	}
-	// con este return falla.
-	//return res.status(401).json({ msg: "No hay token" });
 }

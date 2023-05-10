@@ -2,6 +2,7 @@ import { validationResult } from "express-validator";
 import config from "../Settings/config.js";
 import { connect } from "../Database/mysql.js";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 export const isUser = async (request, response) => {
 	// Recoger validaciones express-validator
@@ -28,7 +29,8 @@ export const isUser = async (request, response) => {
 		connection.end();
 		// Comprobar credenciales válidas
 		const userLogged = rows.find((item) => item.email === email.toLowerCase());
-		if (userLogged && userLogged.password === password) {
+
+		if (userLogged && bcrypt.compareSync(password, userLogged.password)) {
 			var token = jwt.sign({ user_id: userLogged.user_id }, config.jwt.clave);
 			response.status(200).json({
 				token: token,

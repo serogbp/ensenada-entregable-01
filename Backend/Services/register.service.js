@@ -1,6 +1,7 @@
 import { validationResult } from "express-validator";
 import { User } from "../Database/Models/User.js";
 import { connect } from "../Database/mysql.js";
+import bcrypt from "bcrypt";
 
 export const register = async (request, response) => {
 	const validationResults = validationResult(request);
@@ -10,6 +11,8 @@ export const register = async (request, response) => {
 	}
 
 	const user = new User(request.body);
+	const hash = bcrypt.hashSync(user.password, 10);
+	user.password = hash;
 
 	try {
 		const connection = await connect();
