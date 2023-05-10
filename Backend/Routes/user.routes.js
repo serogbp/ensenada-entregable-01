@@ -10,7 +10,7 @@ router
 	.route("/")
 	.get(isLogged, getUser) // pantalla perfil usuario
 	.patch(isLogged, checkUser(), updateUser) // pantalla modificar usuario
-	.delete(deleteUser); // pantalla modificar usuario
+	.delete(isLogged, deleteUser); // pantalla modificar usuario
 
 // prettier-ignore
 router.route("/friends")

@@ -38,10 +38,10 @@ export const updateUser = async (request, response) => {
 		return response.status(400).json({ msg: `Error en los siguientes campos: ${fieldNames}` });
 	}
 
-	//const user_id = request.params.user_id;
 	const token = request.get("Authorization");
 	const decoded = jwt.verify(token, config.jwt.clave);
 	let user_id = decoded.user_id;
+
 	const { email, name, surname1, surname2, username, age, city, country, studies, role, languages, linkedin, hobbies } = request.body;
 	try {
 		const connection = await connect();
@@ -54,7 +54,10 @@ export const updateUser = async (request, response) => {
 };
 
 export const deleteUser = async (request, response) => {
-	const user_id = request.params.user_id;
+	const token = request.get("Authorization");
+	const decoded = jwt.verify(token, config.jwt.clave);
+	let user_id = decoded.user_id;
+
 	try {
 		const connection = await connect();
 		await connection.query("DELETE FROM users WHERE user_id = ?", [user_id]);

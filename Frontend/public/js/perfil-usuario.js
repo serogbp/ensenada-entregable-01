@@ -1,10 +1,13 @@
-const deleteUser = (user_id) => {
-	fetch(`http://localhost:3000/user/${user_id}`, {
+const deleteUser = () => {
+	fetch(`http://localhost:3000/user/`, {
 		method: "DELETE",
+		headers: {
+			Authorization: `${localStorage.getItem("token")}`,
+		},
 	}).then(async (response) => {
 		if (response.status === 200) {
 			window.location.href = "/index.html";
-			localStorage.removeItem("emailLogged");
+			localStorage.removeItem("token");
 		} else {
 			const data = await response.json();
 			alert(`Error eliminando el usuario: ${data.msg}`);
@@ -14,7 +17,7 @@ const deleteUser = (user_id) => {
 };
 
 const onClickConfirm = async () => {
-	deleteUser(localStorage.getItem("idLogged"));
+	deleteUser();
 };
 
 const delUser = document.getElementById("deleteUser");
