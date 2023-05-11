@@ -1,6 +1,4 @@
 import Layout from "../layouts/Layout";
-import "../css/login.css";
-import "../css/modificar-perfil-de-usuario.css";
 
 export default function Login() {
 	return (
