@@ -1,3 +1,7 @@
+import LandingPage from "./views/LandingPage";
+import Login from "./views/Login";
+
 export default function App() {
-	return <h1>Hola mundo!</h1>;
+	return <Login />;
+	// return <LandingPage />;
 }

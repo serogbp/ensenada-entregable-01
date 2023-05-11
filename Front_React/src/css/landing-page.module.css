@@ -1,0 +1,46 @@
+h1,
+h2 {
+	font-family: "JetBrains Mono", monospace;
+}
+
+p,
+ul {
+	font-size: 1.5rem;
+}
+
+.hero__image {
+	width: 100%;
+	max-width: 800px;
+	height: 400px;
+}
+
+.feature {
+	padding: 8rem 1rem;
+	gap: 2rem;
+}
+
+.feature--col {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	flex-wrap: wrap;
+}
+
+/* Pantallas medianas o más pequeñas */
+@media screen and (max-width: 768px) {
+	.feature {
+		padding: 4rem 1rem;
+	}
+
+	h2 {
+		text-align: left;
+	}
+}
+
+/* Pantallas grandes o más pequeñas */
+@media screen and (max-width: 1440px) {
+	.hero__image {
+		max-width: 100%;
+		height: 500px;
+	}
+}
