@@ -1,5 +1,8 @@
 {
 	"scripts": {
 		"dev": "npx nodemon ./Backend/app.js"
+	},
+	"dependencies": {
+		"prop-types": "^15.8.1"
 	}
 }
