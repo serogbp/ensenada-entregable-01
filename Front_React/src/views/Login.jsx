@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Layout from "../layouts/Layout";
 
 export default function Login() {
@@ -44,10 +45,10 @@ export default function Login() {
 						</form>
 
 						<p>
-							¿Todavía no estás registrado?
-							<a className="link-primary text-decoration-underline" href="/pages/registro.html">
+							¿Todavía no estás registrado?{" "}
+							<Link className="link-primary text-decoration-underline" to="/register">
 								Registrarse
-							</a>
+							</Link>
 						</p>
 					</div>
 				</div>

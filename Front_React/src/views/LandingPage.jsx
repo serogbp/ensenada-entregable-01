@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Layout from "../layouts/Layout";
 
 export default function LandingPage() {
@@ -10,10 +11,9 @@ export default function LandingPage() {
 					<div className="d-flex flex-column">
 						<h1 className="display-1 fw-bolder">Codear es conectar</h1>
 						<p className="max-w-prose landing-text">¿Eres un desarrollador apasionado por el software y buscas una comunidad en línea para conectarte con otros profesionales y compartir tu conocimiento? ¡Has llegado al lugar correcto!</p>
-						<a href="/pages/login.html" className="btn-tecla mt-4">
-							{" "}
-							COMIENZA TU AVENTURA{" "}
-						</a>
+						<Link to="/login" className="btn-tecla mt-4">
+							COMIENZA TU AVENTURA
+						</Link>
 					</div>
 				</div>
 
@@ -39,10 +39,9 @@ export default function LandingPage() {
 						<li>Participar en grupos de discusión para discutir temas relevantes para el mundo del desarrollo de software.</li>
 						<li>Acceder a una amplia variedad de recursos de aprendizaje y capacitación en línea.</li>
 					</ul>
-					<a href="/pages/login.html" className="btn-tecla mt-4">
-						{" "}
-						COMIENZA TU AVENTURA{" "}
-					</a>
+					<Link to="/login" className="btn-tecla mt-4">
+						COMIENZA TU AVENTURA
+					</Link>
 				</div>
 			</main>
 		</Layout>

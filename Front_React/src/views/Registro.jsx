@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Layout from "../layouts/Layout";
 
 export default function Registro() {
@@ -83,10 +84,10 @@ export default function Registro() {
 							</button>
 						</form>
 						<p>
-							¿Ya estás registrado?
-							<a class="link-primary text-decoration-underline" href="/pages/login.html">
+							¿Ya estás registrado?{" "}
+							<Link class="link-primary text-decoration-underline" to="/login">
 								Iniciar sesión
-							</a>
+							</Link>
 						</p>
 					</div>
 				</div>
