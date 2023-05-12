@@ -4,7 +4,7 @@
 
 export default function PerfilCabecera() {
 	return (
-		<div>
+		<div className="container-fluid flex-grow-1">
 			<div className="row justify-content-center m-3">
 				<div className="col-lg-10 col-card">
 					<div className="row">

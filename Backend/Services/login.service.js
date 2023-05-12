@@ -32,7 +32,7 @@ export const isUser = async (request, response) => {
 
 		if (userLogged && bcrypt.compareSync(password, userLogged.password)) {
 			var token = jwt.sign({ user_id: userLogged.user_id }, config.jwt.clave);
-			response.status(200).json({
+			return response.status(200).json({
 				token: token,
 				user_id: userLogged.user_id,
 			});

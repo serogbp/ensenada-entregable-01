@@ -1,41 +1,43 @@
+import Feed from "./views/Feed";
 import LandingPage from "./views/LandingPage";
 import Login from "./views/Login";
 import PerfilUsuario from "./views/PerfilUsuario";
 import Registro from "./views/Registro";
+import { ROUTES } from "./common/enums";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
 	{
-		path: "/",
+		path: ROUTES.LANDING,
 		element: <LandingPage />,
 	},
 	{
-		path: "/login",
+		path: ROUTES.LOGIN,
 		element: <Login />,
 	},
 	{
-		path: "/register",
+		path: ROUTES.REGISTER,
 		element: <Registro />,
 	},
 	{
-		path: "/profile",
+		path: ROUTES.PROFILE,
 		element: <PerfilUsuario />,
 	},
 	{
-		path: "/profile/:id",
+		path: ROUTES.PROFILE_ID,
 		element: <PerfilUsuario />,
 	},
 	{
-		path: "/profile/edit",
+		path: ROUTES.PROFILE_EDIT,
 		// element: <ModificarPerfilUsuario />,
 	},
 	{
-		path: "/feed",
-		// element: <Feed />,
+		path: ROUTES.FEED,
+		element: <Feed />,
 	},
 	{
-		path: "/friends",
+		path: ROUTES.FRIENDS,
 		// element: <ListaAmigos />,
 	},
 ]);

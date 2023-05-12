@@ -85,7 +85,7 @@ export default function Registro() {
 						</form>
 						<p>
 							¿Ya estás registrado?{" "}
-							<Link class="link-primary text-decoration-underline" to="/login">
+							<Link className="link-primary text-decoration-underline" to="/login">
 								Iniciar sesión
 							</Link>
 						</p>
