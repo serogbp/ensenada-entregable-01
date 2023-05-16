@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
 import Layout from "../layouts/Layout";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Login() {
+	const [formState, setFormState] = useState({
+		email: "",
+		password: "",
+	});
+
 	const navigate = useNavigate();
 	const login = (event) => {
 		event.preventDefault();
-		const body = {
-			email: document.querySelector("#usuario").value,
-			password: document.querySelector("#contrasena").value,
-		};
+		const body = formState;
 
 		fetch("http://localhost:3000/login", {
 			method: "POST",
@@ -41,8 +44,34 @@ export default function Login() {
 					<p className="h5 font-family--jetbrains-mono d-flex justify-content-center mb-4">Inicio de sesión</p>
 					<div className="d-flex flex-column gap-3">
 						<form onSubmit={login} className="d-flex flex-column gap-4">
-							<input type="text" className="form-control" id="usuario" placeholder="Usuario" required />
-							<input type="password" className="form-control" id="contrasena" placeholder="Contraseña" required />
+							<input
+								value={formState.email}
+								onChange={(event) => {
+									setFormState({
+										...formState,
+										email: event.target.value,
+									});
+								}}
+								type="text"
+								className="form-control"
+								id="usuario"
+								placeholder="Usuario"
+								required
+							/>
+							<input
+								value={formState.password}
+								onChange={(event) => {
+									setFormState({
+										...formState,
+										password: event.target.value,
+									});
+								}}
+								type="password"
+								className="form-control"
+								id="contrasena"
+								placeholder="Contraseña"
+								required
+							/>
 							<button type="submit" className="btn btn-primary">
 								Iniciar sesión
 							</button>

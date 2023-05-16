@@ -1,5 +1,9 @@
 {
 	"scripts": {
 		"dev": "npx nodemon ./Backend/app.js"
+	},
+	"dependencies": {
+		"moment": "^2.29.4",
+		"react-bootstrap-icons": "^1.10.3"
 	}
 }
