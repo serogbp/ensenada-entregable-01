@@ -1,7 +1,49 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Layout from "../layouts/Layout";
+import { useState } from "react";
 
 export default function Registro() {
+	const [formState, setFormState] = useState({
+		email: "",
+		password: "",
+		username: "",
+		name: "",
+		surname1: "",
+		surname2: "",
+		age: "",
+		city: "",
+		country: "",
+		studies: "",
+		languages: "",
+		linkedin: "",
+		hobbies: "",
+		role: "",
+	});
+	const navigate = useNavigate();
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+
+		fetch("http://localhost:3000/register", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(formState),
+		}).then(async (response) => {
+			if (response.status === 200) {
+				navigate("/login");
+			} else {
+				const data = await response.json();
+				alert(data.msg);
+			}
+		});
+	};
+
+	const handleOnChange = (event) => {
+		setFormState({ ...formState, [event.target.name]: event.target.value });
+	};
+
 	return (
 		<Layout>
 			<main className="d-flex flex-grow-1 justify-content-center align-items-center bg-tecla-teal">
@@ -9,74 +51,74 @@ export default function Registro() {
 				<div className="card-login card-user bg-tecla-white shadow p-4 m-4">
 					<p className="h5 font-family--jetbrains-mono d-flex justify-content-center mb-4">Registro de usuario</p>
 					<div className="d-flex flex-column gap-3">
-						<form className="d-flex flex-column gap-4">
+						<form onSubmit={handleSubmit} className="d-flex flex-column gap-4">
 							<div>
-								<label className="required" for="email">
+								<label className="required" htmlFor="email">
 									Correo
 								</label>
-								<input required maxlength="150" type="email" className="form-control" name="email" id="email" />
+								<input onChange={handleOnChange} required maxLength="150" type="email" className="form-control" name="email" id="email" />
 							</div>
 							<div>
-								<label className="required" for="password">
+								<label className="required" htmlFor="password">
 									Contraseña
 								</label>
-								<input required maxlength="10" minlength="4" type="password" className="form-control" name="password" id="password" />
+								<input onChange={handleOnChange} required maxLength="10" minLength="4" type="password" className="form-control" name="password" id="password" />
 							</div>
 							<div>
-								<label className="required" for="username">
+								<label className="required" htmlFor="username">
 									Usuario
 								</label>
-								<input required maxlength="150" type="text" className="form-control" name="username" id="username" />
+								<input onChange={handleOnChange} required maxLength="150" type="text" className="form-control" name="username" id="username" />
 							</div>
 							<div>
-								<label className="required" for="name">
+								<label className="required" htmlFor="name">
 									Nombre
 								</label>
-								<input required maxlength="150" type="text" className="form-control" name="name" id="name" />
+								<input onChange={handleOnChange} required maxLength="150" type="text" className="form-control" name="name" id="name" />
 							</div>
 							<div>
-								<label className="required" for="surname1">
+								<label className="required" htmlFor="surname1">
 									Primer apellido
 								</label>
-								<input required maxlength="150" type="text" className="form-control" name="surname1" id="surname1" />
+								<input onChange={handleOnChange} required maxLength="150" type="text" className="form-control" name="surname1" id="surname1" />
 							</div>
 							<div>
-								<label className="required" for="surname2">
+								<label className="required" htmlFor="surname2">
 									Segundo apellido
 								</label>
-								<input required maxlength="150" type="text" className="form-control" name="surname2" id="surname2" />
+								<input onChange={handleOnChange} required maxLength="150" type="text" className="form-control" name="surname2" id="surname2" />
 							</div>
 							<div>
-								<label for="age">Edad</label>
-								<input maxlength="3" type="number" className="form-control" name="age" id="age" />
+								<label htmlFor="age">Edad</label>
+								<input onChange={handleOnChange} maxLength="3" type="number" className="form-control" name="age" id="age" />
 							</div>
 							<div>
-								<label for="city">Ciudad</label>
-								<input maxlength="150" type="text" className="form-control" name="city" id="city" />
+								<label htmlFor="city">Ciudad</label>
+								<input onChange={handleOnChange} maxLength="150" type="text" className="form-control" name="city" id="city" />
 							</div>
 							<div>
-								<label for="country">País</label>
-								<input maxlength="150" type="text" className="form-control" name="country" id="country" />
+								<label htmlFor="country">País</label>
+								<input onChange={handleOnChange} maxLength="150" type="text" className="form-control" name="country" id="country" />
 							</div>
 							<div>
-								<label for="studies">Estudios</label>
-								<input maxlength="150" type="text" className="form-control" name="studies" id="studies" />
+								<label htmlFor="studies">Estudios</label>
+								<input onChange={handleOnChange} maxLength="150" type="text" className="form-control" name="studies" id="studies" />
 							</div>
 							<div>
-								<label for="languages">Lenguajes</label>
-								<input maxlength="150" type="text" className="form-control" name="languages" id="languages" />
+								<label htmlFor="languages">Lenguajes</label>
+								<input onChange={handleOnChange} maxLength="150" type="text" className="form-control" name="languages" id="languages" />
 							</div>
 							<div>
-								<label for="linkedin">LinkedIn</label>
-								<input maxlength="150" type="text" className="form-control" name="linkedin" id="linkedin" />
+								<label htmlFor="linkedin">LinkedIn</label>
+								<input onChange={handleOnChange} maxLength="150" type="text" className="form-control" name="linkedin" id="linkedin" />
 							</div>
 							<div>
-								<label for="hobbies">Hobbies</label>
-								<input maxlength="150" type="text" className="form-control" name="hobbies" id="hobbies" />
+								<label htmlFor="hobbies">Hobbies</label>
+								<input onChange={handleOnChange} maxLength="150" type="text" className="form-control" name="hobbies" id="hobbies" />
 							</div>
 							<div>
-								<label for="role">Rol</label>
-								<input maxlength="150" type="text" className="form-control" name="role" id="role" />
+								<label htmlFor="role">Rol</label>
+								<input onChange={handleOnChange} maxLength="150" type="text" className="form-control" name="role" id="role" />
 							</div>
 
 							<button type="submit" className="btn btn-primary">

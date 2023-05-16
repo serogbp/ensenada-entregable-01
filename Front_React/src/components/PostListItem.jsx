@@ -1,4 +1,4 @@
-import moment from "moment/moment";
+import moment from "moment";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { HeartFill, Heart } from "react-bootstrap-icons";
@@ -21,17 +21,17 @@ export default function PostListItem(props) {
 function Header({ post }) {
 	return (
 		<div className="d-flex justify-content-between align-items-center">
-			<div class="d-flex gap-4">
-				<img class="avatar" src={post.picture} alt="Imagen del usuario" />
-				<div class="doble-texto">
+			<div className="d-flex gap-4">
+				<img className="avatar" src={post.picture} alt="Imagen del usuario" />
+				<div className="doble-texto">
 					<p>
 						{post.name} {post.surname1} {post.surname2}
 					</p>
 					<p>@{post.username}</p>
 				</div>
 			</div>
-			<div class="icon-wrapper">
-				<i class="icon bi bi-three-dots"></i>
+			<div className="icon-wrapper">
+				<i className="icon bi bi-three-dots"></i>
 			</div>
 		</div>
 	);

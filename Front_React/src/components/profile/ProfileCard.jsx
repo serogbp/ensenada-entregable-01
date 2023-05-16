@@ -1,0 +1,20 @@
+export default function ProfileCard(props) {
+	const { title, campos } = props;
+	return (
+		<div className="row mt-0 m-3 p-3 font-family--jetbrains-mono card-1">
+			<p className="fs-5 fw-bold card-header">{title}</p>
+			{campos.map((campo) => {
+				return (
+					<div className=" row p-1">
+						<div className="col-lg-4">
+							<p className="m-0 p-2">{campo.nombre}:</p>
+						</div>
+						<div className="col-lg-4">
+							<p className="p-2 bg-light">{campo.valor}</p>
+						</div>
+					</div>
+				);
+			})}
+		</div>
+	);
+}
