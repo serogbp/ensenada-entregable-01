@@ -1,15 +1,23 @@
 import { useState } from "react";
 import PostListItem from "./PostListItem";
+import PostCreator from "./PostCreator";
 
 export default function PostList() {
 	const [posts, setPosts] = useState(POSTS_DEFAULT);
 	// TODO fetch posts
 
+	const addPost = (newPost) => {
+		setPosts([newPost, ...posts]);
+	};
+
 	return (
 		<div className="d-flex flex-column gap-4">
-			{posts.map((post, index) => (
-				<PostListItem post={post} key={index} />
-			))}
+			<>
+				<PostCreator addPost={addPost} />
+				{posts.map((post, index) => (
+					<PostListItem post={post} key={index} />
+				))}
+			</>
 		</div>
 	);
 }

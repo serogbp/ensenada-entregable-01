@@ -12,10 +12,9 @@ export default function Feed() {
 						<SideBarLinks />
 					</div>
 					<div className="col-6 d-flex flex-column gap-4">
-						<PostCreator />
 						<PostList />
 					</div>
-					<div className="col col">peticiones y eventos</div>
+					<div className="col">peticiones y eventos</div>
 				</div>
 			</div>
 		</MainLayout>

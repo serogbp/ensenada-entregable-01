@@ -1,14 +1,27 @@
 import { useState } from "react";
 import CharacterCounter from "./CharacterCounter";
+import PropTypes from "prop-types";
 
-export default function PostCreator() {
-	// TODO handle crear posts
+PostCreator.propsTypes = {
+	addPost: PropTypes.func.isRequired,
+};
+
+export default function PostCreator(props) {
+	const { addPost } = props;
+	// TODO handle onSubmit para guardar el nuevo post
 	// TODO handle picture
-
 	const [text, setText] = useState("");
 
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		//TODO revisar necesito un objeto?
+		const newPost = { post_id: 1, likes: 5, user_id: 1, publishDate: "2023-04-28 10:02:54", content: text };
+		addPost(newPost);
+		setText("");
+	};
+
 	return (
-		<div className="d-flex flex-column gap-4 card">
+		<form onSubmit={handleSubmit} className="d-flex flex-column gap-4 card">
 			<div className="d-flex gap-4 align-items-center">
 				<img src="" alt="" className="avatar" />
 				<p className="font-bold h5">Publicar un nuevo post</p>
@@ -16,8 +29,10 @@ export default function PostCreator() {
 			<textarea value={text} onChange={(event) => setText(event.target.value)} id="create-post" name="create-post" autoComplete="off" placeholder="¿Qué está pasando?" className="p-3 rounded"></textarea>
 			<div className="d-flex justify-content-between align-items-center">
 				<CharacterCounter charactersLength={text.length} />
-				<button className="w-auto btn btn-primary">Publicar</button>
+				<button type="submit" className="w-auto btn btn-primary">
+					Publicar
+				</button>
 			</div>
-		</div>
+		</form>
 	);
 }
