@@ -8,7 +8,7 @@ export default function Navbar() {
 	return (
 		<header className="sticky-top shadow-sm">
 			<nav className="navbar navbar-expand-lg bg-body-tertiary">
-				<div className="container-fluid">
+				<div className="container-fluid px-lg-5">
 					<Link to={ROUTES.FEED} className="navbar-brand font-family--jetbrains-mono" href="#">
 						{/* <!-- LOGO --> */}
 						<strong>//TECLA</strong>_SOCIAL
@@ -16,8 +16,7 @@ export default function Navbar() {
 					<button className="w-auto navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>
 					</button>
-					<div className="collapse navbar-collapse" id="navbarNav">
-						<ul className="navbar-nav d-none d-lg-flex gap-4">
+					<div className="collapse navbar-collapse justify-content-end" id="navbarNav">
 						<ul className="navbar-nav d-none d-lg-flex gap-4 font-family--jetbrains-mono">
 							<Link to={ROUTES.FEED}>
 								<li>Feed</li>
