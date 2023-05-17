@@ -7,10 +7,10 @@ export default function ProfileCard(props) {
 				return (
 					<div className=" row p-1">
 						<div className="col-lg-4">
-							<p className="m-0 p-2">{campo.nombre}:</p>
+							<p className="m-0 p-2">{campo.data}:</p>
 						</div>
 						<div className="col-lg-4">
-							<p className="p-2 bg-light">{campo.valor}</p>
+							<p className="p-2 bg-light">{campo.value}</p>
 						</div>
 					</div>
 				);

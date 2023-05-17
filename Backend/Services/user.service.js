@@ -9,8 +9,8 @@ const FRIEND_STATUS = Object.freeze({
 });
 
 export const getUser = async (request, response) => {
-	let user_id = request.params.user_id;
-
+	let user_id = request.params.id;
+	// Si hay user_id es el logeado, si no es el amigo
 	if (!user_id) {
 		const token = request.get("Authorization");
 		const decoded = jwt.verify(token, config.jwt.clave);

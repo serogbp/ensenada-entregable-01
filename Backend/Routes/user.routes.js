@@ -13,6 +13,11 @@ router
 	.delete(isLogged, deleteUser); // pantalla modificar usuario
 
 // prettier-ignore
+router
+	.route("/:id")
+	.get(isLogged, getUser);
+
+// prettier-ignore
 router.route("/friends")
 	.get(getFriends); // pantalla lista amigos
 
