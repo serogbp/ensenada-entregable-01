@@ -1,3 +1,4 @@
+import FriendRequestList from "../components/FriendRequestList";
 import PostCreator from "../components/PostCreator";
 import PostList from "../components/PostList";
 import SideBarLinks from "../components/SideBarLinks";
@@ -14,7 +15,9 @@ export default function Feed() {
 					<div className="col-6 d-flex flex-column gap-4">
 						<PostList />
 					</div>
-					<div className="col">peticiones y eventos</div>
+					<div className="col">
+						<FriendRequestList />
+					</div>
 				</div>
 			</div>
 		</MainLayout>
