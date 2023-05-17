@@ -15,8 +15,7 @@ export default function PostCreator(props) {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		//TODO revisar necesito un objeto?
-		const newPost = { post_id: 1, likes: 5, user_id: 1, publishDate: "2023-04-28 10:02:54", content: text };
-		addPost(newPost);
+		addPost(text);
 		setText("");
 	};
 

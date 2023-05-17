@@ -20,7 +20,6 @@ export default function FriendRequestList() {
 				if (response.status === 200) {
 					const body = await response.json();
 					setFriendRequests(body);
-					console.log(body);
 				} else {
 					const data = await response.json();
 					alert(data.msg);
