@@ -18,6 +18,7 @@ export default function Navbar() {
 					</button>
 					<div className="collapse navbar-collapse" id="navbarNav">
 						<ul className="navbar-nav d-none d-lg-flex gap-4">
+						<ul className="navbar-nav d-none d-lg-flex gap-4 font-family--jetbrains-mono">
 							<Link to={ROUTES.FEED}>
 								<li>Feed</li>
 							</Link>
