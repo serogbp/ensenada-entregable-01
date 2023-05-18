@@ -1,3 +1,4 @@
+import EventList from "../components/EventList";
 import FriendRequestList from "../components/FriendRequestList";
 import PostList from "../components/PostList";
 import SideBarLinks from "../components/SideBarLinks";
@@ -14,8 +15,9 @@ export default function Feed() {
 					<div className="col-lg-6 d-flex flex-column gap-4 order-2">
 						<PostList />
 					</div>
-					<div className="col-lg order-1 order-lg-3">
+					<div className="d-flex flex-column gap-4 col-lg order-1 order-lg-3">
 						<FriendRequestList />
+						<EventList />
 					</div>
 				</div>
 			</div>
