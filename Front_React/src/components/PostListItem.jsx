@@ -10,7 +10,7 @@ PostListItem.propsTypes = {
 export default function PostListItem(props) {
 	const { post } = props;
 	return (
-		<div className="card post rounded-3 p-4 d-flex flex-column gap-3">
+		<div className="card post rounded-3 py-3 px-4 d-flex flex-column gap-3">
 			<Header post={post} />
 			<Body post={post} />
 			<Footer post={post} />
@@ -29,9 +29,6 @@ function Header({ post }) {
 					</p>
 					<p>@{post.username}</p>
 				</div>
-			</div>
-			<div className="icon-wrapper">
-				<i className="icon bi bi-three-dots"></i>
 			</div>
 		</div>
 	);
