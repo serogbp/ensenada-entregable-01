@@ -6,9 +6,9 @@ import { ROUTES } from "../common/enums";
 
 export default function Navbar() {
 	return (
-		<header className="sticky-top shadow-sm">
-			<nav className="navbar navbar-expand-lg bg-body-tertiary">
-				<div className="container-fluid px-lg-5">
+		<header className="sticky-top shadow-sm bg-light-subtle">
+			<nav className="navbar navbar-expand-lg">
+				<div className="container-fluid px-lg-5 bg-light-subtle">
 					<Link to={ROUTES.FEED} className="navbar-brand font-family--jetbrains-mono" href="#">
 						{/* <!-- LOGO --> */}
 						<strong>//TECLA</strong>_SOCIAL

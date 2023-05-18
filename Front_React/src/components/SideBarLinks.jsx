@@ -3,7 +3,7 @@ import { ROUTES } from "../common/enums";
 
 export default function SideBarLinks() {
 	return (
-		<ul className="nav-list list-unstyled card text-start">
+		<ul className="nav-list list-unstyled card text-start bg-light-subtle">
 			<p className="font-family--jetbrains-mono h5 mb-1">Enlaces</p>
 			<Link to={ROUTES.FEED}>
 				<li>🧾 Feed</li>

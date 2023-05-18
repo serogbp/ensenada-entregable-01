@@ -14,7 +14,7 @@ export default function EventList() {
 		},
 	];
 	return (
-		<div className="card gap-4">
+		<div className="card gap-4 bg-light-subtle">
 			<p className="h5 mb-1 font-family--jetbrains-mono">Eventos</p>
 			{events.map((event, index) => (
 				<EventListItem date={event.date} body={event.body} detail={event.detail} key={index} />

@@ -40,7 +40,7 @@ export default function Login() {
 		<Layout>
 			<main className="d-flex flex-grow-1 justify-content-center align-items-center bg-tecla-teal">
 				{/* <!-- tarjeta datos de usuario --> */}
-				<div className="card-login card-user bg-tecla-white shadow p-4">
+				<div className="card-login card-user bg-tecla-white shadow p-4 bg-light-subtle">
 					<p className="h5 font-family--jetbrains-mono d-flex justify-content-center mb-4">Inicio de sesión</p>
 					<div className="d-flex flex-column gap-3">
 						<form onSubmit={login} className="d-flex flex-column gap-4">

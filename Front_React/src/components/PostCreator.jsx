@@ -20,7 +20,7 @@ export default function PostCreator(props) {
 	};
 
 	return (
-		<form onSubmit={handleSubmit} className="d-flex flex-column gap-4 card">
+		<form onSubmit={handleSubmit} className="d-flex flex-column gap-4 card bg-light-subtle">
 			<div className="d-flex gap-4 align-items-center">
 				<img src="" alt="" className="avatar" />
 				<p className="font-bold h5 font-family--jetbrains-mono">Publicar un nuevo post</p>

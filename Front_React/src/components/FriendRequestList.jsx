@@ -67,7 +67,7 @@ export default function FriendRequestList() {
 	};
 
 	return (
-		<div className="list-unstyled card text-start">
+		<div className="list-unstyled card text-start bg-light-subtle">
 			<p className="h5 pb-4 mb-1 font-family--jetbrains-mono px-0">Peticiones de amistad</p>
 			<div id="friendRequests" className="d-flex flex-column gap-4">
 				{
