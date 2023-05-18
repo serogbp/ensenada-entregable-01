@@ -6,10 +6,10 @@ PostCreator.propsTypes = {
 	addPost: PropTypes.func.isRequired,
 };
 
+// TODO handle picture
+// O con un fetch getUser o guardar la url de la foto en localstorage?
 export default function PostCreator(props) {
 	const { addPost } = props;
-	// TODO handle onSubmit para guardar el nuevo post
-	// TODO handle picture
 	const [text, setText] = useState("");
 
 	const handleSubmit = (event) => {
