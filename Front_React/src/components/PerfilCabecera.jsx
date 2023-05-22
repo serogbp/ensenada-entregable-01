@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import Modal from "./Modal";
 
 PerfilCabecera.propsTypes = {
 	user: PropTypes.object.isRequired,
@@ -13,8 +13,6 @@ export default function PerfilCabecera(props) {
 	// Parametro id de un amigo
 	const { id } = useParams();
 	const navigate = useNavigate();
-
-	const [modal, setModal] = useState(false);
 
 	const handleDelete = () => {
 		fetch(`http://localhost:3000/user/`, {
@@ -58,34 +56,14 @@ export default function PerfilCabecera(props) {
 									Editar perfil
 								</button>
 
-								<button type="button" className="btn btn-outline-danger" onClick={() => setModal(true)}>
+								<button type="button" className="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
 									Eliminar perfil
 								</button>
 							</div>
 						)}
 					</div>
-					{!modal && (
-						<div id="id01" className="modal">
-							<span className="close" title="Close Modal">
-								×
-							</span>
-							<form className="modal-content">
-								<div>
-									<h1>Eliminar cuenta</h1>
-									<p>Seguro que desea eliminar la cuenta?</p>
 
-									<div className="clearfix">
-										<button type="button" className="cancelbtn">
-											Cancelar
-										</button>
-										<button type="button" id="deleteUser" onClick={handleDelete} className="deletebtn">
-											Confirmar
-										</button>
-									</div>
-								</div>
-							</form>
-						</div>
-					)}
+					<Modal />
 				</div>
 			</div>
 		</div>
