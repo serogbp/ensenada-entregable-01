@@ -4,6 +4,7 @@ export default function useTheme() {
 	const [theme, setTheme] = useState(getTheme());
 
 	useEffect(() => {
+		console.log("tema cambiado");
 		localStorage.setItem("theme", theme);
 
 		if (theme === "auto" && window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -17,12 +18,9 @@ export default function useTheme() {
 		return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 	}
 
-	// Cambiar theme de la app acorde con el theme del dispositivo
-	window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
-		if (theme !== "light" || theme !== "dark") {
-			setTheme(getTheme());
-		}
-	});
+	function changeTheme() {
+		setTheme(getTheme());
+	}
 
-	return {};
+	return { changeTheme };
 }

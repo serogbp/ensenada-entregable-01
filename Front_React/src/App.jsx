@@ -44,6 +44,12 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-	useTheme();
+	const { changeTheme } = useTheme();
+
+	// Cambiar theme de la app acorde con el theme del dispositivo
+	window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+		changeTheme();
+	});
+
 	return <RouterProvider router={router} />;
 }
