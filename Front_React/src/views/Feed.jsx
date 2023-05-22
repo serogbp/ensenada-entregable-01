@@ -8,14 +8,14 @@ export default function Feed() {
 	return (
 		<MainLayout>
 			<div className="container">
-				<div className="row gap-4">
-					<div className="col-lg d-none d-lg-block">
+				<div className="row gap-4 gap-lg-0">
+					<div className="col d-none d-lg-block">
 						<SideBarLinks />
 					</div>
 					<div className="col-lg-6 d-flex flex-column gap-4 order-2">
 						<PostList />
 					</div>
-					<div className="d-flex flex-column gap-4 col-lg order-1 order-lg-3">
+					<div className="d-flex flex-column gap-4 col order-1 order-lg-3">
 						<FriendRequestList />
 						<EventList />
 					</div>
