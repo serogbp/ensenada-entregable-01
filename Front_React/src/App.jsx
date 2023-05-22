@@ -6,6 +6,7 @@ import Registro from "./views/Registro";
 import { ROUTES } from "./common/enums";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import useTheme from "./hooks/useTheme";
 
 const router = createBrowserRouter([
 	{
@@ -43,5 +44,12 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
+	const { changeTheme } = useTheme();
+
+	// Cambiar theme de la app acorde con el theme del dispositivo
+	window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+		changeTheme();
+	});
+
 	return <RouterProvider router={router} />;
 }

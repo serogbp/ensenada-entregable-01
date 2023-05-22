@@ -10,6 +10,8 @@ export function isLogged(req, res, next) {
 			}
 
 			if (tokenDecoded) {
+				// Guardar el token decodificado en el request para los siguientes middleware
+				req.tokenDecoded = tokenDecoded;
 				return next();
 			}
 		});
