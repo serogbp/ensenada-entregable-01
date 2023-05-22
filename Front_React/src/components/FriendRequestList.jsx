@@ -75,7 +75,7 @@ export default function FriendRequestList() {
 					// prettier-ignore
 					friendRequests.length > 0 ?
 					friendRequests.map((friendRequest, index) => (
-						<FriendRequestListItem data={friendRequest} acceptRequest={acceptRequest} rejectRequest={rejectRequest} key={index} />
+						<FriendRequestListItem data={friendRequest} acceptRequest={acceptRequest} rejectRequest={rejectRequest} key={index} index={index}/>
 					)) :
 					<p>No hay peticiones de amistad</p>
 				}

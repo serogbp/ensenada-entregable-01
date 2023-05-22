@@ -6,6 +6,7 @@ FriendRequestListItem.propsTypes = {
 	data: PropTypes.object.isRequired,
 	acceptRequest: PropTypes.func.isRequired,
 	rejectRequest: PropTypes.func.isRequired,
+	index: PropTypes.number.isRequired,
 };
 /*
 {
@@ -18,13 +19,10 @@ FriendRequestListItem.propsTypes = {
 	username: 'beautifulfrog544'
 } */
 export default function FriendRequestListItem(props) {
-	const [hover, setHover] = useState(false);
-	const { data, acceptRequest, rejectRequest } = props;
-
-	const visible = hover ? "d-block" : "d-none";
-
+	const { data, acceptRequest, rejectRequest, index } = props;
+	const buttonWrapperID = "collapseButtons" + index;
 	return (
-		<div className="d-flex flex-column gap-2" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+		<a className="d-flex flex-column gap-2" data-bs-toggle="collapse" aria-expanded="false" aria-controls={buttonWrapperID} role="button" href={"#" + buttonWrapperID}>
 			<div className="d-flex gap-1">
 				<div className="avatar">
 					<img src={data.picture} alt={data.name} />
@@ -36,26 +34,29 @@ export default function FriendRequestListItem(props) {
 					<p className="text-break">@{data.username}</p>
 				</div>
 			</div>
-			<div className={"d-flex gap-2 justify-content-between " + visible} style={{ transition: "all 0.1s ease-in-out" }}>
-				<button
-					onClick={() => {
-						acceptRequest(data.user_id);
-					}}
-					id="buttonAccept"
-					className="btn btn-outline-primary "
-				>
-					<Check size={32} />
-				</button>
-				<button
-					onClick={() => {
-						rejectRequest(data.user_id);
-					}}
-					id="buttonReject"
-					className="btn btn-outline-danger "
-				>
-					<X size={32} />
-				</button>
+			{/* Botones aceptar y rechazar que son Collapse */}
+			<div className="collapse" id={buttonWrapperID}>
+				<div className={"d-flex gap-2 justify-content-between"}>
+					<button
+						onClick={() => {
+							acceptRequest(data.user_id);
+						}}
+						id="buttonAccept"
+						className="btn btn-outline-primary "
+					>
+						<Check size={32} />
+					</button>
+					<button
+						onClick={() => {
+							rejectRequest(data.user_id);
+						}}
+						id="buttonReject"
+						className="btn btn-outline-danger "
+					>
+						<X size={32} />
+					</button>
+				</div>
 			</div>
-		</div>
+		</a>
 	);
 }
