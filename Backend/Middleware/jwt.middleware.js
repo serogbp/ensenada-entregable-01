@@ -15,5 +15,7 @@ export function isLogged(req, res, next) {
 				return next();
 			}
 		});
+	} else {
+		return res.status(401).json({ msg: "Usuario no logeado" });
 	}
 }

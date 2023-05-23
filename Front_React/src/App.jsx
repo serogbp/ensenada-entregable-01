@@ -3,6 +3,7 @@ import LandingPage from "./views/LandingPage";
 import Login from "./views/Login";
 import PerfilUsuario from "./views/PerfilUsuario";
 import Registro from "./views/Registro";
+import ListaAmigos from "./views/ListaAmigos";
 import { ROUTES } from "./common/enums";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
 	},
 	{
 		path: ROUTES.FRIENDS,
-		// element: <ListaAmigos />,
+		element: <ListaAmigos />,
 	},
 ]);
 

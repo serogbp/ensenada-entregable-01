@@ -1,0 +1,16 @@
+export default function () {
+	return (
+		const element = document.createElement("a");
+	element.classList.add(...["friend-card", "card", "d-flex", "flex-column", "gap-2", "align-items-center"]);
+	element.style.width = "2rem";
+	element.innerHTML = `
+		<img src="${friendData.picture}" alt="${friendData.name} ${friendData.surname1} ${friendData.surname2}" class="avatar"/>
+		<div class="doble-texto">
+			<p class="text-break">${friendData.name} ${friendData.surname1} ${friendData.surname2} </p>
+			<p class="text-break">@${friendData.username}</p>
+		</div>
+	`;
+	element.href = `/pages/perfil-de-usuario.html?user_id=${friendData.user_id}`;
+	return element;
+	);
+}

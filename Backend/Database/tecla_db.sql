@@ -187,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `hobbies` varchar(150) DEFAULT NULL,
   `role` varchar(150) DEFAULT NULL,
   `picture` varchar(500) DEFAULT NULL,
-  `userType` int(11) NOT NULL DEFAULT 1,
+  `userType` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
