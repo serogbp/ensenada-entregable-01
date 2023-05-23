@@ -6,8 +6,8 @@ export default function FriendList() {
 	useEffect(() => {
 		fetch(`http://localhost:3000/user/friends`, {
 			method: "GET",
-			header: {
-				Authorization: localStorage.getItem("token"),
+			headers: {
+				Authorization: `${localStorage.getItem("token")}`,
 			},
 		})
 			.then(async (response) => {
@@ -23,17 +23,19 @@ export default function FriendList() {
 
 	return (
 		<>
-			<div>
-				<label htmlFor="sort-type">Ordenar por:</label>
-				<select id="sort-type" name="sort-type" className="rounded p-1">
-					<option value="manual">Orden de llegada</option>
-					<option value="name">Nombre</option>
-					<option value="username">Username</option>
-				</select>
-				<p className="h3 mb-1 font-family--jetbrains-mono">Mis amigos</p>
+			<div className="d-flex flex-column gap-3">
+				<div className="d-flex gap-3 align-items-center">
+					<label htmlFor="sort-type">Ordenar por: </label>
+					<select id="sort-type" name="sort-type" className="rounded p-1">
+						<option value="manual">Orden de llegada</option>
+						<option value="name">Nombre</option>
+						<option value="username">Username</option>
+					</select>
+				</div>
+				<p className="h3 mb-1 font-family--jetbrains-mono ">Mis amigos</p>
 				<div id="friend-list-wrapper" className="d-flex flex-wrap gap-3">
 					{friendList.map((friendData, index) => {
-						<CreateFriendElement friendData={friendData} key={index} />;
+						return <CreateFriendElement friendData={friendData} key={index} />;
 					})}
 				</div>
 			</div>

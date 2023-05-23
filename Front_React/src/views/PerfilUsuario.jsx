@@ -40,7 +40,7 @@ export default function PerfilUsuario() {
 					console.log(error);
 				});
 		}
-	}, []);
+	});
 
 	return (
 		<MainLayout>

@@ -10,7 +10,7 @@ export default function ListaAmigos() {
 					<div className="col d-none d-lg-block">
 						<SideBarLinks />
 					</div>
-					<div className="col-lg-8 d-flex flex-column">
+					<div className="col-lg-10 d-flex flex-column">
 						<FriendList />
 					</div>
 				</div>
