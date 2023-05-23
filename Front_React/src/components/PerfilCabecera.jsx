@@ -56,7 +56,7 @@ export default function PerfilCabecera(props) {
 									Editar perfil
 								</button>
 
-								<button type="button" className="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+								<button type="button" className="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={handleDelete}>
 									Eliminar perfil
 								</button>
 							</div>
