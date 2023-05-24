@@ -52,15 +52,53 @@ function Footer({ post }) {
 }
 
 function LikeCounter({ post }) {
-	const [counter, setCounter] = useState(post.likes);
+	const [counter, setCounter] = useState(post.total_likes);
 	// TODO query para saber si esta likeado por el usuario logeado
 	const [isLiked, setIsLiked] = useState(false);
 	const [isHover, setIsHover] = useState(false);
 
 	const handleClick = () => {
 		setCounter(!isLiked ? counter + 1 : counter - 1);
-		setIsLiked(!isLiked);
-		// TODO FETCH para dar / quitar like
+
+		if (!isLiked) {
+			fetch(`http://localhost:3000/post/like/${post.post_id}`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `${localStorage.getItem("token")}`,
+				},
+			})
+				.then(async (response) => {
+					if (response.status === 200) {
+						setIsLiked(true);
+					} else {
+						const data = await response.json();
+						alert(data.msg);
+					}
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		} else {
+			fetch(`http://localhost:3000/post/like/${post.post_id}`, {
+				method: "DELETE",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `${localStorage.getItem("token")}`,
+				},
+			})
+				.then(async (response) => {
+					if (response.status === 200) {
+						setIsLiked(false);
+					} else {
+						const data = await response.json();
+						alert(data.msg);
+					}
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		}
 	};
 
 	return (
