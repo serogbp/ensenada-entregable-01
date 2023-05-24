@@ -52,15 +52,15 @@ function Footer({ post }) {
 }
 
 function LikeCounter({ post }) {
-	const [counter, setCounter] = useState(post.total_likes);
-	// TODO query para saber si esta likeado por el usuario logeado
-	const [isLiked, setIsLiked] = useState(false);
+	const [counter, setCounter] = useState(post.total_likes ?? 0);
+	// La query en el campo has_like devuelve 0 o 1
+	// Si es 1, el usuario ya ha dado like, si es 0, el usuario no ha dado like.
+	const [isLiked, setIsLiked] = useState(Boolean(post.has_like));
 	const [isHover, setIsHover] = useState(false);
 
 	const handleClick = () => {
-		setCounter(!isLiked ? counter + 1 : counter - 1);
-
 		if (!isLiked) {
+			// Dar like
 			fetch(`http://localhost:3000/post/like/${post.post_id}`, {
 				method: "POST",
 				headers: {
@@ -70,6 +70,7 @@ function LikeCounter({ post }) {
 			})
 				.then(async (response) => {
 					if (response.status === 200) {
+						setCounter(counter + 1);
 						setIsLiked(true);
 					} else {
 						const data = await response.json();
@@ -80,6 +81,7 @@ function LikeCounter({ post }) {
 					console.log(error);
 				});
 		} else {
+			// Quitar like
 			fetch(`http://localhost:3000/post/like/${post.post_id}`, {
 				method: "DELETE",
 				headers: {
@@ -89,6 +91,7 @@ function LikeCounter({ post }) {
 			})
 				.then(async (response) => {
 					if (response.status === 200) {
+						setCounter(counter - 1);
 						setIsLiked(false);
 					} else {
 						const data = await response.json();
@@ -105,9 +108,10 @@ function LikeCounter({ post }) {
 		// prettier-ignore
 		<div onMouseEnter={() => { setIsHover(true); }} onMouseLeave={() => { setIsHover(false); }} onClick={handleClick} className="d-flex gap-3 align-items-center user-select-none"
 		>
+
 			{!isLiked && <Heart className="p-0" color={isHover ? "red" : ""} size={18} />}
 			{isLiked && <HeartFill color="red" size={18} />}
-			<p className="mb-0">{counter}</p>
+			<p className="mb-0">{counter === 0 ? "" : counter}</p>
 		</div>
 	);
 }

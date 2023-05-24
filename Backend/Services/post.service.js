@@ -14,7 +14,8 @@ export const getPosts = async (request, response) => {
 
 		const [rows, fields] = await connection.query(
 			`
-			SELECT users.name, users.surname1, users.surname2, users.username, users.picture, posts.content, posts.publishDate, posts.post_id, likes.total_likes
+			SELECT users.name, users.surname1, users.surname2, users.username, users.picture, posts.content, posts.publishDate, posts.post_id, likes.total_likes,
+				CASE WHEN reactions.user_id = ? THEN 1 ELSE 0 END AS has_like
 			FROM users
 			INNER JOIN posts ON posts.user_id = users.user_id
 			LEFT JOIN (
@@ -22,9 +23,11 @@ export const getPosts = async (request, response) => {
 				FROM reactions
 				GROUP BY post_id
 			) AS likes ON likes.post_id = posts.post_id
+			LEFT JOIN reactions ON reactions.post_id = posts.post_id AND reactions.user_id = ?
 			WHERE posts.user_id = ?
 			UNION
-			SELECT users.name, users.surname1, users.surname2, users.username, users.picture, posts.content, posts.publishDate, posts.post_id, likes.total_likes
+			SELECT users.name, users.surname1, users.surname2, users.username, users.picture, posts.content, posts.publishDate, posts.post_id, likes.total_likes,
+				CASE WHEN reactions.user_id = ? THEN 1 ELSE 0 END AS has_like
 			FROM friends
 			INNER JOIN posts ON posts.user_id = friends.receptor_id
 			INNER JOIN users ON posts.user_id = users.user_id
@@ -33,10 +36,11 @@ export const getPosts = async (request, response) => {
 				FROM reactions
 				GROUP BY post_id
 			) AS likes ON likes.post_id = posts.post_id
+			LEFT JOIN reactions ON reactions.post_id = posts.post_id AND reactions.user_id = ?
 			WHERE friends.sender_id = ? AND friends.status = 1
 			ORDER BY publishDate DESC;
 		`,
-			[user_id, user_id]
+			[user_id, user_id, user_id, user_id, user_id, user_id]
 		);
 		connection.end();
 		if (rows.isEmpty) return response.status(404).json({ msg: "No hay posts" });
@@ -84,7 +88,7 @@ export const deleteLike = async (request, response) => {
 
 	try {
 		const connection = await connect();
-		await connection.execute(`DELETE * FROM reactions WHERE post_id = ? AND user_id = ?`, [post_id, user_id]);
+		await connection.execute(`DELETE FROM reactions WHERE post_id = ? AND user_id = ?`, [post_id, user_id]);
 		connection.end();
 	} catch (error) {
 		return response.status(500).json({ msg: "Error al quitar like" });
