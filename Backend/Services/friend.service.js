@@ -30,7 +30,8 @@ export const getFriendRequests = async (request, response) => {
 };
 
 export const createRequest = async (request, response) => {
-	const { sender_id, receptor_id } = request.body;
+	const sender_id = request.tokenDecoded.user_id;
+	const receptor_id = request.body.receptor_id;
 
 	try {
 		const connection = await connect();

@@ -93,7 +93,7 @@ export const getFriends = async (request, response) => {
 };
 
 export const getNoFriends = async (request, response) => {
-	const user_id = request.params.user_id;
+	const user_id = request.tokenDecoded.user_id;
 	try {
 		const connection = await connect();
 		const [rows, fields] = await connection.query(

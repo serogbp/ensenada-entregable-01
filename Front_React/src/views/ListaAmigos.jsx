@@ -1,6 +1,7 @@
 import FriendList from "../components/FriendList";
 import MainLayout from "../layouts/MainLayout";
 import SideBarLinks from "../components/SideBarLinks";
+import SugestedList from "../components/SugestedList";
 
 export default function ListaAmigos() {
 	return (
@@ -10,8 +11,9 @@ export default function ListaAmigos() {
 					<div className="col d-none d-lg-block">
 						<SideBarLinks />
 					</div>
-					<div className="col-lg-10 d-flex flex-column">
+					<div className="col-lg-10 d-flex flex-column gap-3">
 						<FriendList />
+						<SugestedList />
 					</div>
 				</div>
 			</div>
