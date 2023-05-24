@@ -2,45 +2,42 @@ import PerfilCabecera from "../components/PerfilCabecera";
 import SideBarLinks from "../components/SideBarLinks";
 import ProfileCard from "../components/profile/ProfileCard";
 import MainLayout from "../layouts/MainLayout";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+
+export function loader({ params }) {
+	if (!params.id) {
+		return fetch(`http://localhost:3000/user`, {
+			method: "GET",
+			headers: {
+				Authorization: `${localStorage.getItem("token")}`,
+			},
+		})
+			.then(async (response) => {
+				const json = await response.json();
+				return json;
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	} else {
+		return fetch(`http://localhost:3000/user/${params.id}`, {
+			method: "GET",
+			headers: {
+				Authorization: `${localStorage.getItem("token")}`,
+			},
+		})
+			.then(async (response) => {
+				const json = await response.json();
+				return json;
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}
+}
 
 export default function PerfilUsuario() {
-	// codigo que recoge datos del usuario
-	const [user, setUser] = useState({});
-	const { id } = useParams();
-
-	useEffect(() => {
-		if (!id) {
-			fetch(`http://localhost:3000/user`, {
-				method: "GET",
-				headers: {
-					Authorization: `${localStorage.getItem("token")}`,
-				},
-			})
-				.then(async (response) => {
-					const json = await response.json();
-					setUser(json);
-				})
-				.catch((error) => {
-					console.log(error);
-				});
-		} else {
-			fetch(`http://localhost:3000/user/${id}`, {
-				method: "GET",
-				headers: {
-					Authorization: `${localStorage.getItem("token")}`,
-				},
-			})
-				.then(async (response) => {
-					const json = await response.json();
-					setUser(json);
-				})
-				.catch((error) => {
-					console.log(error);
-				});
-		}
-	});
+	const user = useLoaderData();
 
 	return (
 		<MainLayout>
