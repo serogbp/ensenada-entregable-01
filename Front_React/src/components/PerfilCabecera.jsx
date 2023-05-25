@@ -52,7 +52,7 @@ export default function PerfilCabecera(props) {
 						</div>
 						{!id && (
 							<div className="col-lg-2 text-center" id="editUser">
-								<button type="button" className="btn btn-outline-dark" onClick={() => navigate("/profile/edit")}>
+								<button type="button" className="btn btn-outline-dark" onClick={() => navigate("/profile/edit", { state: { userState: user } })}>
 									Editar perfil
 								</button>
 

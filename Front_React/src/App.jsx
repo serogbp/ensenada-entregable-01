@@ -4,6 +4,7 @@ import Login from "./views/Login";
 import PerfilUsuario, { loader as perfilUsuarioLoader } from "./views/PerfilUsuario";
 import Registro from "./views/Registro";
 import ListaAmigos from "./views/ListaAmigos";
+import ModificarPerfil from "./views/ModificarPerfil";
 import { ROUTES } from "./common/enums";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
 	},
 	{
 		path: ROUTES.PROFILE_EDIT,
-		// element: <ModificarPerfilUsuario />,
+		element: <ModificarPerfil />,
 	},
 	{
 		path: ROUTES.FEED,

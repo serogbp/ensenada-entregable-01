@@ -20,7 +20,7 @@ export const getUser = async (request, response) => {
 	try {
 		const connection = await connect();
 
-		const [rows, fields] = await connection.query("SELECT * FROM users WHERE user_id = ?", [user_id]);
+		const [rows, fields] = await connection.query("SELECT name, surname1, surname2, email, age, city, country, studies, languages, linkedin, hobbies, role, picture FROM users WHERE user_id = ?", [user_id]);
 		connection.end();
 		if (rows.isEmpty) return response.status(404).json({ msg: "El usuario no existe" });
 
