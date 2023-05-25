@@ -1,10 +1,23 @@
 /* Navbar en el Perfil, modificar perfil, feed, etc */
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SideBarLinks from "./SideBarLinks";
 import { ROUTES } from "../common/enums";
 
 export default function Navbar() {
+	const navigate = useNavigate();
+
+	const logout = () => {
+		localStorage.removeItem("token");
+		navigate(ROUTES.LOGIN);
+	};
+
+	const links = [
+		{ name: "Feed", route: ROUTES.FEED },
+		{ name: "Mi perfil", route: ROUTES.PROFILE },
+		{ name: "Amigos", route: ROUTES.FRIENDS },
+	];
+
 	return (
 		<header className="sticky-top shadow-sm bg-light-subtle">
 			<nav className="navbar navbar-expand-lg">
@@ -17,20 +30,22 @@ export default function Navbar() {
 						<span className="navbar-toggler-icon"></span>
 					</button>
 					<div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-						<ul className="navbar-nav d-none d-lg-flex gap-4 font-family--jetbrains-mono">
-							<Link to={ROUTES.FEED}>
-								<li>Feed</li>
-							</Link>
-							<Link to={ROUTES.PROFILE}>
-								<li>Mi perfil</li>
-							</Link>
-							<Link to={ROUTES.FRIENDS}>
-								<li>Amigos</li>
-							</Link>
+						<ul className="navbar-nav d-none d-lg-flex gap-4 align-items-center">
+							{links.map((link) => (
+								<Link to={link.route} key={link.name}>
+									<li className="font-family--jetbrains-mono">{link.name}</li>
+								</Link>
+							))}
+							<button className="w-auto btn btn-outline-secondary" onClick={logout}>
+								Cerrar sesión
+							</button>
 						</ul>
 
 						<div className="d-lg-none">
 							<SideBarLinks />
+							<button className="w-auto btn btn-outline-secondary" onClick={logout}>
+								Cerrar sesión
+							</button>
 						</div>
 					</div>
 				</div>
