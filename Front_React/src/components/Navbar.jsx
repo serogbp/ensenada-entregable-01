@@ -1,10 +1,17 @@
 /* Navbar en el Perfil, modificar perfil, feed, etc */
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SideBarLinks from "./SideBarLinks";
 import { ROUTES } from "../common/enums";
 
 export default function Navbar() {
+	const navigate = useNavigate();
+
+	const logout = () => {
+		localStorage.removeItem("token");
+		navigate(ROUTES.LOGIN);
+	};
+
 	const links = [
 		{ name: "Feed", route: ROUTES.FEED },
 		{ name: "Mi perfil", route: ROUTES.PROFILE },
@@ -29,10 +36,16 @@ export default function Navbar() {
 									<li className="font-family--jetbrains-mono">{link.name}</li>
 								</Link>
 							))}
+							<button className="w-auto btn btn-outline-secondary" onClick={logout}>
+								Cerrar sesión
+							</button>
 						</ul>
 
 						<div className="d-lg-none">
 							<SideBarLinks />
+							<button className="w-auto btn btn-outline-secondary" onClick={logout}>
+								Cerrar sesión
+							</button>
 						</div>
 					</div>
 				</div>
