@@ -2,6 +2,8 @@ import moment from "moment";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { HeartFill, Heart } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../common/enums";
 
 PostListItem.propsTypes = {
 	post: PropTypes.object.isRequired,
@@ -20,7 +22,7 @@ export default function PostListItem(props) {
 
 function Header({ post }) {
 	return (
-		<div className="d-flex justify-content-between align-items-center">
+		<Link to={ROUTES.PROFILE + "/" + post.user_id} className="d-flex justify-content-between align-items-center">
 			<div className="d-flex gap-4">
 				<img className="avatar" src={post.picture} alt="Imagen del usuario" />
 				<div className="doble-texto">
@@ -30,7 +32,7 @@ function Header({ post }) {
 					<p>@{post.username}</p>
 				</div>
 			</div>
-		</div>
+		</Link>
 	);
 }
 
