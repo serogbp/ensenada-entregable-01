@@ -5,6 +5,12 @@ import SideBarLinks from "./SideBarLinks";
 import { ROUTES } from "../common/enums";
 
 export default function Navbar() {
+	const links = [
+		{ name: "Feed", route: ROUTES.FEED },
+		{ name: "Mi perfil", route: ROUTES.PROFILE },
+		{ name: "Amigos", route: ROUTES.FRIENDS },
+	];
+
 	return (
 		<header className="sticky-top shadow-sm bg-light-subtle">
 			<nav className="navbar navbar-expand-lg">
@@ -17,16 +23,12 @@ export default function Navbar() {
 						<span className="navbar-toggler-icon"></span>
 					</button>
 					<div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-						<ul className="navbar-nav d-none d-lg-flex gap-4 font-family--jetbrains-mono">
-							<Link to={ROUTES.FEED}>
-								<li>Feed</li>
-							</Link>
-							<Link to={ROUTES.PROFILE}>
-								<li>Mi perfil</li>
-							</Link>
-							<Link to={ROUTES.FRIENDS}>
-								<li>Amigos</li>
-							</Link>
+						<ul className="navbar-nav d-none d-lg-flex gap-4 align-items-center">
+							{links.map((link) => (
+								<Link to={link.route} key={link.name}>
+									<li className="font-family--jetbrains-mono">{link.name}</li>
+								</Link>
+							))}
 						</ul>
 
 						<div className="d-lg-none">
