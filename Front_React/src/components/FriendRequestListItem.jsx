@@ -1,6 +1,7 @@
 import { Check, X } from "react-bootstrap-icons";
-import { useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../common/enums";
 
 FriendRequestListItem.propsTypes = {
 	data: PropTypes.object.isRequired,
@@ -19,11 +20,10 @@ FriendRequestListItem.propsTypes = {
 	username: 'beautifulfrog544'
 } */
 export default function FriendRequestListItem(props) {
-	const { data, acceptRequest, rejectRequest, index } = props;
-	const buttonWrapperID = "collapseButtons" + index;
+	const { data, acceptRequest, rejectRequest } = props;
 	return (
-		<a className="d-flex flex-column gap-2" data-bs-toggle="collapse" aria-expanded="false" aria-controls={buttonWrapperID} role="button" href={"#" + buttonWrapperID}>
-			<div className="d-flex gap-1">
+		<div className="d-flex flex-column gap-2">
+			<Link to={ROUTES.PROFILE + "/" + data.user_id} className="d-flex gap-1">
 				<div className="avatar">
 					<img src={data.picture} alt={data.name} />
 				</div>
@@ -33,30 +33,29 @@ export default function FriendRequestListItem(props) {
 					</p>
 					<p className="text-break">@{data.username}</p>
 				</div>
-			</div>
-			{/* Botones aceptar y rechazar que son Collapse */}
-			<div className="collapse" id={buttonWrapperID}>
-				<div className={"d-flex gap-2 justify-content-between"}>
+			</Link>
+			<div>
+				<div className={"d-flex gap-2 "}>
 					<button
 						onClick={() => {
 							acceptRequest(data.user_id);
 						}}
 						id="buttonAccept"
-						className="btn btn-outline-primary "
+						className="btn btn-outline-primary btn-sm p-0 w-25 "
 					>
-						<Check size={32} />
+						<Check size={24} />
 					</button>
 					<button
 						onClick={() => {
 							rejectRequest(data.user_id);
 						}}
 						id="buttonReject"
-						className="btn btn-outline-danger "
+						className="btn btn-outline-danger btn-sm p-0 w-25 "
 					>
-						<X size={32} />
+						<X size={24} />
 					</button>
 				</div>
 			</div>
-		</a>
+		</div>
 	);
 }
