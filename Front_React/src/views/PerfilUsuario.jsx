@@ -1,51 +1,61 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import FeedbackList from "../components/FeedbackList";
 import PerfilCabecera from "../components/PerfilCabecera";
 import SideBarLinks from "../components/SideBarLinks";
 import ProfileCard from "../components/profile/ProfileCard";
 import MainLayout from "../layouts/MainLayout";
-import { useLoaderData, useParams } from "react-router-dom";
-
-export function loader({ params }) {
-	if (!params.id) {
-		return fetch(`http://localhost:3000/user`, {
-			method: "GET",
-			headers: {
-				Authorization: `${localStorage.getItem("token")}`,
-			},
-		})
-			.then(async (response) => {
-				const json = await response.json();
-				return json;
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	} else {
-		return fetch(`http://localhost:3000/user/${params.id}`, {
-			method: "GET",
-			headers: {
-				Authorization: `${localStorage.getItem("token")}`,
-			},
-		})
-			.then(async (response) => {
-				const json = await response.json();
-				// Poner user_id del amigo a la respuesta para poder cargar el feedback en PerfilUsuario
-				json.user_id = params.id;
-				return json;
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}
-}
+import { useParams } from "react-router-dom";
 
 export default function PerfilUsuario() {
-	const user = useLoaderData();
+	const [user, setUser] = useState({
+		user_id: "",
+		name: "",
+		surname1: "",
+		surname2: "",
+		age: "",
+		city: "",
+		country: "",
+		studies: "",
+		languages: "",
+		linkedin: "",
+		hobbies: "",
+		user_id: "",
+	});
+	const { id } = useParams();
 
-	// const { id } = useParams();
-
-	// useEffectfect(() => {}, [id]);
+	useEffect(() => {
+		if (!id) {
+			fetch(`http://localhost:3000/user`, {
+				method: "GET",
+				headers: {
+					Authorization: `${localStorage.getItem("token")}`,
+				},
+			})
+				.then(async (response) => {
+					const json = await response.json();
+					setUser(json);
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		} else {
+			fetch(`http://localhost:3000/user/${id}`, {
+				method: "GET",
+				headers: {
+					Authorization: `${localStorage.getItem("token")}`,
+				},
+			})
+				.then(async (response) => {
+					const json = await response.json();
+					// Poner user_id del amigo a la respuesta para poder cargar el feedback en PerfilUsuario
+					json.user_id = id;
+					setUser(json);
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		}
+	}, [id]);
 
 	return (
 		<MainLayout>
@@ -78,9 +88,6 @@ export default function PerfilUsuario() {
 							/>
 
 							<ProfileCard title={"Otros"} campos={[{ data: "Hobbies", value: user.hobbies }]} />
-							{/* <ProfileCard title={"Feedback / Recomendaciones"}>
-								<FeedbackList friend_id={user.user_id} />
-							</ProfileCard> */}
 							<FeedbackList friend_id={user.user_id} />
 						</div>
 					</div>

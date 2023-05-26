@@ -24,12 +24,12 @@ const router = createBrowserRouter([
 	{
 		path: ROUTES.PROFILE,
 		element: <PerfilUsuario />,
-		loader: perfilUsuarioLoader,
+		// loader: perfilUsuarioLoader,
 	},
 	{
 		path: ROUTES.PROFILE_ID,
 		element: <PerfilUsuario />,
-		loader: perfilUsuarioLoader,
+		// loader: perfilUsuarioLoader,
 	},
 	{
 		path: ROUTES.PROFILE_EDIT,

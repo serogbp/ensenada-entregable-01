@@ -13,7 +13,7 @@ export default function FeedbackList(props) {
 
 	useEffect(() => {
 		getFeedback();
-	}, []);
+	}, [props.friend_id]);
 
 	//add feedback
 	const addFeedback = (newFeedback) => {};
