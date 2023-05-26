@@ -16,7 +16,30 @@ export default function FeedbackList(props) {
 	}, [props.friend_id]);
 
 	//add feedback
-	const addFeedback = (newFeedback) => {};
+	const addFeedback = (newFeedback) => {
+		newFeedback.receiver_id = props.friend_id;
+
+		fetch(`http://localhost:3000/feedback`, {
+			method: "POST",
+			headers: {
+				Authorization: localStorage.getItem("token"),
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ newFeedback: newFeedback }),
+		})
+			.then(async (response) => {
+				if (response.status === 200) {
+					// setFeedback([newFeedback, ...feedback]);
+					// window.location.reload();
+					setFeedback([]);
+					getFeedback();
+				} else {
+					const data = await response.json();
+					alert(data.msg);
+				}
+			})
+			.catch((err) => console.log(err));
+	};
 
 	// get feedback
 	const getFeedback = () => {
@@ -59,7 +82,7 @@ export default function FeedbackList(props) {
 
 	return (
 		<div className="d-flex flex-column gap-3">
-			{props.friend_id && <FeedbackCreator />}
+			{props.friend_id && <FeedbackCreator addFeedback={addFeedback} />}
 			{feedback.map((item) => (
 				<div key={item.id} className="card">
 					<p className="fw-bold fs-4 font-family--jetbrains-mono px-3">

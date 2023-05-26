@@ -2,7 +2,8 @@ import { connect } from "../Database/mysql.js";
 
 export const addFeedback = async (request, response) => {
 	const giver_id = request.tokenDecoded.user_id;
-	const { receiver_id, content, position, relation } = request.body;
+	const newFeedback = request.body.newFeedback;
+	const { receiver_id, content, position, relation } = newFeedback;
 
 	try {
 		const connection = await connect();

@@ -6,6 +6,8 @@ FeedbackCreator.propsTypes = {
 };
 
 export default function FeedbackCreator(props) {
+	const { addFeedback } = props;
+
 	const [formState, setFormState] = useState({
 		position: "",
 		relation: "",
@@ -14,7 +16,7 @@ export default function FeedbackCreator(props) {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		// addFeedback(formState);
+		addFeedback(formState);
 		setFormState({
 			position: "",
 			relation: "",
@@ -33,7 +35,7 @@ export default function FeedbackCreator(props) {
 				<label className="font-family--jetbrains-mono" htmlFor="position">
 					Cargo
 				</label>
-				<input id="position" type="text" name="postion" value={formState.position} onChange={handleOnChange} className="form-control font-family--jetbrains-mono p-1 rounded" />
+				<input id="position" type="text" name="position" value={formState.position} onChange={handleOnChange} className="form-control font-family--jetbrains-mono p-1 rounded" />
 			</div>
 			<div>
 				<label className="font-family--jetbrains-mono" htmlFor="relation">
