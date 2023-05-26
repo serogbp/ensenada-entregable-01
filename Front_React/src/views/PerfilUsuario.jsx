@@ -1,3 +1,4 @@
+import FeedbackList from "../components/FeedbackList";
 import PerfilCabecera from "../components/PerfilCabecera";
 import SideBarLinks from "../components/SideBarLinks";
 import ProfileCard from "../components/profile/ProfileCard";
@@ -28,6 +29,8 @@ export function loader({ params }) {
 		})
 			.then(async (response) => {
 				const json = await response.json();
+				// Poner user_id del amigo a la respuesta para poder cargar el feedback en PerfilUsuario
+				json.user_id = params.id;
 				return json;
 			})
 			.catch((error) => {
@@ -70,6 +73,10 @@ export default function PerfilUsuario() {
 							/>
 
 							<ProfileCard title={"Otros"} campos={[{ data: "Hobbies", value: user.hobbies }]} />
+							{/* <ProfileCard title={"Feedback / Recomendaciones"}>
+								<FeedbackList friend_id={user.user_id} />
+							</ProfileCard> */}
+							<FeedbackList friend_id={user.user_id} />
 						</div>
 					</div>
 				</div>

@@ -22,10 +22,11 @@ router.route("/no_friends")
 
 // prettier-ignore
 router.route("/:id")
-	.get(isLogged, getUser);
+	.get(isLogged, getUser); // perfil amigo
 
+// TODO ver si crashea algo
 // prettier-ignore
-router.route("/friends/:friend_id")
-	.get(isLogged, getUser); // pantalla perfil amigo
+// router.route("/friends/:friend_id")
+// 	.get(isLogged, getUser); // pantalla perfil amigo
 
 export default router;

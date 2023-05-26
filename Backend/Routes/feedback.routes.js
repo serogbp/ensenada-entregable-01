@@ -9,4 +9,8 @@ router.route("/")
 	.get(isLogged, getFeedback)
 	.post(isLogged, addFeedback);
 
+// prettier-ignore
+router.route("/:id")
+.get(isLogged, getFeedback)
+
 export default router;

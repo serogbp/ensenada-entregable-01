@@ -21,16 +21,23 @@ export const addFeedback = async (request, response) => {
 };
 
 export const getFeedback = async (request, response) => {
-	const receptor_id = request.tokenDecoded.user_id;
+	let receiver_id = request.params.id;
+	// Si hay user_id es el logeado, si no es el amigo
+	if (!receiver_id) {
+		receiver_id = request.tokenDecoded.user_id;
+	}
 
 	try {
 		const connection = await connect();
 
 		const [rows, fields] = await connection.execute(
-			`SELECT
-			FROM recomendations
+			`SELECT users.name, users.surname1, users.surname2, recomendations.content, recomendations.relation,
+			recomendations.position, recomendations.publishDate FROM
+			users
+			INNER JOIN recomendations ON  giver_id = user_id
+			WHERE receiver_id = ?;
 			`,
-			[]
+			[receiver_id]
 		);
 		connection.end();
 		return response.status(200).json(rows);

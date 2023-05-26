@@ -14,7 +14,6 @@ export default function PostCreator(props) {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		//TODO revisar necesito un objeto?
 		addPost(text);
 		setText("");
 	};
