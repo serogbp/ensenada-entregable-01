@@ -4,6 +4,7 @@ import { useState } from "react";
 import { HeartFill, Heart } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../common/enums";
+import "moment/locale/es";
 
 PostListItem.propsTypes = {
 	post: PropTypes.object.isRequired,
@@ -48,7 +49,7 @@ function Footer({ post }) {
 	return (
 		<div className="d-flex gap-3 align-items-center justify-content-between">
 			<LikeCounter post={post} />
-			<p className="text-secondary m-0">{moment(post.publishDate).format("MMM DD HH:ss")}</p>
+			<p className="text-secondary m-0">{moment(post.publishDate).format("DD MMMM YYYY HH:ss")}</p>
 		</div>
 	);
 }

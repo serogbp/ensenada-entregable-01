@@ -1,9 +1,10 @@
+import { useEffect } from "react";
 import FeedbackList from "../components/FeedbackList";
 import PerfilCabecera from "../components/PerfilCabecera";
 import SideBarLinks from "../components/SideBarLinks";
 import ProfileCard from "../components/profile/ProfileCard";
 import MainLayout from "../layouts/MainLayout";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 
 export function loader({ params }) {
 	if (!params.id) {
@@ -41,6 +42,10 @@ export function loader({ params }) {
 
 export default function PerfilUsuario() {
 	const user = useLoaderData();
+
+	// const { id } = useParams();
+
+	// useEffectfect(() => {}, [id]);
 
 	return (
 		<MainLayout>

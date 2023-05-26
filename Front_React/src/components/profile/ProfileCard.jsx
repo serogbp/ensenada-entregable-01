@@ -11,8 +11,8 @@ export default function ProfileCard(props) {
 							<div className="col-lg-4">
 								<p className="m-0 p-2">{campo.data}:</p>
 							</div>
-							<div className="col-lg-4">
-								<p className="p-2 bg-light">{campo.value}</p>
+							<div className="col-lg">
+								<p className="p-2 bg-light text-break">{campo.value}</p>
 							</div>
 						</div>
 					);

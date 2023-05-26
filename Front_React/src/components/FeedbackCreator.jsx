@@ -14,7 +14,7 @@ export default function FeedbackCreator(props) {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		//addFeedback(formState);
+		// addFeedback(formState);
 		setFormState({
 			position: "",
 			relation: "",
@@ -30,16 +30,22 @@ export default function FeedbackCreator(props) {
 		<form onSubmit={handleSubmit} className="card d-flex flex-column gap-4">
 			<p className="font-bold h5 font-family--jetbrains-mono">Feedback / Recomendaciones</p>
 			<div>
-				<label htmlFor="position">Cargo</label>
-				<input id="position" type="text" name="postion" value={formState.position} onChange={handleOnChange} className="form-control p-1 rounded" />
+				<label className="font-family--jetbrains-mono" htmlFor="position">
+					Cargo
+				</label>
+				<input id="position" type="text" name="postion" value={formState.position} onChange={handleOnChange} className="form-control font-family--jetbrains-mono p-1 rounded" />
 			</div>
 			<div>
-				<label htmlFor="relation">Relación</label>
-				<input id="relation" type="text" name="relation" value={formState.relation} onChange={handleOnChange} className="form-control p-1 rounded" />
+				<label className="font-family--jetbrains-mono" htmlFor="relation">
+					Relación
+				</label>
+				<input id="relation" type="text" name="relation" value={formState.relation} onChange={handleOnChange} className="form-control font-family--jetbrains-mono p-1 rounded" />
 			</div>
 			<div>
-				<label htmlFor="content">Comentario</label>
-				<textarea value={formState.content} onChange={handleOnChange} id="content" name="content" autoComplete="off" className="form-control p-1 rounded"></textarea>
+				<label className="font-family--jetbrains-mono" htmlFor="content">
+					Comentario
+				</label>
+				<textarea value={formState.content} onChange={handleOnChange} id="content" name="content" autoComplete="off" className="form-control font-family--jetbrains-mono p-1 rounded"></textarea>
 			</div>
 			<div>
 				<button type="submit" className="w-auto btn btn-primary w-auto float-end">
