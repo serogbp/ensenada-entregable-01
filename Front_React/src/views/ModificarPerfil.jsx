@@ -1,6 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
-import SideBarLinks from "../components/SideBarLinks";
 import { useState } from "react";
 
 export default function ModificarPerfil() {

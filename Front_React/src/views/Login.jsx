@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Layout from "../layouts/Layout";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 export default function Login() {
 	const [formState, setFormState] = useState({
@@ -25,10 +26,23 @@ export default function Login() {
 					const body = await response.json();
 					localStorage.setItem("token", body.token);
 					if (body.userType) localStorage.setItem("userType", body.userType);
+					Swal.fire({
+						position: "center",
+						icon: "success",
+						title: "Bienvenido!",
+						showConfirmButton: false,
+						timer: 1500,
+					});
 					navigate("/feed");
 				} else {
 					const data = await response.json();
-					alert(data.msg);
+					//alert(data.msg);
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "Error al iniciar sesión!",
+						footer: "email o password incorrectos",
+					});
 				}
 			})
 			.catch((error) => {

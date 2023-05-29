@@ -19,7 +19,6 @@ export default function PerfilUsuario() {
 		languages: "",
 		linkedin: "",
 		hobbies: "",
-		user_id: "",
 	});
 	const { id } = useParams();
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { EyeFill, PencilFill, TrashFill } from "react-bootstrap-icons";
-import xlsPopulate from "xlsx-populate";
+/* import xlsPopulate from "xlsx-populate"; */
 import moment from "moment";
 
 export default function AdminPanel() {
@@ -55,7 +55,7 @@ export default function AdminPanel() {
 			});
 	}, []);
 
-	const handleExport = () => {
+	/* const handleExport = () => {
 		xlsPopulate.fromBlankAsync("./Book1.xlsx").then((workbook) => {
 			// Modify the workbook.
 			workbook.sheet("Sheet1").cell("A1").value("ID");
@@ -80,16 +80,14 @@ export default function AdminPanel() {
 
 			return workbook.toFileAsync(`${moment().format("YYYY-MM-DD_usuarios")}.xlsx`);
 		});
-	};
+	}; */
 
 	return (
 		<>
 			{/* 			<CSVLink data={userList} headers={headers} separator={","} enclosingCharacter={`"`} filename={"my-file.csv"} className="btn btn-outline-primary w-auto align-self-end">
 				Imprimir CSV
 			</CSVLink> */}
-			<button className="btn btn-outline-primary w-auto align-self-end pb-2" onClick={handleExport}>
-				Imprimir CSV
-			</button>
+			<button className="btn btn-outline-primary w-auto align-self-end pb-2">Imprimir CSV</button>
 			{/* Tabla */}
 			<table class="table table-striped table-hover text-center">
 				<thead>

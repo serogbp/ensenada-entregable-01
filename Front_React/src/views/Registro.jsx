@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import Layout from "../layouts/Layout";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 export default function Registro() {
 	const [formState, setFormState] = useState({
@@ -30,14 +31,31 @@ export default function Registro() {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify(formState),
-		}).then(async (response) => {
-			if (response.status === 200) {
-				navigate("/login");
-			} else {
-				const data = await response.json();
-				alert(data.msg);
-			}
-		});
+		})
+			.then(async (response) => {
+				if (response.status === 200) {
+					Swal.fire({
+						position: "center",
+						icon: "success",
+						title: "Usuario registrado correctamente!",
+						showConfirmButton: false,
+						timer: 1500,
+					});
+					navigate("/login");
+				} else {
+					const data = await response.json();
+					//alert(data.msg);
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "Error en el registro!",
+						footer: "Revisar los datos introducidos",
+					});
+				}
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	};
 
 	const handleOnChange = (event) => {
