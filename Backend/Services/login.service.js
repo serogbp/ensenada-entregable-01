@@ -25,13 +25,13 @@ export const isUser = async (request, response) => {
 
 	try {
 		const connection = await connect();
-		const [rows, fields] = await connection.execute("SELECT email, password, user_id FROM users");
+		const [rows, fields] = await connection.execute("SELECT email, password, user_id, userType FROM users");
 		connection.end();
 		// Comprobar credenciales válidas
 		const userLogged = rows.find((item) => item.email === email.toLowerCase());
 
 		if (userLogged && bcrypt.compareSync(password, userLogged.password)) {
-			var token = jwt.sign({ user_id: userLogged.user_id }, config.jwt.clave);
+			var token = jwt.sign({ user_id: userLogged.user_id, userType: userLogged.userType }, config.jwt.clave);
 			return response.status(200).json({
 				token: token,
 				user_id: userLogged.user_id,

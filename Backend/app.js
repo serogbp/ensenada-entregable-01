@@ -6,6 +6,7 @@ import userRouter from "./Routes/user.routes.js";
 import postRouter from "./Routes/post.routes.js";
 import friendRouter from "./Routes/friend.routes.js";
 import feedbackRouter from "./Routes/feedback.routes.js";
+import adminRouter from "./Routes/admin.routes.js";
 import express from "express";
 import cors from "cors";
 
@@ -33,6 +34,7 @@ class App {
 		this.app.use("/post", postRouter);
 		this.app.use("/friend", friendRouter);
 		this.app.use("/feedback", feedbackRouter);
+		this.app.use("/admin", adminRouter);
 	}
 
 	settings() {
