@@ -7,4 +7,5 @@ export const ROUTES = Object.freeze({
 	PROFILE: "/profile",
 	PROFILE_EDIT: "/profile/edit",
 	PROFILE_ID: "/profile/:id",
+	ADMIN: "/admin",
 });

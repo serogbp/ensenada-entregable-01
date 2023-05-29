@@ -8,7 +8,7 @@ export default function Navbar() {
 	const navigate = useNavigate();
 
 	const logout = () => {
-		localStorage.removeItem("token");
+		localStorage.clear();
 		navigate(ROUTES.LOGIN);
 	};
 
@@ -17,6 +17,9 @@ export default function Navbar() {
 		{ name: "Mi perfil", route: ROUTES.PROFILE },
 		{ name: "Amigos", route: ROUTES.FRIENDS },
 	];
+
+	const userType = localStorage.getItem("userType");
+	if (userType) links.push({ name: "Admin", route: ROUTES.ADMIN });
 
 	return (
 		<header className="sticky-top shadow-sm bg-light-subtle">

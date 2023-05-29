@@ -1,10 +1,6 @@
 import jwt from "jsonwebtoken";
 import config from "../Settings/config.js";
-
-const USERTYPE = Object.freeze({
-	ADMIN: 1,
-	USER: 0,
-});
+import { USERTYPE } from "../common/enums.js";
 
 export function isLogged(req, res, next) {
 	let token = req.get("Authorization");
@@ -39,6 +35,7 @@ export function isAdmin(req, res, next) {
 			//2.2 comprobar si el usuario es admin o no
 			if (tokenDecoded !== undefined) {
 				if (tokenDecoded.userType === USERTYPE.ADMIN) {
+					req.userType = tokenDecoded.userType;
 					return next();
 				} else {
 					return res.status(401).json({ msg: `Token invalido` });

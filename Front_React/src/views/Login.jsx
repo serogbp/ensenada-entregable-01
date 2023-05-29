@@ -24,7 +24,7 @@ export default function Login() {
 				if (response.status === 200) {
 					const body = await response.json();
 					localStorage.setItem("token", body.token);
-					// window.location.href = "/feed";
+					if (body.userType) localStorage.setItem("userType", body.userType);
 					navigate("/feed");
 				} else {
 					const data = await response.json();

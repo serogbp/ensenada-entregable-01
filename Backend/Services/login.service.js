@@ -3,6 +3,7 @@ import config from "../Settings/config.js";
 import { connect } from "../Database/mysql.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import { USERTYPE } from "../common/enums.js";
 
 export const isUser = async (request, response) => {
 	// Recoger validaciones express-validator
@@ -30,12 +31,16 @@ export const isUser = async (request, response) => {
 		// Comprobar credenciales válidas
 		const userLogged = rows.find((item) => item.email === email.toLowerCase());
 
+		// Si el usuario es valido, se envia su token
 		if (userLogged && bcrypt.compareSync(password, userLogged.password)) {
-			var token = jwt.sign({ user_id: userLogged.user_id, userType: userLogged.userType }, config.jwt.clave);
-			return response.status(200).json({
+			const token = jwt.sign({ user_id: userLogged.user_id, userType: userLogged.userType }, config.jwt.clave);
+			const responseBody = {
 				token: token,
 				user_id: userLogged.user_id,
-			});
+			};
+			// Si el usuario es admin, se añade la propiedad userType a la respuesta
+			if (userLogged.userType === USERTYPE.ADMIN) responseBody.userType = userLogged.userType;
+			return response.status(200).json(responseBody);
 		} else {
 			// ⚠ Si queremos enviar un status custom y un json, tenemos que usar status().
 			// Si usamos sendStatus(), no podemos enviar el json porque ya envió la respuesta

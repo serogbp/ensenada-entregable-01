@@ -5,8 +5,10 @@ import PerfilUsuario, { loader as perfilUsuarioLoader } from "./views/PerfilUsua
 import Registro from "./views/Registro";
 import ListaAmigos from "./views/ListaAmigos";
 import ModificarPerfil from "./views/ModificarPerfil";
+import Admin from "./views/Admin";
 import { ROUTES } from "./common/enums";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import * as bootstrap from "bootstrap";
 
 const router = createBrowserRouter([
 	{
@@ -43,8 +45,13 @@ const router = createBrowserRouter([
 		path: ROUTES.FRIENDS,
 		element: <ListaAmigos />,
 	},
+	{
+		path: ROUTES.ADMIN,
+		element: <Admin />,
+	},
 ]);
 
 export default function App() {
+	window.bootstrap = bootstrap;
 	return <RouterProvider router={router} />;
 }
