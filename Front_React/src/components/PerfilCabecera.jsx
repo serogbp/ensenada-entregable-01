@@ -26,7 +26,13 @@ export default function PerfilCabecera(props) {
 				localStorage.removeItem("token");
 			} else {
 				const data = await response.json();
-				alert(`Error eliminando el usuario: ${data.msg}`);
+				//alert(`Error eliminando el usuario: ${data.msg}`);
+				Swal.fire({
+					icon: "error",
+					title: "Oops...",
+					text: `Error al eliminar el usuario  ${data.msg}`,
+					footer: "Intentelo pasados unos minutos",
+				});
 				navigate("/profile");
 			}
 		});

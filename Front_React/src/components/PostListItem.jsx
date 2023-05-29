@@ -77,7 +77,13 @@ function LikeCounter({ post }) {
 						setIsLiked(true);
 					} else {
 						const data = await response.json();
-						alert(data.msg);
+						//alert(data.msg);
+						Swal.fire({
+							icon: "error",
+							title: "Oops...",
+							text: "Error.",
+							footer: "Intentelo pasados unos minutos",
+						});
 					}
 				})
 				.catch((error) => {
@@ -98,7 +104,13 @@ function LikeCounter({ post }) {
 						setIsLiked(false);
 					} else {
 						const data = await response.json();
-						alert(data.msg);
+						//alert(data.msg);
+						Swal.fire({
+							icon: "error",
+							title: "Oops...",
+							text: "Error.",
+							footer: "Intentelo pasados unos minutos",
+						});
 					}
 				})
 				.catch((error) => {

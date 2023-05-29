@@ -18,10 +18,22 @@ export default function ModificarPerfil() {
 		})
 			.then(async (response) => {
 				if (response.status === 200) {
+					Swal.fire({
+						position: "center",
+						icon: "success",
+						title: "Datos modificados!",
+						showConfirmButton: true,
+					});
 					navigate("/profile");
 				} else {
 					const data = await response.json();
-					alert(data.msg);
+					//alert(data.msg);
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "Error al modificar el perfil",
+						footer: "Revise los datos introducidos",
+					});
 				}
 			})
 			.catch((error) => {

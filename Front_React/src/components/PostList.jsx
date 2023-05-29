@@ -23,7 +23,13 @@ export default function PostList() {
 					setPosts(body);
 				} else {
 					const data = await response.json();
-					alert(data.msg);
+					//alert(data.msg);
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "Error al guardar la publicación",
+						footer: "Intentelo pasados unos minutos",
+					});
 				}
 			})
 			.catch((err) => console.log(err));
@@ -44,7 +50,13 @@ export default function PostList() {
 				getPosts();
 			} else {
 				const data = await response.json();
-				alert(data.msg);
+				//alert(data.msg);
+				Swal.fire({
+					icon: "error",
+					title: "Oops...",
+					text: "Error al recuperar los datos",
+					footer: "Intentelo pasados unos minutos",
+				});
 			}
 		});
 	};

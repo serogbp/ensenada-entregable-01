@@ -22,7 +22,13 @@ export default function FriendRequestList() {
 					setFriendRequests(body);
 				} else {
 					const data = await response.json();
-					alert(data.msg);
+					//alert(data.msg);
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "Error en la solicitud",
+						footer: "Intentelo pasados unos minutos",
+					});
 				}
 			})
 			.catch((err) => console.log(err));

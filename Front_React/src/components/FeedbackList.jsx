@@ -35,7 +35,13 @@ export default function FeedbackList(props) {
 					getFeedback();
 				} else {
 					const data = await response.json();
-					alert(data.msg);
+					//alert(data.msg);
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "Error en la publicación!",
+						footer: "Revisar los datos introducidos",
+					});
 				}
 			})
 			.catch((err) => console.log(err));
@@ -56,7 +62,13 @@ export default function FeedbackList(props) {
 						setFeedback(body);
 					} else {
 						const data = await response.json();
-						alert(data.msg);
+						//alert(data.msg);
+						Swal.fire({
+							icon: "error",
+							title: "Oops...",
+							text: "Error al recuperar los datos",
+							footer: "Intentelo pasados unos minutos",
+						});
 					}
 				})
 				.catch((err) => console.log(err));
@@ -73,7 +85,13 @@ export default function FeedbackList(props) {
 						setFeedback(body);
 					} else {
 						const data = await response.json();
-						alert(data.msg);
+						//alert(data.msg);
+						Swal.fire({
+							icon: "error",
+							title: "Oops...",
+							text: "Error al recuperar los datos",
+							footer: "Intentelo pasados unos minutos",
+						});
 					}
 				})
 				.catch((err) => console.log(err));
