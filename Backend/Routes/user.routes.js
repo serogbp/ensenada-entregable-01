@@ -24,9 +24,4 @@ router.route("/no_friends")
 router.route("/:id")
 	.get(isLogged, getUser); // perfil amigo
 
-// TODO ver si crashea algo
-// prettier-ignore
-// router.route("/friends/:friend_id")
-// 	.get(isLogged, getUser); // pantalla perfil amigo
-
 export default router;

@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { EyeFill, PencilFill, TrashFill } from "react-bootstrap-icons";
 import moment from "moment";
 import { utils, writeFileXLSX } from "xlsx";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function AdminPanel() {
 	const [userList, setUserList] = useState([]);
 	const [currentPage, setCurrentPage] = useState(0);
+	const navigate = useNavigate();
 
 	// Calcular paginacion
 	const PER_PAGE = 5;
@@ -44,13 +47,54 @@ export default function AdminPanel() {
 		writeFileXLSX(workbook, `${moment().format("YYYY-MM-DD")}_usuarios.xlsx`);
 	};
 
+	const handleDelete = (user) => {
+		Swal.fire({
+			title: `Borrar el usuario ${user.username}?`,
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, delete it!",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				fetch(`http://localhost:3000/admin/`, {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `${localStorage.getItem("token")}`,
+					},
+					body: JSON.stringify({ user_id: user.user_id }),
+				}).then(async (response) => {
+					if (response.status === 200) {
+						Swal.fire({
+							position: "center",
+							icon: "success",
+							title: "Usuario borrado",
+							showConfirmButton: false,
+							timer: 1500,
+						});
+						setUserList([...userList].filter((u) => u.user_id !== user.user_id));
+					} else {
+						const data = await response.json();
+						Swal.fire({
+							icon: "error",
+							title: "Oops...",
+							text: `Error al eliminar el usuario  ${data.msg}`,
+							footer: "Intentelo pasados unos minutos",
+						});
+					}
+				});
+			}
+		});
+	};
 	return (
 		<>
 			<button className="btn btn-outline-primary w-auto align-self-end pb-2" onClick={handleExport}>
 				Imprimir Excel
 			</button>
 			{/* Tabla */}
-			<table className="table table-striped table-hover text-center">
+			<table className="table table-striped table-hover text-center overflow-x-scroll">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -100,10 +144,26 @@ export default function AdminPanel() {
 									<button className="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ver perfil">
 										<EyeFill />
 									</button>
-									<button className="btn btn-outline-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Editar perfil">
+									<button
+										className="btn btn-outline-warning"
+										data-bs-toggle="tooltip"
+										data-bs-placement="bottom"
+										data-bs-title="Editar perfil"
+										onClick={() => {
+											navigate("/profile/edit", { state: { userState: user } });
+										}}
+									>
 										<PencilFill />
 									</button>
-									<button className="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Eliminar perfil">
+									<button
+										className="btn btn-outline-danger"
+										data-bs-toggle="tooltip"
+										data-bs-placement="bottom"
+										data-bs-title="Eliminar perfil"
+										onClick={() => {
+											handleDelete(user);
+										}}
+									>
 										<TrashFill />
 									</button>
 								</div>

@@ -13,6 +13,26 @@ export const getAllUsers = async (request, response) => {
 	}
 };
 
-export const adminUpdateUser = async (req, res) => {};
+export const adminUpdateUser = async (request, response) => {
+	const { user_id, email, name, surname1, surname2, username, age, city, country, studies, role, languages, linkedin, hobbies, userType } = request.body;
+	try {
+		const connection = await connect();
+		await connection.query("UPDATE users SET name= ?, surname1 = ?, surname2 = ?,username = ?, age = ?, city = ?, country = ?, studies = ?, role = ?, languages = ?, linkedin = ?, hobbies = ?, email = ?, userType = ? WHERE user_id = ?", [name, surname1, surname2, username, age, city, country, studies, role, languages, linkedin, hobbies, email, userType, user_id]);
+		connection.end();
+		return response.sendStatus(200);
+	} catch (err) {
+		return response.status(500).json({ msg: `Error actualizando el usuario: ${err.message}` });
+	}
+};
 
-export const adminDeleteUser = async (req, res) => {};
+export const adminDeleteUser = async (request, response) => {
+	const user_id = request.body.user_id;
+	try {
+		const connection = await connect();
+		await connection.query("DELETE FROM users WHERE user_id = ?", [user_id]);
+		connection.end();
+		return response.sendStatus(200);
+	} catch (err) {
+		return response.status(500).json({ msg: `Error borrando el usuario: ${err.message}` });
+	}
+};

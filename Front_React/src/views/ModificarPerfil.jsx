@@ -87,7 +87,7 @@ export default function ModificarPerfil() {
 											<span className="spHelp">LinkedIn</span>
 										</div>
 										<div className="mb-3">
-											<input type="url" name="rol" id="rol" className="form-control loadData" placeholder="Rol" value={user.role} onChange={handleOnChange} />
+											<input type="url" name="role" id="role" className="form-control loadData" placeholder="Rol" value={user.role} onChange={handleOnChange} />
 											<span className="spHelp">Rol</span>
 										</div>
 										<div className="form-floating mb-3">
@@ -106,6 +106,16 @@ export default function ModificarPerfil() {
 											<input type="email" className="form-control loadData" name="email" id="email" placeholder="name@example.com" value={user.email} onChange={handleOnChange} />
 											<span className="spHelp">Email</span>
 										</div>
+										{user.userType !== null && (
+											<div className="mb-3">
+												{/* <label className="form-label">Tipo de usuario</label> */}
+												<select className="form-select loadData" name="userType" id="userType" value={user.userType} onChange={handleOnChange}>
+													<option value="">Tipo de usuario</option>
+													<option value="1">Administrador</option>
+													<option value="0">Usuario</option>
+												</select>
+											</div>
+										)}
 									</form>
 								</div>
 								{/* <!-- columna dcha foto perfil --> */}
