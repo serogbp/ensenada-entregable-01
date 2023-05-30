@@ -25,7 +25,7 @@ export default function CreateSugestedList(props) {
 	return (
 		<div className="friend-card card d-flex flex-column gap-2 align-items-center justify-content-between " style={{ width: "2rem" }}>
 			<Link to={`/profile/${sugestedData.user_id}`} className=" d-flex flex-column gap-2 align-items-center">
-				<img src={sugestedData.picture} alt={`${sugestedData.name} ${sugestedData.surname1} ${sugestedData.surname2}`} class="avatar" />
+				<img src={sugestedData.picture} alt={`${sugestedData.name} ${sugestedData.surname1} ${sugestedData.surname2}`} className="avatar" />
 				<div className="doble-texto">
 					<p className="text-break">
 						{sugestedData.name} {sugestedData.surname1} {sugestedData.surname2}
