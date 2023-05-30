@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { EyeFill, PencilFill, TrashFill } from "react-bootstrap-icons";
-/* import xlsPopulate from "xlsx-populate"; */
 import moment from "moment";
+import { utils, writeFileXLSX } from "xlsx";
 
 export default function AdminPanel() {
 	const [userList, setUserList] = useState([]);
@@ -55,41 +55,22 @@ export default function AdminPanel() {
 			});
 	}, []);
 
-	/* const handleExport = () => {
-		xlsPopulate.fromBlankAsync("./Book1.xlsx").then((workbook) => {
-			// Modify the workbook.
-			workbook.sheet("Sheet1").cell("A1").value("ID");
-			workbook.sheet("Sheet1").cell("B1").value("Nombre");
-			workbook.sheet("Sheet1").cell("C1").value("Primer Apellido");
-			workbook.sheet("Sheet1").cell("D1").value("Segundo Apellido");
-			workbook.sheet("Sheet1").cell("E1").value("Email");
-			workbook.sheet("Sheet1").cell("F1").value("Usuario");
-			workbook.sheet("Sheet1").cell("G1").value("Edad");
-			workbook.sheet("Sheet1").cell("H1").value("Ciudad");
-			workbook.sheet("Sheet1").cell("I1").value("Pais");
-			workbook.sheet("Sheet1").cell("J1").value("Estudios");
-			workbook.sheet("Sheet1").cell("K1").value("Idiomas");
-			workbook.sheet("Sheet1").cell("L1").value("Linkedin");
-			workbook.sheet("Sheet1").cell("M1").value("Hobbies");
-			workbook.sheet("Sheet1").cell("N1").value("Rol");
-			workbook.sheet("Sheet1").cell("O1").value("Imagen");
-
-			// userList.forEach((user,index) => {
-
-			// })
-
-			return workbook.toFileAsync(`${moment().format("YYYY-MM-DD_usuarios")}.xlsx`);
-		});
-	}; */
+	const handleExport = () => {
+		// TODO meter headers al excel
+		const headers = ["ID", "Tipo", "Nombre", "Apellido 1", "Apellido 2", "Email", "Usuario", "Edad", "Ciudad", "Pais", "Estudios", "Lenguajes", "Linkedin", "Hobbies", "Rol", "Imagen"];
+		const worksheet = utils.json_to_sheet(userList);
+		const workbook = utils.book_new();
+		utils.book_append_sheet(workbook, worksheet, "Usuarios");
+		writeFileXLSX(workbook, `${moment().format("YYYY-MM-DD")}_usuarios.xlsx`);
+	};
 
 	return (
 		<>
-			{/* 			<CSVLink data={userList} headers={headers} separator={","} enclosingCharacter={`"`} filename={"my-file.csv"} className="btn btn-outline-primary w-auto align-self-end">
-				Imprimir CSV
-			</CSVLink> */}
-			<button className="btn btn-outline-primary w-auto align-self-end pb-2">Imprimir CSV</button>
+			<button className="btn btn-outline-primary w-auto align-self-end pb-2" onClick={handleExport}>
+				Imprimir Excel
+			</button>
 			{/* Tabla */}
-			<table class="table table-striped table-hover text-center">
+			<table className="table table-striped table-hover text-center">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -104,8 +85,8 @@ export default function AdminPanel() {
 					</tr>
 				</thead>
 				<tbody>
-					{currentPageData.map((user) => (
-						<tr>
+					{currentPageData.map((user, index) => (
+						<tr key={index}>
 							<td className="align-middle " style={{ width: "5%" }}>
 								{user.user_id}
 							</td>
@@ -149,23 +130,23 @@ export default function AdminPanel() {
 			</table>
 			{/* Paginacion */}
 			<nav aria-label="Page navigation example">
-				<ul class="pagination">
-					<li class="page-item">
+				<ul className="pagination">
+					<li className="page-item">
 						{/* prettier-ignore */}
-						<a class="page-link" href="#" onClick={() => { if (currentPage > 0) setCurrentPage(currentPage - 1); }} >
+						<a className="page-link" href="#" onClick={() => { if (currentPage > 0) setCurrentPage(currentPage - 1); }} >
 							Previous
 						</a>
 					</li>
 					{[...Array(pageCount).keys()].map((page, index) => (
-						<li class="page-item">
-							<a class="page-link" href="#" onClick={() => setCurrentPage(index)}>
+						<li className="page-item" key={index}>
+							<a className="page-link" href="#" onClick={() => setCurrentPage(index)}>
 								{index + 1}
 							</a>
 						</li>
 					))}
-					<li class="page-item">
+					<li className="page-item">
 						{/* prettier-ignore */}
-						<a class="page-link" href="#" onClick={() => { if (currentPage < pageCount - 1) setCurrentPage(currentPage + 1); }} >
+						<a className="page-link" href="#" onClick={() => { if (currentPage < pageCount - 1) setCurrentPage(currentPage + 1); }} >
 							Next
 						</a>
 					</li>
