@@ -43,8 +43,6 @@ export default function Registro() {
 					});
 					navigate("/login");
 				} else {
-					const data = await response.json();
-					//alert(data.msg);
 					Swal.fire({
 						icon: "error",
 						title: "Oops...",

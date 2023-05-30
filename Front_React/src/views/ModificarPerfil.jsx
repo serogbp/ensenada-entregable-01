@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 export default function ModificarPerfil() {
 	const { state } = useLocation();
@@ -26,8 +27,6 @@ export default function ModificarPerfil() {
 					});
 					navigate("/profile");
 				} else {
-					const data = await response.json();
-					//alert(data.msg);
 					Swal.fire({
 						icon: "error",
 						title: "Oops...",

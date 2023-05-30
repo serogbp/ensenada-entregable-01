@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PostListItem from "./PostListItem";
 import PostCreator from "./PostCreator";
+import Swal from "sweetalert2";
 
 export default function PostList() {
 	const [posts, setPosts] = useState([]);
@@ -22,8 +23,6 @@ export default function PostList() {
 					const body = await response.json();
 					setPosts(body);
 				} else {
-					const data = await response.json();
-					//alert(data.msg);
 					Swal.fire({
 						icon: "error",
 						title: "Oops...",
@@ -49,8 +48,6 @@ export default function PostList() {
 			if (response.status === 200) {
 				getPosts();
 			} else {
-				const data = await response.json();
-				//alert(data.msg);
 				Swal.fire({
 					icon: "error",
 					title: "Oops...",

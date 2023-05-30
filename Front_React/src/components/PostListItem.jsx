@@ -5,6 +5,7 @@ import { HeartFill, Heart } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../common/enums";
 import "moment/locale/es";
+import Swal from "sweetalert2";
 
 PostListItem.propsTypes = {
 	post: PropTypes.object.isRequired,

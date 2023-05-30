@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import Modal from "./Modal";
+import Swal from "sweetalert2";
 
 PerfilCabecera.propsTypes = {
 	user: PropTypes.object.isRequired,
@@ -26,7 +27,6 @@ export default function PerfilCabecera(props) {
 				localStorage.removeItem("token");
 			} else {
 				const data = await response.json();
-				//alert(`Error eliminando el usuario: ${data.msg}`);
 				Swal.fire({
 					icon: "error",
 					title: "Oops...",

@@ -17,26 +17,6 @@ export default function AdminPanel() {
 	const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
 	// const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
 
-	// exportar csv
-	/* 	const headers = [
-		{ label: "ID", key: "user_id" },
-		{ label: "Tipo", key: "userType" },
-		{ label: "Nombre", key: "name" },
-		{ label: "Apellido 1", key: "surname1" },
-		{ label: "Apellido 2", key: "surname2" },
-		{ label: "Email", key: "email" },
-		{ label: "Usuario", key: "username" },
-		{ label: "Edad", key: "age" },
-		{ label: "Ciudad", key: "city" },
-		{ label: "Pais", key: "country" },
-		{ label: "Estudios", key: "studies" },
-		{ label: "Lenguajes", key: "languages" },
-		{ label: "Linkedin", key: "linkedin" },
-		{ label: "Hobbies", key: "hobbies" },
-		{ label: "Rol", key: "role" },
-		{ label: "Imagen", key: "picture" },
-	]; */
-
 	useEffect(() => {
 		fetch(`http://localhost:3000/admin`, {
 			method: "GET",
@@ -56,10 +36,10 @@ export default function AdminPanel() {
 	}, []);
 
 	const handleExport = () => {
-		// TODO meter headers al excel
-		const headers = ["ID", "Tipo", "Nombre", "Apellido 1", "Apellido 2", "Email", "Usuario", "Edad", "Ciudad", "Pais", "Estudios", "Lenguajes", "Linkedin", "Hobbies", "Rol", "Imagen"];
-		const worksheet = utils.json_to_sheet(userList);
+		const headers = ["ID", "Nombre", "Apellido 1", "Apellido 2", "Email", "Usuario", "Edad", "Ciudad", "Pais", "Estudios", "Idiomas", "Linkedin", "Hobbies", "Rol", "Imagen", "Tipo usuario"];
 		const workbook = utils.book_new();
+		const worksheet = utils.json_to_sheet([{}], { header: headers });
+		utils.sheet_add_json(worksheet, userList, { origin: "A2", skipHeader: true });
 		utils.book_append_sheet(workbook, worksheet, "Usuarios");
 		writeFileXLSX(workbook, `${moment().format("YYYY-MM-DD")}_usuarios.xlsx`);
 	};
@@ -78,6 +58,7 @@ export default function AdminPanel() {
 						<th>Nombre</th>
 						<th>Apellidos</th>
 						<th>Email</th>
+						<th>Usuario</th>
 						<th>Ciudad</th>
 						<th>Rol</th>
 						<th>Tipo</th>
@@ -101,6 +82,9 @@ export default function AdminPanel() {
 							</td>
 							<td className="align-middle " style={{ width: "15%" }}>
 								{user.email}
+							</td>
+							<td className="align-middle " style={{ width: "15%" }}>
+								{user.username}
 							</td>
 							<td className="align-middle " style={{ width: "10%" }}>
 								{user.city}

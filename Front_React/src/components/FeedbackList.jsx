@@ -3,6 +3,7 @@ import FeedbackCreator from "./FeedbackCreator";
 import PropTypes from "prop-types";
 import moment from "moment";
 import "moment/locale/es";
+import Swal from "sweetalert2";
 
 FeedbackList.propsTypes = {
 	friend_id: PropTypes.string,
@@ -34,8 +35,6 @@ export default function FeedbackList(props) {
 					setFeedback([]);
 					getFeedback();
 				} else {
-					const data = await response.json();
-					//alert(data.msg);
 					Swal.fire({
 						icon: "error",
 						title: "Oops...",

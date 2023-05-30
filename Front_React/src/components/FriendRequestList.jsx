@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import FriendRequestListItem from "./FriendRequestListItem";
+import Swal from "sweetalert2";
 
 export default function FriendRequestList() {
 	const [friendRequests, setFriendRequests] = useState([]);
@@ -21,8 +22,6 @@ export default function FriendRequestList() {
 					const body = await response.json();
 					setFriendRequests(body);
 				} else {
-					const data = await response.json();
-					//alert(data.msg);
 					Swal.fire({
 						icon: "error",
 						title: "Oops...",
