@@ -26,7 +26,7 @@ export default function SugestedList() {
 		<>
 			<div className="d-flex flex-column gap-3">
 				<p className="h3 mb-1 font-family--jetbrains-mono">Sugerencias de amistad</p>
-				<div id="no-friend-list-wrapper" class="d-flex flex-wrap gap-3">
+				<div id="no-friend-list-wrapper" className="d-flex flex-wrap gap-3">
 					{sugestedList.map((sugestedData, index) => {
 						return <CreateSugestedList sugestedData={sugestedData} key={index} />;
 					})}

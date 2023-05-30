@@ -60,8 +60,6 @@ export default function FeedbackList(props) {
 						const body = await response.json();
 						setFeedback(body);
 					} else {
-						const data = await response.json();
-						//alert(data.msg);
 						Swal.fire({
 							icon: "error",
 							title: "Oops...",
