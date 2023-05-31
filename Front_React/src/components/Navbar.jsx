@@ -3,7 +3,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "../common/enums";
 import { useState } from "react";
-import { useUser } from "../context/UserContext";
 
 export default function Navbar() {
 	const [collapse, setCollapse] = useState(false);
@@ -20,8 +19,8 @@ export default function Navbar() {
 		{ name: "Amigos", route: ROUTES.FRIENDS },
 	];
 
-	const { user } = useUser();
-	if (user.userType === 1) links.push({ name: "Administrador", route: ROUTES.ADMIN });
+	const userType = localStorage.getItem("userType");
+	if (userType) links.push({ name: "Administrador", route: ROUTES.ADMIN });
 
 	return (
 		<header className="sticky-top shadow-sm bg-light-subtle">
