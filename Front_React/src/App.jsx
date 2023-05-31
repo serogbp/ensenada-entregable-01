@@ -9,6 +9,7 @@ import Admin from "./views/Admin";
 import { ROUTES } from "./common/enums";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import * as bootstrap from "bootstrap";
+import { UserProvider } from "./context/UserContext";
 
 const router = createBrowserRouter([
 	{
@@ -51,5 +52,10 @@ const router = createBrowserRouter([
 
 export default function App() {
 	window.bootstrap = bootstrap;
-	return <RouterProvider router={router} />;
+
+	return (
+		<UserProvider>
+			<RouterProvider router={router} />;
+		</UserProvider>
+	);
 }

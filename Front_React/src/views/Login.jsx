@@ -3,12 +3,15 @@ import Layout from "../layouts/Layout";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { useUser } from "../context/UserContext";
 
 export default function Login() {
 	const [formState, setFormState] = useState({
 		email: "",
 		password: "",
 	});
+
+	const userHook = useUser();
 
 	const navigate = useNavigate();
 	const login = (event) => {
@@ -26,6 +29,7 @@ export default function Login() {
 					const body = await response.json();
 					localStorage.setItem("token", body.token);
 					if (body.userType) localStorage.setItem("userType", body.userType);
+					userHook.setUser(body);
 					Swal.fire({
 						position: "center",
 						icon: "success",
@@ -33,6 +37,7 @@ export default function Login() {
 						showConfirmButton: false,
 						timer: 1500,
 					});
+
 					navigate("/feed");
 				} else {
 					Swal.fire({
