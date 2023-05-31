@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useUser } from "../context/UserContext";
 import { ROUTES } from "../common/enums";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
