@@ -1,6 +1,6 @@
 import moment from "moment";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HeartFill, Heart } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../common/enums";
@@ -56,11 +56,20 @@ function Footer({ post }) {
 }
 
 function LikeCounter({ post }) {
-	const [counter, setCounter] = useState(post.total_likes ?? 0);
+	const [counter, setCounter] = useState(0);
 	// La query en el campo has_like devuelve 0 o 1
 	// Si es 1, el usuario ya ha dado like, si es 0, el usuario no ha dado like.
-	const [isLiked, setIsLiked] = useState(Boolean(post.has_like));
+	const [isLiked, setIsLiked] = useState(false);
 	const [isHover, setIsHover] = useState(false);
+
+	useEffect(() => {
+		console.log("like cambiado");
+		setCounter(post.total_likes ?? 0);
+	}, [post.total_likes]);
+
+	useEffect(() => {
+		setIsLiked(Boolean(post.has_like));
+	}, [post.has_like]);
 
 	const handleClick = () => {
 		if (!isLiked) {
@@ -74,11 +83,10 @@ function LikeCounter({ post }) {
 			})
 				.then(async (response) => {
 					if (response.status === 200) {
-						setCounter(counter + 1);
-						setIsLiked(true);
+						post.total_likes = counter + 1;
+						post.has_like = true;
+						setIsHover(false);
 					} else {
-						const data = await response.json();
-						//alert(data.msg);
 						Swal.fire({
 							icon: "error",
 							title: "Oops...",
@@ -101,11 +109,10 @@ function LikeCounter({ post }) {
 			})
 				.then(async (response) => {
 					if (response.status === 200) {
-						setCounter(counter - 1);
-						setIsLiked(false);
+						post.total_likes = counter - 1;
+						post.has_like = false;
+						setIsHover(false);
 					} else {
-						const data = await response.json();
-						//alert(data.msg);
 						Swal.fire({
 							icon: "error",
 							title: "Oops...",
@@ -124,7 +131,6 @@ function LikeCounter({ post }) {
 		// prettier-ignore
 		<div onMouseEnter={() => { setIsHover(true); }} onMouseLeave={() => { setIsHover(false); }} onClick={handleClick} className="d-flex gap-3 align-items-center user-select-none"
 		>
-
 			{!isLiked && <Heart className="p-0" color={isHover ? "red" : ""} size={18} />}
 			{isLiked && <HeartFill color="red" size={18} />}
 			<p className="mb-0">{counter === 0 ? "" : counter}</p>
