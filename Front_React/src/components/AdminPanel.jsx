@@ -146,86 +146,88 @@ export default function AdminPanel() {
 				Imprimir Excel
 			</button>
 			{/* Tabla */}
-			<table className="table table-striped table-hover text-center overflow-x-scroll">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Imagen</th>
-						<th>Nombre</th>
-						<th>Apellidos</th>
-						<th>Email</th>
-						<th>Usuario</th>
-						<th>Ciudad</th>
-						<th>Rol</th>
-						<th>Tipo</th>
-						<th>Acciones</th>
-					</tr>
-				</thead>
-				<tbody>
-					{currentPageData.map((user, index) => (
-						<tr key={index}>
-							<td className="align-middle " style={{ width: "5%" }}>
-								{user.user_id}
-							</td>
-							<td className="align-middle " style={{ width: "5%" }}>
-								<img src={user.picture} alt={user.name} width="45" height="45" className="rounded" />
-							</td>
-							<td className="align-middle " style={{ width: "10%" }}>
-								{user.name}
-							</td>
-							<td className="align-middle " style={{ width: "15%" }}>
-								{user.surname1} {user.surname2}
-							</td>
-							<td className="align-middle " style={{ width: "15%" }}>
-								{user.email}
-							</td>
-							<td className="align-middle " style={{ width: "15%" }}>
-								{user.username}
-							</td>
-							<td className="align-middle " style={{ width: "10%" }}>
-								{user.city}
-							</td>
-							<td className="align-middle " style={{ width: "15%" }}>
-								{user.role}
-							</td>
-							<td className="align-middle " style={{ width: "10%" }}>
-								{user.userType === 0 ? "usuario" : "Administrador"}
-							</td>
-							<td className="align-middle " style={{ width: "25%" }}>
-								<div className="d-flex gap-1">
-									<button className="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ver perfil">
-										<EyeFill />
-									</button>
-									<button
-										className="btn btn-outline-warning"
-										data-bs-toggle="tooltip"
-										data-bs-placement="bottom"
-										data-bs-title="Editar perfil"
-										onClick={() => {
-											handleEdit(user);
-										}}
-									>
-										<PencilFill />
-									</button>
-									<button
-										className="btn btn-outline-danger"
-										data-bs-toggle="tooltip"
-										data-bs-placement="bottom"
-										data-bs-title="Eliminar perfil"
-										onClick={() => {
-											handleDelete(user);
-										}}
-									>
-										<TrashFill />
-									</button>
-								</div>
-							</td>
+			<div className="table-responsive">
+				<table className="table table-striped table-hover text-center">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Imagen</th>
+							<th>Nombre</th>
+							<th>Apellidos</th>
+							<th>Email</th>
+							<th>Usuario</th>
+							<th>Ciudad</th>
+							<th>Rol</th>
+							<th>Tipo</th>
+							<th>Acciones</th>
 						</tr>
-					))}
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						{currentPageData.map((user, index) => (
+							<tr key={index}>
+								<td className="align-middle " style={{ width: "5%" }}>
+									{user.user_id}
+								</td>
+								<td className="align-middle " style={{ width: "5%" }}>
+									<img src={user.picture} alt={user.name} width="45" height="45" className="rounded" />
+								</td>
+								<td className="align-middle " style={{ width: "10%" }}>
+									{user.name}
+								</td>
+								<td className="align-middle " style={{ width: "15%" }}>
+									{user.surname1} {user.surname2}
+								</td>
+								<td className="align-middle " style={{ width: "15%" }}>
+									{user.email}
+								</td>
+								<td className="align-middle " style={{ width: "15%" }}>
+									{user.username}
+								</td>
+								<td className="align-middle " style={{ width: "10%" }}>
+									{user.city}
+								</td>
+								<td className="align-middle " style={{ width: "15%" }}>
+									{user.role}
+								</td>
+								<td className="align-middle " style={{ width: "10%" }}>
+									{user.userType === 0 ? "usuario" : "Administrador"}
+								</td>
+								<td className="align-middle " style={{ width: "25%" }}>
+									<div className="d-flex gap-1">
+										<button className="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ver perfil">
+											<EyeFill />
+										</button>
+										<button
+											className="btn btn-outline-warning"
+											data-bs-toggle="tooltip"
+											data-bs-placement="bottom"
+											data-bs-title="Editar perfil"
+											onClick={() => {
+												handleEdit(user);
+											}}
+										>
+											<PencilFill />
+										</button>
+										<button
+											className="btn btn-outline-danger"
+											data-bs-toggle="tooltip"
+											data-bs-placement="bottom"
+											data-bs-title="Eliminar perfil"
+											onClick={() => {
+												handleDelete(user);
+											}}
+										>
+											<TrashFill />
+										</button>
+									</div>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
 			{/* Paginacion */}
-			<nav aria-label="Page navigation example">
+			<nav className="pt-4">
 				<ul className="pagination">
 					<li className="page-item">
 						{/* prettier-ignore */}
