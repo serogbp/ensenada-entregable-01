@@ -35,8 +35,6 @@ export default function Login() {
 					});
 					navigate("/feed");
 				} else {
-					const data = await response.json();
-					//alert(data.msg);
 					Swal.fire({
 						icon: "error",
 						title: "Oops...",

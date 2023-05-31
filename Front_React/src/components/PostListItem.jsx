@@ -63,7 +63,6 @@ function LikeCounter({ post }) {
 	const [isHover, setIsHover] = useState(false);
 
 	useEffect(() => {
-		console.log("like cambiado");
 		setCounter(post.total_likes ?? 0);
 	}, [post.total_likes]);
 

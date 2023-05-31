@@ -46,6 +46,7 @@ export default function PostList() {
 			}),
 		}).then(async (response) => {
 			if (response.status === 200) {
+				// TODO mirar porque hacimos esto en vez de actualizar el estado
 				getPosts();
 			} else {
 				Swal.fire({

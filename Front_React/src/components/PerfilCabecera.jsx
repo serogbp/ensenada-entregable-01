@@ -1,6 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import Modal from "./Modal";
 import Swal from "sweetalert2";
 
 PerfilCabecera.propsTypes = {
@@ -16,24 +15,37 @@ export default function PerfilCabecera(props) {
 	const navigate = useNavigate();
 
 	const handleDelete = () => {
-		fetch(`http://localhost:3000/user/`, {
-			method: "DELETE",
-			headers: {
-				Authorization: `${localStorage.getItem("token")}`,
-			},
-		}).then(async (response) => {
-			if (response.status === 200) {
-				navigate("/");
-				localStorage.removeItem("token");
-			} else {
-				const data = await response.json();
-				Swal.fire({
-					icon: "error",
-					title: "Oops...",
-					text: `Error al eliminar el usuario  ${data.msg}`,
-					footer: "Intentelo pasados unos minutos",
+		Swal.fire({
+			title: `¿Deseas borrar tu cuenta?`,
+			text: "Esta acción no se puede revertir.",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Borrar",
+			cancelButtonText: "Cancelar",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				fetch(`http://localhost:3000/user/`, {
+					method: "DELETE",
+					headers: {
+						Authorization: `${localStorage.getItem("token")}`,
+					},
+				}).then(async (response) => {
+					if (response.status === 200) {
+						navigate("/");
+						localStorage.removeItem("token");
+					} else {
+						const data = await response.json();
+						Swal.fire({
+							icon: "error",
+							title: "Oops...",
+							text: `Error al eliminar el usuario  ${data.msg}`,
+							footer: "Intentelo pasados unos minutos",
+						});
+						navigate("/profile");
+					}
 				});
-				navigate("/profile");
 			}
 		});
 	};
@@ -62,14 +74,12 @@ export default function PerfilCabecera(props) {
 									Editar perfil
 								</button>
 
-								<button type="button" className="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={handleDelete}>
+								<button type="button" className="btn btn-outline-danger" onClick={handleDelete}>
 									Eliminar perfil
 								</button>
 							</div>
 						)}
 					</div>
-
-					<Modal />
 				</div>
 			</div>
 		</div>

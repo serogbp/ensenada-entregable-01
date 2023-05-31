@@ -4,21 +4,28 @@ import moment from "moment";
 import { utils, writeFileXLSX } from "xlsx";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import * as bootstrap from "bootstrap";
+import AdminEditProfile from "./Admin/AdminEditProfile";
 
 export default function AdminPanel() {
 	const [userList, setUserList] = useState([]);
 	const [currentPage, setCurrentPage] = useState(0);
 	const navigate = useNavigate();
 
+	// Estado para almacenar la información del usuario modificado en el modal
+	// Ambas variables se pasan por props al modal
+	const [modifiedUser, setModifiedUser] = useState({});
+
 	// Calcular paginacion
-	const PER_PAGE = 5;
+	const PER_PAGE = 8;
 	const offset = currentPage * PER_PAGE;
 	const currentPageData = userList.slice(offset, offset + PER_PAGE);
 	const pageCount = Math.ceil(userList.length / PER_PAGE);
 
 	// Inicializar tooltips
-	const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-	// const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
+	//const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+	//const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
 
 	useEffect(() => {
 		fetch(`http://localhost:3000/admin`, {
@@ -47,15 +54,60 @@ export default function AdminPanel() {
 		writeFileXLSX(workbook, `${moment().format("YYYY-MM-DD")}_usuarios.xlsx`);
 	};
 
+	const handleEdit = (user) => {
+		const reSwal = withReactContent(Swal);
+		reSwal
+			.fire({
+				html: <AdminEditProfile user={user} closeModal={() => reSwal.close()} setModifiedUser={setModifiedUser} />,
+				showCancelButton: true,
+				confirmButtonText: "Guardar",
+				cancelButtonColor: "#d33",
+				cancelButtonText: "Cancelar",
+			})
+			.then((result) => {
+				if (result.isConfirmed) {
+					// Fetch modificar usuario
+					fetch(`http://localhost:3000/admin`, {
+						method: "PATCH",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `${localStorage.getItem("token")}`,
+						},
+						body: JSON.stringify(modifiedUser),
+					})
+						.then(async (response) => {
+							if (response.status === 200) {
+								Swal.fire({
+									position: "center",
+									icon: "success",
+									title: "Datos modificados!",
+									showConfirmButton: true,
+								});
+							} else {
+								Swal.fire({
+									icon: "error",
+									title: "Oops...",
+									text: "Error al modificar el perfil",
+									footer: "Revise los datos introducidos",
+								});
+							}
+						})
+						.catch((error) => {
+							console.log(error);
+						});
+				}
+			});
+	};
+
 	const handleDelete = (user) => {
 		Swal.fire({
 			title: `Borrar el usuario ${user.username}?`,
-			text: "You won't be able to revert this!",
+			text: "No se puede revertir el cambio.",
 			icon: "warning",
 			showCancelButton: true,
 			confirmButtonColor: "#3085d6",
 			cancelButtonColor: "#d33",
-			confirmButtonText: "Yes, delete it!",
+			confirmButtonText: "Borrar",
 		}).then((result) => {
 			if (result.isConfirmed) {
 				fetch(`http://localhost:3000/admin/`, {
@@ -150,7 +202,7 @@ export default function AdminPanel() {
 										data-bs-placement="bottom"
 										data-bs-title="Editar perfil"
 										onClick={() => {
-											navigate("/profile/edit", { state: { userState: user } });
+											handleEdit(user);
 										}}
 									>
 										<PencilFill />
