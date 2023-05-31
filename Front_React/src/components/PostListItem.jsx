@@ -50,7 +50,7 @@ function Footer({ post }) {
 	return (
 		<div className="d-flex gap-3 align-items-center justify-content-between">
 			<LikeCounter post={post} />
-			<p className="text-secondary m-0">{moment(post.publishDate).format("DD MMMM YYYY HH:ss")}</p>
+			<p className="text-secondary m-0">{moment(post.publishDate).format("DD MMMM YYYY HH:mm")}</p>
 		</div>
 	);
 }
