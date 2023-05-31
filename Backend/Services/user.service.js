@@ -12,15 +12,13 @@ export const getUser = async (request, response) => {
 	let user_id = request.params.id;
 	// Si hay user_id es el logeado, si no es el amigo
 	if (!user_id) {
-		const token = request.get("Authorization");
-		const decoded = jwt.verify(token, config.jwt.clave);
-		user_id = decoded.user_id;
+		user_id = request.tokenDecoded.user_id;
 	}
 
 	try {
 		const connection = await connect();
 
-		const [rows, fields] = await connection.query("SELECT name, surname1, surname2, email, age, city, country, studies, languages, linkedin, hobbies, role, picture FROM users WHERE user_id = ?", [user_id]);
+		const [rows, fields] = await connection.query("SELECT username, name, surname1, surname2, email, age, city, country, studies, languages, linkedin, hobbies, role, picture FROM users WHERE user_id = ?", [user_id]);
 		connection.end();
 		if (rows.isEmpty) return response.status(404).json({ msg: "El usuario no existe" });
 

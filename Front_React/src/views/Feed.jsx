@@ -1,3 +1,4 @@
+import Avatar from "../components/Avatar";
 import EventList from "../components/EventList";
 import FriendRequestList from "../components/FriendRequestList";
 import PostList from "../components/PostList";
@@ -9,7 +10,8 @@ export default function Feed() {
 		<MainLayout>
 			<div className="container">
 				<div className="row gap-4 gap-lg-0">
-					<div className="col d-none d-lg-block">
+					<div className="col d-none d-lg-flex flex-column gap-4">
+						<Avatar />
 						<SideBarLinks />
 					</div>
 					<div className="col-lg-6 d-flex flex-column gap-4 order-2">
