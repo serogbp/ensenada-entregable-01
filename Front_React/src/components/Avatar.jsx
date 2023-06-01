@@ -34,16 +34,17 @@ export default function Avatar() {
 	};
 
 	return (
-		<div className="card d-flex flex-column gap-4 hover-scale">
-			<Link to={ROUTES.PROFILE} className="d-flex gap-2">
-				<div className="avatar">
-					<img src={user.picture} alt={user.name} />
+		<div className="card d-flex flex-column align-items-center gap-4 hover-scale">
+			<Link to={ROUTES.PROFILE} className="d-flex flex-column align-items-center gap-2">
+				<div className="avatar" style={{ width: "5rem", height: "5rem" }}>
+					<img className="w-100 h-100" src={user.picture} alt={user.name} />
 				</div>
 				<div className="doble-texto text-start">
 					<p className="text-break">
 						{user.name} {user.surname1}
 					</p>
 					<p className="text-break">@{user.username}</p>
+					<p className="text-break pt-2 font-family--jetbrains-mono">{user.role}</p>
 				</div>
 			</Link>
 		</div>
