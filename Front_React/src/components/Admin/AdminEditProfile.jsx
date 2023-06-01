@@ -1,22 +1,36 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+
+AdminEditProfile.propsTypes = {
+	user: PropTypes.object.isRequired,
+	setModifiedUser: PropTypes.func.isRequired,
+};
 
 export default function AdminEditProfile(props) {
 	const [user, setUser] = useState({});
+	/* 	const { setModifiedUser } = ; */
 
 	useEffect(() => {
 		setUser(props.user);
 	}, [props.user]);
 
+	useEffect(() => {
+		if (Object.keys(user).length > 0) {
+			props.setModifiedUser(user);
+		} else {
+			console.log("user esta vacio, no es actualiza el modifiedUser", user);
+		}
+	}, [user]);
+
 	const handleOnChange = (e) => {
+		// const a = { ...user, [e.target.name]: e.target.value };
+		// props.setModifiedUser(a);
 		setUser({ ...user, [e.target.name]: e.target.value });
-		props.setModifiedUser({ ...user, [e.target.name]: e.target.value });
 	};
 
 	return (
 		<>
-			<p onClick={() => props.closeModal()} className="h5 mb-1 font-family--jetbrains-mono mb-4">
-				Modificar perfil de usuario
-			</p>
+			<p className="h5 mb-1 font-family--jetbrains-mono mb-4">Modificar perfil de usuario</p>
 			{/* <!-- columna izqda con los datos --> */}
 			<div className="d-flex align-content-start gap-5 flex-column flex-lg-row">
 				<div className="left-column d-flex order-1 order-lg-0 justify-content-evenly align-self-start">
@@ -72,18 +86,6 @@ export default function AdminEditProfile(props) {
 						</div>
 					</form>
 				</div>
-				{/* <!-- columna dcha foto perfil --> */}
-				{/* <div className="right-column order-0 order-lg-1 d-flex flex-column justify-content-start align-item-start">
-								<div className="d-flex justify-content-center">
-									<img name="avatar" id="avatar" src={user.picture} className="profile rounded-circle" alt="profile-icon" />
-								</div>
-								<div className="d-flex justify-content-center">
-									<label className="btn m-2 btn-outline-dark">
-										Modificar
-										<input hidden />
-									</label>
-								</div>
-							</div> */}
 			</div>
 		</>
 	);

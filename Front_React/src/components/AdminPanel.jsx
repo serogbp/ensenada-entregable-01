@@ -28,6 +28,10 @@ export default function AdminPanel() {
 	//const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
 
 	useEffect(() => {
+		console.log("Se ha modificado el modifiedUser", modifiedUser);
+	}, [modifiedUser]);
+
+	useEffect(() => {
 		fetch(`http://localhost:3000/admin`, {
 			method: "GET",
 			headers: {
@@ -54,11 +58,57 @@ export default function AdminPanel() {
 		writeFileXLSX(workbook, `${moment().format("YYYY-MM-DD")}_usuarios.xlsx`);
 	};
 
+	const handleState = (value) => {
+		setModifiedUser(value);
+	};
+
+	/* 	const getModifiedUser = () => {
+		return modifiedUser;
+	};
+ */
+	const updateUser = () => {
+		console.log("Fetch para modificar el usuario:", modifiedUser);
+		// Fetch modificar usuario
+		fetch(`http://localhost:3000/admin`, {
+			method: "PATCH",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `${localStorage.getItem("token")}`,
+			},
+			body: JSON.stringify(modifiedUser),
+		})
+			.then(async (response) => {
+				if (response.status === 200) {
+					Swal.fire({
+						position: "center",
+						icon: "success",
+						title: "Datos modificados!",
+						showConfirmButton: true,
+					});
+					// Actualizar estado de la tabla
+					/* const temp = [...userList].filter((user) => user.user_id !== modifiedUser.user_id);
+					setUserList([...temp, modifiedUser]) */
+				} else {
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "Error al modificar el perfil",
+						footer: "Revise los datos introducidos",
+					});
+				}
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+
+		setModifiedUser({});
+	};
+
 	const handleEdit = (user) => {
 		const reSwal = withReactContent(Swal);
 		reSwal
 			.fire({
-				html: <AdminEditProfile user={user} closeModal={() => reSwal.close()} setModifiedUser={setModifiedUser} />,
+				html: <AdminEditProfile user={user} setModifiedUser={handleState} />,
 				showCancelButton: true,
 				confirmButtonText: "Guardar",
 				cancelButtonColor: "#d33",
@@ -66,35 +116,36 @@ export default function AdminPanel() {
 			})
 			.then((result) => {
 				if (result.isConfirmed) {
-					// Fetch modificar usuario
-					fetch(`http://localhost:3000/admin`, {
-						method: "PATCH",
-						headers: {
-							"Content-Type": "application/json",
-							Authorization: `${localStorage.getItem("token")}`,
-						},
-						body: JSON.stringify(modifiedUser),
-					})
-						.then(async (response) => {
-							if (response.status === 200) {
-								Swal.fire({
-									position: "center",
-									icon: "success",
-									title: "Datos modificados!",
-									showConfirmButton: true,
-								});
-							} else {
-								Swal.fire({
-									icon: "error",
-									title: "Oops...",
-									text: "Error al modificar el perfil",
-									footer: "Revise los datos introducidos",
-								});
-							}
-						})
-						.catch((error) => {
-							console.log(error);
-						});
+					updateUser();
+					// // Fetch modificar usuario
+					// fetch(`http://localhost:3000/admin`, {
+					// 	method: "PATCH",
+					// 	headers: {
+					// 		"Content-Type": "application/json",
+					// 		Authorization: `${localStorage.getItem("token")}`,
+					// 	},
+					// 	body: JSON.stringify(getModifiedUser()),
+					// })
+					// 	.then(async (response) => {
+					// 		if (response.status === 200) {
+					// 			Swal.fire({
+					// 				position: "center",
+					// 				icon: "success",
+					// 				title: "Datos modificados!",
+					// 				showConfirmButton: true,
+					// 			});
+					// 		} else {
+					// 			Swal.fire({
+					// 				icon: "error",
+					// 				title: "Oops...",
+					// 				text: "Error al modificar el perfil",
+					// 				footer: "Revise los datos introducidos",
+					// 			});
+					// 		}
+					// 	})
+					// 	.catch((error) => {
+					// 		console.log(error);
+					// 	});
 				}
 			});
 	};
