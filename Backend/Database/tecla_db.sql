@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-05-2023 a las 19:29:04
+-- Tiempo de generación: 01-06-2023 a las 22:07:03
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -81,11 +81,14 @@ INSERT INTO `friends` (`sender_id`, `receptor_id`, `status`) VALUES
 (6, 12, 1),
 (6, 14, 1),
 (6, 18, 1),
+(7, 1, 0),
 (7, 4, 1),
 (7, 6, 1),
 (7, 8, 1),
 (7, 9, 0),
 (7, 10, 1),
+(7, 12, 0),
+(7, 14, 1),
 (7, 20, 1),
 (7, 21, 0),
 (8, 3, 1),
@@ -123,7 +126,7 @@ INSERT INTO `friends` (`sender_id`, `receptor_id`, `status`) VALUES
 (14, 1, 0),
 (14, 5, 0),
 (14, 6, 1),
-(14, 7, 0),
+(14, 7, 1),
 (14, 8, 1),
 (14, 10, 1),
 (14, 11, 0),
@@ -328,7 +331,12 @@ INSERT INTO `reactions` (`post_id`, `user_id`) VALUES
 (54, 18),
 (67, 9),
 (68, 9),
-(68, 11);
+(68, 11),
+(78, 1),
+(80, 7),
+(82, 7),
+(83, 1),
+(90, 1);
 
 -- --------------------------------------------------------
 
