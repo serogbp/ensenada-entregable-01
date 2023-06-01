@@ -1,7 +1,6 @@
 /*Layout para perfil, modificar perfil, feedm etc*/
 
 import ScrollToTop from "../common/ScrollOnTop";
-import BottomNavbar from "../components/BottomNavbar";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
@@ -12,7 +11,6 @@ export default function MainLayout(props) {
 			<Navbar />
 			<main className="py-4 d-flex flex-column flex-grow-1">{props.children}</main>
 			<Footer />
-			<BottomNavbar />
 		</div>
 	);
 }

@@ -15,6 +15,7 @@
 	--tecla-white: #f7f7f7;
 	--tecla-pink: #f59fc7;
 	--tecla-teal: #79c7c7;
+	--tecla-teal-dark: #4ea1a1;
 	--tecla-blue-light: #99ccff;
 	--tecla-orange: #ff6633;
 	--tecla-yellow: #ffff00;
@@ -24,75 +25,75 @@
 }
 
 .bg-tecla-white {
-	background-color: var(--tecla-white);
+	background-color: var(--tecla-white) !important;
 }
 
 .bg-tecla-pink {
-	background-color: var(--tecla-pink);
+	background-color: var(--tecla-pink) !important;
 }
 
 .bg-tecla-teal {
-	background-color: var(--tecla-teal);
+	background-color: var(--tecla-teal) !important;
 }
 
 .bg-tecla-blue-light {
-	background-color: var(--tecla-blue-light);
+	background-color: var(--tecla-blue-light) !important;
 }
 
 .bg-tecla-orange {
-	background-color: var(--tecla-orange);
+	background-color: var(--tecla-orange) !important;
 }
 
 .bg-tecla-yellow {
-	background-color: var(--tecla-yellow);
+	background-color: var(--tecla-yellow) !important;
 }
 
 .bg-tecla-blue {
-	background-color: var(--tecla-blue);
+	background-color: var(--tecla-blue) !important;
 }
 
 .bg-tecla-blueish {
-	background-color: var(--tecla-blueish);
+	background-color: var(--tecla-blueish) !important;
 }
 
 .bg-tecla-purple {
-	background-color: var(--tecla-purple);
+	background-color: var(--tecla-purple) !important;
 }
 
 .text-tecla-white {
-	color: var(--tecla-white);
+	color: var(--tecla-white) !important;
 }
 
 .text-tecla-pink {
-	color: var(--tecla-pink);
+	color: var(--tecla-pink) !important;
 }
 
 .text-tecla-teal {
-	color: var(--tecla-teal);
+	color: var(--tecla-teal) !important;
 }
 
 .text-tecla-blue-light {
-	color: var(--tecla-blue-light);
+	color: var(--tecla-blue-light) !important;
 }
 
 .text-tecla-orange {
-	color: var(--tecla-orange);
+	color: var(--tecla-orange) !important;
 }
 
 .text-tecla-yellow {
-	color: var(--tecla-yellow);
+	color: var(--tecla-yellow) !important;
 }
 
 .text-tecla-blue {
-	color: var(--tecla-blue);
+	color: var(--tecla-blue) !important;
 }
 
 .text-tecla-blueish {
-	color: var(--tecla-blueish);
+	color: var(--tecla-blueish) !important;
 }
 
 .text-tecla-purple {
-	color: var(--tecla-purple);
+	color: var(--tecla-purple) !important;
 }
 
 .max-w-prose {
@@ -408,7 +409,6 @@ hr {
 ******** FEDD.CSS ******************
 ************************************
 */
-
 .nav-list>* {
 	padding: 0.5rem 1rem;
 }
@@ -577,4 +577,19 @@ img.icon {
 	.friend-card {
 		width: 100%;
 	}
+}
+
+.active {
+	background-color: var(--tecla-teal-dark);
+	border-radius: 0.5rem;
+}
+
+.hover-scale:hover {
+	scale: 1.05;
+	transition: all 0.1s ease-in-out;
+}
+
+.hover-scale-md:hover {
+	scale: 1.2;
+	transition: all 0.1s ease-in-out;
 }

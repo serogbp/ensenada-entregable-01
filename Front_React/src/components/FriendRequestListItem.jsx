@@ -23,7 +23,7 @@ export default function FriendRequestListItem(props) {
 	const { data, acceptRequest, rejectRequest } = props;
 	return (
 		<div className="d-flex flex-column gap-2">
-			<Link to={ROUTES.PROFILE + "/" + data.user_id} className="d-flex gap-1">
+			<Link to={ROUTES.PROFILE + "/" + data.user_id} className="d-flex gap-2 hover-scale">
 				<div className="avatar">
 					<img src={data.picture} alt={data.name} />
 				</div>
@@ -41,7 +41,7 @@ export default function FriendRequestListItem(props) {
 							acceptRequest(data.user_id);
 						}}
 						id="buttonAccept"
-						className="btn btn-outline-primary btn-sm p-0 w-25 "
+						className="btn btn-outline-primary btn-sm p-0 w-25 hover-scale-md"
 					>
 						<Check size={24} />
 					</button>
@@ -50,7 +50,7 @@ export default function FriendRequestListItem(props) {
 							rejectRequest(data.user_id);
 						}}
 						id="buttonReject"
-						className="btn btn-outline-danger btn-sm p-0 w-25 "
+						className="btn btn-outline-danger btn-sm p-0 w-25 hover-scale-md"
 					>
 						<X size={24} />
 					</button>
