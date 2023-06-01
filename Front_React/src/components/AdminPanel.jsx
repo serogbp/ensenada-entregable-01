@@ -2,20 +2,13 @@ import { useEffect, useState } from "react";
 import { EyeFill, PencilFill, TrashFill } from "react-bootstrap-icons";
 import moment from "moment";
 import { utils, writeFileXLSX } from "xlsx";
-import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import * as bootstrap from "bootstrap";
 import AdminEditProfile from "./Admin/AdminEditProfile";
 
 export default function AdminPanel() {
 	const [userList, setUserList] = useState([]);
 	const [currentPage, setCurrentPage] = useState(0);
-	const navigate = useNavigate();
-
-	// Estado para almacenar la información del usuario modificado en el modal
-	// Ambas variables se pasan por props al modal
-	const [modifiedUser, setModifiedUser] = useState({});
 
 	// Calcular paginacion
 	const PER_PAGE = 8;
@@ -23,15 +16,11 @@ export default function AdminPanel() {
 	const currentPageData = userList.slice(offset, offset + PER_PAGE);
 	const pageCount = Math.ceil(userList.length / PER_PAGE);
 
-	// Inicializar tooltips
-	//const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-	//const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
-
 	useEffect(() => {
-		console.log("Se ha modificado el modifiedUser", modifiedUser);
-	}, [modifiedUser]);
+		getUsers();
+	}, []);
 
-	useEffect(() => {
+	const getUsers = () => {
 		fetch(`http://localhost:3000/admin`, {
 			method: "GET",
 			headers: {
@@ -47,7 +36,7 @@ export default function AdminPanel() {
 			.catch((error) => {
 				console.log(error);
 			});
-	}, []);
+	};
 
 	const handleExport = () => {
 		const headers = ["ID", "Nombre", "Apellido 1", "Apellido 2", "Email", "Usuario", "Edad", "Ciudad", "Pais", "Estudios", "Idiomas", "Linkedin", "Hobbies", "Rol", "Imagen", "Tipo usuario"];
@@ -58,96 +47,12 @@ export default function AdminPanel() {
 		writeFileXLSX(workbook, `${moment().format("YYYY-MM-DD")}_usuarios.xlsx`);
 	};
 
-	const handleState = (value) => {
-		setModifiedUser(value);
-	};
-
-	/* 	const getModifiedUser = () => {
-		return modifiedUser;
-	};
- */
-	const updateUser = () => {
-		console.log("Fetch para modificar el usuario:", modifiedUser);
-		// Fetch modificar usuario
-		fetch(`http://localhost:3000/admin`, {
-			method: "PATCH",
-			headers: {
-				"Content-Type": "application/json",
-				Authorization: `${localStorage.getItem("token")}`,
-			},
-			body: JSON.stringify(modifiedUser),
-		})
-			.then(async (response) => {
-				if (response.status === 200) {
-					Swal.fire({
-						position: "center",
-						icon: "success",
-						title: "Datos modificados!",
-						showConfirmButton: true,
-					});
-					// Actualizar estado de la tabla
-					/* const temp = [...userList].filter((user) => user.user_id !== modifiedUser.user_id);
-					setUserList([...temp, modifiedUser]) */
-				} else {
-					Swal.fire({
-						icon: "error",
-						title: "Oops...",
-						text: "Error al modificar el perfil",
-						footer: "Revise los datos introducidos",
-					});
-				}
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-
-		setModifiedUser({});
-	};
-
 	const handleEdit = (user) => {
 		const reSwal = withReactContent(Swal);
-		reSwal
-			.fire({
-				html: <AdminEditProfile user={user} setModifiedUser={handleState} />,
-				showCancelButton: true,
-				confirmButtonText: "Guardar",
-				cancelButtonColor: "#d33",
-				cancelButtonText: "Cancelar",
-			})
-			.then((result) => {
-				if (result.isConfirmed) {
-					updateUser();
-					// // Fetch modificar usuario
-					// fetch(`http://localhost:3000/admin`, {
-					// 	method: "PATCH",
-					// 	headers: {
-					// 		"Content-Type": "application/json",
-					// 		Authorization: `${localStorage.getItem("token")}`,
-					// 	},
-					// 	body: JSON.stringify(getModifiedUser()),
-					// })
-					// 	.then(async (response) => {
-					// 		if (response.status === 200) {
-					// 			Swal.fire({
-					// 				position: "center",
-					// 				icon: "success",
-					// 				title: "Datos modificados!",
-					// 				showConfirmButton: true,
-					// 			});
-					// 		} else {
-					// 			Swal.fire({
-					// 				icon: "error",
-					// 				title: "Oops...",
-					// 				text: "Error al modificar el perfil",
-					// 				footer: "Revise los datos introducidos",
-					// 			});
-					// 		}
-					// 	})
-					// 	.catch((error) => {
-					// 		console.log(error);
-					// 	});
-				}
-			});
+		reSwal.fire({
+			html: <AdminEditProfile user={user} updateParent={getUsers} />,
+			showConfirmButton: false,
+		});
 	};
 
 	const handleDelete = (user) => {
@@ -244,9 +149,6 @@ export default function AdminPanel() {
 							</td>
 							<td className="align-middle " style={{ width: "25%" }}>
 								<div className="d-flex gap-1">
-									<button className="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ver perfil">
-										<EyeFill />
-									</button>
 									<button
 										className="btn btn-outline-warning"
 										data-bs-toggle="tooltip"

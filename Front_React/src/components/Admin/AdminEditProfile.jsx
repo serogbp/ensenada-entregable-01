@@ -1,31 +1,59 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import Swal from "sweetalert2";
 
 AdminEditProfile.propsTypes = {
 	user: PropTypes.object.isRequired,
-	setModifiedUser: PropTypes.func.isRequired,
+	updateParent: PropTypes.func.isRequired,
 };
 
 export default function AdminEditProfile(props) {
 	const [user, setUser] = useState({});
-	/* 	const { setModifiedUser } = ; */
 
 	useEffect(() => {
 		setUser(props.user);
 	}, [props.user]);
 
-	useEffect(() => {
-		if (Object.keys(user).length > 0) {
-			props.setModifiedUser(user);
-		} else {
-			console.log("user esta vacio, no es actualiza el modifiedUser", user);
-		}
-	}, [user]);
-
 	const handleOnChange = (e) => {
-		// const a = { ...user, [e.target.name]: e.target.value };
-		// props.setModifiedUser(a);
 		setUser({ ...user, [e.target.name]: e.target.value });
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		updateUser();
+	};
+
+	const updateUser = () => {
+		// Fetch modificar usuario
+		fetch(`http://localhost:3000/admin`, {
+			method: "PATCH",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `${localStorage.getItem("token")}`,
+			},
+			body: JSON.stringify(user),
+		})
+			.then(async (response) => {
+				if (response.status === 200) {
+					Swal.fire({
+						position: "center",
+						icon: "success",
+						title: "Datos modificados!",
+						showConfirmButton: true,
+					});
+					props.updateParent();
+				} else {
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "Error al modificar el perfil",
+						footer: "Revise los datos introducidos",
+					});
+				}
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	};
 
 	return (
@@ -34,7 +62,7 @@ export default function AdminEditProfile(props) {
 			{/* <!-- columna izqda con los datos --> */}
 			<div className="d-flex align-content-start gap-5 flex-column flex-lg-row">
 				<div className="left-column d-flex order-1 order-lg-0 justify-content-evenly align-self-start">
-					<form>
+					<form onSubmit={handleSubmit}>
 						<div className="mb-3">
 							<input type="text" className="form-control loadData" name="name" id="name" placeholder="Nombre" value={user.name} onChange={handleOnChange} />
 						</div>
@@ -59,7 +87,7 @@ export default function AdminEditProfile(props) {
 							<input type="url" name="linkedin" id="linkedin" className="form-control loadData" placeholder="LinkedIn" value={user.linkedin} onChange={handleOnChange} />
 						</div>
 						<div className="mb-3">
-							<input type="url" name="role" id="role" className="form-control loadData" placeholder="Rol" value={user.role} onChange={handleOnChange} />
+							<input type="text" name="role" id="role" className="form-control loadData" placeholder="Rol" value={user.role} onChange={handleOnChange} />
 						</div>
 						<div className="form-floating mb-3">
 							<textarea className="form-control loadData" placeholder="Estudios" name="studies" id="studies" style={{ height: "100px" }} value={user.studies} onChange={handleOnChange}></textarea>
@@ -84,6 +112,9 @@ export default function AdminEditProfile(props) {
 								<option value="0">Usuario</option>
 							</select>
 						</div>
+						<button type="submit" className="btn btn-primary">
+							Guardar
+						</button>
 					</form>
 				</div>
 			</div>
