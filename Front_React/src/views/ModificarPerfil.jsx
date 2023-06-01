@@ -106,16 +106,6 @@ export default function ModificarPerfil() {
 											<input type="email" className="form-control loadData" name="email" id="email" placeholder="name@example.com" value={user.email} onChange={handleOnChange} />
 											<span className="spHelp">Email</span>
 										</div>
-										{user.userType !== null && (
-											<div className="mb-3">
-												{/* <label className="form-label">Tipo de usuario</label> */}
-												<select className="form-select loadData" name="userType" id="userType" value={user.userType} onChange={handleOnChange}>
-													<option value="">Tipo de usuario</option>
-													<option value="1">Administrador</option>
-													<option value="0">Usuario</option>
-												</select>
-											</div>
-										)}
 									</form>
 								</div>
 								{/* <!-- columna dcha foto perfil --> */}
