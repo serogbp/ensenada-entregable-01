@@ -5,10 +5,6 @@ import Swal from "sweetalert2";
 export default function FriendRequestList() {
 	const [friendRequests, setFriendRequests] = useState([]);
 
-	/* TODO pasar a un custom hook:
-	- es estado friendRequests
-	- el useEffect
-	- las funciones acceptRequest, rejectRequest y removeRequest */
 	useEffect(() => {
 		// Cargar las peticiones de amistad
 		fetch(`http://localhost:3000/friend/request`, {
