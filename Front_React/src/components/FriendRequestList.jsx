@@ -72,9 +72,9 @@ export default function FriendRequestList() {
 	};
 
 	return (
-		<div className="list-unstyled card text-start bg-light-subtle">
+		<div className="list-unstyled card text-start">
 			<p className="h5 pb-4 mb-1 font-family--jetbrains-mono px-0">Peticiones de amistad</p>
-			<div id="friendRequests" className="d-flex flex-column gap-4">
+			<div id="friendRequests" className="d-flex flex-lg-column flex-wrap gap-4 ">
 				{
 					// Si no hay peticiones de amistad, mostrar un mensaje
 					// prettier-ignore

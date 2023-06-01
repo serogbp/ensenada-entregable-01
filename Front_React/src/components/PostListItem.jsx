@@ -14,7 +14,7 @@ PostListItem.propsTypes = {
 export default function PostListItem(props) {
 	const { post } = props;
 	return (
-		<div className="card post rounded-3 py-3 px-4 d-flex flex-column gap-3 bg-light-subtle">
+		<div className="card post rounded-3 py-3 px-4 d-flex flex-column gap-3">
 			<Header post={post} />
 			<Body post={post} />
 			<Footer post={post} />
@@ -25,7 +25,7 @@ export default function PostListItem(props) {
 function Header({ post }) {
 	return (
 		<Link to={ROUTES.PROFILE + "/" + post.user_id} className="d-flex justify-content-between align-items-center">
-			<div className="d-flex gap-4">
+			<div className="d-flex gap-2">
 				<img className="avatar" src={post.picture} alt="Imagen del usuario" />
 				<div className="doble-texto">
 					<p>
@@ -128,7 +128,7 @@ function LikeCounter({ post }) {
 
 	return (
 		// prettier-ignore
-		<div onMouseEnter={() => { setIsHover(true); }} onMouseLeave={() => { setIsHover(false); }} onClick={handleClick} className="d-flex gap-3 align-items-center user-select-none"
+		<div onMouseEnter={() => { setIsHover(true); }} onMouseLeave={() => { setIsHover(false); }} onClick={handleClick} className={"d-flex gap-3 align-items-center user-select-none" + (isHover ? " hover-scale-md" : "")}
 		>
 			{!isLiked && <Heart className="p-0" color={isHover ? "red" : ""} size={18} />}
 			{isLiked && <HeartFill color="red" size={18} />}

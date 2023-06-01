@@ -16,11 +16,13 @@ export default function EventList() {
 		},
 	];
 	return (
-		<div className="card gap-4 bg-light-subtle">
+		<div className="card gap-4">
 			<p className="h5 mb-1 font-family--jetbrains-mono">Eventos</p>
-			{events.map((event, index) => (
-				<EventListItem event={event} key={index} />
-			))}
+			<div className="d-flex flex-lg-column flex-wrap gap-4">
+				{events.map((event, index) => (
+					<EventListItem event={event} key={index} />
+				))}
+			</div>
 		</div>
 	);
 }
@@ -31,7 +33,7 @@ function EventListItem({ event }) {
 	const diff = moment(date).diff(moment(), "days");
 	const bg = diff > 3 ? "bg-success" : "bg-danger";
 	return (
-		<a href={url} target="_blank" rel="noreferrer noopener" className="d-flex gap-2">
+		<a href={url} target="_blank" rel="noreferrer noopener" className="d-flex gap-2 hover-scale">
 			<div className={`event ${bg}`}>
 				<p className="h5">{moment(date).format("MMM")}</p>
 				<p className="h4">{moment(date).format("DD")}</p>

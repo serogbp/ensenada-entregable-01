@@ -141,13 +141,13 @@ export default function AdminPanel() {
 		});
 	};
 	return (
-		<>
+		<div className="d-flex flex-column gap-2">
 			<button className="btn btn-outline-primary w-auto align-self-end pb-2" onClick={handleExport}>
 				Imprimir Excel
 			</button>
 			{/* Tabla */}
 			<div className="table-responsive">
-				<table className="table table-striped table-hover text-center">
+				<table className="table table-striped border table-hover text-center">
 					<thead>
 						<tr>
 							<th>ID</th>
@@ -227,7 +227,7 @@ export default function AdminPanel() {
 				</table>
 			</div>
 			{/* Paginacion */}
-			<nav className="pt-4">
+			<nav>
 				<ul className="pagination">
 					<li className="page-item">
 						{/* prettier-ignore */}
@@ -250,6 +250,6 @@ export default function AdminPanel() {
 					</li>
 				</ul>
 			</nav>
-		</>
+		</div>
 	);
 }

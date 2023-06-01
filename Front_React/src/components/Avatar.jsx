@@ -34,8 +34,8 @@ export default function Avatar() {
 	};
 
 	return (
-		<div className="card d-flex flex-column gap-4">
-			<Link to={ROUTES.PROFILE} className="d-flex gap-1">
+		<div className="card d-flex flex-column gap-4 hover-scale">
+			<Link to={ROUTES.PROFILE} className="d-flex gap-2">
 				<div className="avatar">
 					<img src={user.picture} alt={user.name} />
 				</div>
