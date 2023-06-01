@@ -10,10 +10,13 @@ import { ROUTES } from "./common/enums";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import * as bootstrap from "bootstrap";
 
+import NoEncontrado from "./views/NoEncontrado";
+
 const router = createBrowserRouter([
 	{
 		path: ROUTES.LANDING,
 		element: <LandingPage />,
+		errorElement: <NoEncontrado />,
 	},
 	{
 		path: ROUTES.LOGIN,

@@ -5,7 +5,7 @@ export default function Layout(props) {
 	return (
 		<div className="d-flex flex-column min-vh-100">
 			<Header />
-			{props.children}
+			<main className="py-4 d-flex flex-column flex-grow-1">{props.children}</main>
 			<Footer />
 		</div>
 	);
