@@ -29,25 +29,25 @@ export default function FeedbackCreator(props) {
 	};
 
 	return (
-		<form onSubmit={handleSubmit} className="card d-flex flex-column gap-4">
+		<form onSubmit={handleSubmit} className="card d-flex flex-column gap-4 p-4">
 			<p className="font-bold h5 font-family--jetbrains-mono">Feedback / Recomendaciones</p>
 			<div>
 				<label className="font-family--jetbrains-mono" htmlFor="position">
 					Cargo
 				</label>
-				<input id="position" type="text" name="position" value={formState.position} onChange={handleOnChange} className="form-control font-family--jetbrains-mono p-1 rounded" />
+				<input id="position" type="text" name="position" value={formState.position} onChange={handleOnChange} className="form-control font-family--jetbrains-mono p-1 rounded bg-light" />
 			</div>
 			<div>
 				<label className="font-family--jetbrains-mono" htmlFor="relation">
 					Relación
 				</label>
-				<input id="relation" type="text" name="relation" value={formState.relation} onChange={handleOnChange} className="form-control font-family--jetbrains-mono p-1 rounded" />
+				<input id="relation" type="text" name="relation" value={formState.relation} onChange={handleOnChange} className="form-control font-family--jetbrains-mono p-1 rounded bg-light" />
 			</div>
 			<div>
 				<label className="font-family--jetbrains-mono" htmlFor="content">
 					Comentario
 				</label>
-				<textarea value={formState.content} onChange={handleOnChange} id="content" name="content" autoComplete="off" className="form-control font-family--jetbrains-mono p-1 rounded"></textarea>
+				<textarea value={formState.content} onChange={handleOnChange} id="content" name="content" autoComplete="off" className="form-control font-family--jetbrains-mono p-1 rounded bg-light"></textarea>
 			</div>
 			<div>
 				<button type="submit" className="w-auto btn btn-primary w-auto float-end">

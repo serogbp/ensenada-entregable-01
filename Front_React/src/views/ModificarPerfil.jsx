@@ -46,9 +46,9 @@ export default function ModificarPerfil() {
 
 	return (
 		<MainLayout>
-			<div className="bg-tecla-teal">
+			<div className="bg-body">
 				<div className="row justify-content-center m-3">
-					<main className="d-flex flex-grow-1 justify-content-center align-items-center bg-tecla-teal">
+					<main className="d-flex flex-grow-1 justify-content-center align-items-center ">
 						{/* <!-- tarjeta datos de usuario --> */}
 						<div className="card-user bg-tecla-white p-4 my-5">
 							<p className="h5 mb-1 font-family--jetbrains-mono mb-4">Modificar perfil de usuario</p>
