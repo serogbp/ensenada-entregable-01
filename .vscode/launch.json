@@ -20,13 +20,10 @@
 			"name": "Backend test",
 			"program": "${workspaceFolder}/Backend/node_modules/mocha/bin/_mocha",
 			"request": "launch",
-			"runtimeArgs": [
+			"args": [
 				"${workspaceFolder}/Backend/test/test.js",
 			],
 			"type": "node",
-			"skipFiles": [
-				"<node_internals>/**"
-			]
 		},
 		{
 			"name": "Frontend",

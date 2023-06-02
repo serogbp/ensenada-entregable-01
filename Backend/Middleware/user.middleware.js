@@ -20,7 +20,7 @@ export const checkUser = [
 		const validationResults = validationResult(req);
 		if (!validationResults.isEmpty()) {
 			const fieldNames = validationResults.errors.map((error) => error.path).join();
-			return response.status(500).json({ msg: `Error en los siguientes campos: ${fieldNames}` });
+			return res.status(500).json({ msg: `Error en los siguientes campos: ${fieldNames}` });
 		}
 		next();
 	},
