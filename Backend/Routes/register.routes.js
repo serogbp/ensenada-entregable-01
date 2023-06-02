@@ -7,7 +7,7 @@ const router = Router();
 // prettier-ignore
 router.route("/")
 	.post( // pantalla registro
-		checkUser(),
+		checkUser,
 		register
 	);
 

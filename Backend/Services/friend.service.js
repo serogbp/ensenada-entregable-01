@@ -5,9 +5,11 @@ const FRIEND_STATUS = Object.freeze({
 	ACCEPTED: 1,
 });
 
-export const getRequest = async (request, response) => {
-	// receptor_id = usuario logeado
-	const receptor_id = request.params.user_id;
+/*
+	Obtiene todas las solicitudes de amistad del usuario logeado (token valido)
+*/
+export const getFriendRequests = async (request, response) => {
+	const receptor_id = request.tokenDecoded.user_id;
 
 	try {
 		const connection = await connect();
@@ -28,7 +30,8 @@ export const getRequest = async (request, response) => {
 };
 
 export const createRequest = async (request, response) => {
-	const { sender_id, receptor_id } = request.body;
+	const sender_id = request.tokenDecoded.user_id;
+	const receptor_id = request.body.receptor_id;
 
 	try {
 		const connection = await connect();
@@ -48,7 +51,7 @@ export const createRequest = async (request, response) => {
 
 export const acceptFriend = async (request, response) => {
 	const sender_id = request.params.sender_id;
-	const receptor_id = request.body.receptor_id;
+	const receptor_id = request.tokenDecoded.user_id;
 	try {
 		const connection = await connect();
 
@@ -73,7 +76,7 @@ export const acceptFriend = async (request, response) => {
 
 export const rejectFriend = async (request, response) => {
 	const sender_id = request.params.sender_id;
-	const receptor_id = request.body.receptor_id;
+	const receptor_id = request.tokenDecoded.user_id;
 	try {
 		const connection = await connect();
 

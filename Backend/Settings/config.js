@@ -12,6 +12,9 @@ const config = {
 		password: process.env.PASSWORD,
 		database: process.env.DATABASE,
 	},
+	jwt: {
+		clave: process.env.TOKEN_PASS,
+	},
 };
 
 export default config;

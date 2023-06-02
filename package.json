@@ -1,5 +1,6 @@
 {
 	"scripts": {
 		"dev": "npx nodemon ./Backend/app.js"
-	}
+	},
+	"dependencies": {}
 }

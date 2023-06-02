@@ -1,0 +1,595 @@
+/*
+************************************
+******** GLOBAL.CSS ****************
+************************************
+*/
+.modal-backdrop {
+	z-index: -1;
+}
+
+.modal {
+	background: rgba(0, 0, 0, 0.5) !important;
+}
+
+:root {
+	--tecla-white: #f7f7f7;
+	--tecla-pink: #f59fc7;
+	--tecla-teal: #79c7c7;
+	--tecla-teal-dark: #4ea1a1;
+	--tecla-blue-light: #99ccff;
+	--tecla-orange: #ff6633;
+	--tecla-yellow: #ffff00;
+	--tecla-blue: #0066cc;
+	--tecla-blueish: #0073b4;
+	--tecla-purple: #7809e6;
+}
+
+.bg-tecla-white {
+	background-color: var(--tecla-white) !important;
+}
+
+.bg-tecla-pink {
+	background-color: var(--tecla-pink) !important;
+}
+
+.bg-tecla-teal {
+	background-color: var(--tecla-teal) !important;
+}
+
+.bg-tecla-blue-light {
+	background-color: var(--tecla-blue-light) !important;
+}
+
+.bg-tecla-orange {
+	background-color: var(--tecla-orange) !important;
+}
+
+.bg-tecla-yellow {
+	background-color: var(--tecla-yellow) !important;
+}
+
+.bg-tecla-blue {
+	background-color: var(--tecla-blue) !important;
+}
+
+.bg-tecla-blueish {
+	background-color: var(--tecla-blueish) !important;
+}
+
+.bg-tecla-purple {
+	background-color: var(--tecla-purple) !important;
+}
+
+.text-tecla-white {
+	color: var(--tecla-white) !important;
+}
+
+.text-tecla-pink {
+	color: var(--tecla-pink) !important;
+}
+
+.text-tecla-teal {
+	color: var(--tecla-teal) !important;
+}
+
+.text-tecla-blue-light {
+	color: var(--tecla-blue-light) !important;
+}
+
+.text-tecla-orange {
+	color: var(--tecla-orange) !important;
+}
+
+.text-tecla-yellow {
+	color: var(--tecla-yellow) !important;
+}
+
+.text-tecla-blue {
+	color: var(--tecla-blue) !important;
+}
+
+.text-tecla-blueish {
+	color: var(--tecla-blueish) !important;
+}
+
+.text-tecla-purple {
+	color: var(--tecla-purple) !important;
+}
+
+.max-w-prose {
+	max-width: 60ch;
+}
+
+@font-face {
+	font-family: JetBrains Mono;
+	src: url(./fonts/JetBrainsMono-VariableFont_wght.ttf);
+}
+
+.font-family--jetbrains-mono {
+	font-family: "JetBrains Mono", monospace;
+}
+
+.font-bold {
+	font-weight: bold;
+}
+
+.tecla-button {
+	border-radius: 2rem;
+}
+
+.btn-tecla {
+	background-color: transparent;
+	font-weight: bold;
+	border: 3px solid black;
+	border-radius: 50px;
+	padding: 1rem 2rem 1rem 2rem;
+	transition: all 0.2s ease-in-out;
+	align-self: start;
+	font-size: 1.5rem;
+}
+
+.btn-tecla:hover {
+	background-color: black;
+	color: white;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.required:after {
+	content: "*";
+	color: red;
+}
+
+#main-layout {
+	background: var(--tecla-white);
+}
+
+/*
+************************************
+******** LANDING-PAGE.CSS **********
+************************************
+*/
+
+h1,
+h2 {
+	font-family: "JetBrains Mono", monospace;
+}
+
+.landing-text {
+	font-size: 1.5rem;
+}
+
+.hero__image {
+	width: 100%;
+	max-width: 800px;
+	height: 400px;
+}
+
+.feature {
+	padding: 8rem 1rem;
+	gap: 2rem;
+}
+
+.feature--col {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	flex-wrap: wrap;
+}
+
+/* Pantallas medianas o más pequeñas */
+@media screen and (max-width: 768px) {
+	.feature {
+		padding: 4rem 1rem;
+	}
+
+	h2 {
+		text-align: left;
+	}
+}
+
+/* Pantallas grandes o más pequeñas */
+@media screen and (max-width: 1440px) {
+	.hero__image {
+		max-width: 100%;
+		height: 500px;
+	}
+}
+
+/*
+************************************
+******** LOGIN.CSS *****************
+************************************
+*/
+
+.card-login {
+	width: 25rem;
+}
+
+/*
+************************************
+** MODIFICAR-PERFIL-USUARIO.CSS ****
+************************************
+*/
+
+.card-user {
+	border-radius: 10px;
+	padding: 1%;
+}
+
+.card-user p {
+	margin-bottom: 5%;
+}
+
+.profile {
+	width: 150px;
+	height: 150px;
+	margin: 2% 0px 10% 0px;
+}
+
+[hidden] {
+	display: none !important;
+}
+
+@media screen and (max-width: 527px) {
+	.card-user {
+		width: 100%;
+		margin: 1rem;
+	}
+}
+
+.spHelp {
+	font-size: small;
+}
+
+/*
+************************************
+******* PERFIL-USUARIO.CSS *********
+************************************
+*/
+
+.container-fluid {
+	background-color: #f8f9fa;
+}
+
+.col-card {
+	--bs-card-border-width: var(--bs-border-width);
+	border-radius: 0.8rem;
+	background-color: white;
+}
+
+.picture {
+	width: 150px;
+	height: 150px;
+	margin: 2% 0 2% 0;
+	padding: 0px;
+}
+
+.btn2 {
+	margin: 2% 4% 0% 0%;
+}
+
+.menu-left {
+	--bs-card-border-width: var(--bs-border-width);
+	border-radius: 0.8rem;
+	height: fit-content;
+}
+
+.data {
+	border-radius: 0.8rem;
+	background-color: #f8f9fa;
+}
+
+.data .p {
+	font-family: jetbrains-mono;
+}
+
+.card-1 {
+	border-radius: 0.8rem;
+	background-color: white;
+	height: fit-content;
+}
+
+.list {
+	border-radius: 0.8rem;
+	margin-bottom: 0;
+}
+
+.list:hover {
+	background-color: var(--tecla-blue-light);
+	cursor: pointer;
+	color: var(--tecla-white);
+}
+
+/* Set a style for all buttons */
+button {
+	background-color: #04aa6d;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	opacity: 0.9;
+}
+
+button:hover {
+	opacity: 1;
+}
+
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn,
+.deletebtn {
+	width: 50%;
+}
+
+/* Add a color to the cancel button */
+.cancelbtn {
+	background-color: #ccc;
+	color: black;
+}
+
+/* Add a color to the delete button */
+.deletebtn {
+	background-color: #f44336;
+}
+
+/* The Modal (background) */
+.modal {
+	/* Hidden by default */
+	position: fixed;
+	/* Stay in place */
+	z-index: 1;
+	/* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%;
+	/* Full width */
+	height: 100%;
+	/* Full height */
+	overflow: auto;
+	/* Enable scroll if needed */
+	background-color: #474e5d;
+	padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+	background-color: #fefefe;
+	margin: 5% auto 15% auto;
+	/* 5% from the top, 15% from the bottom and centered */
+	border: 1px solid #888;
+	width: 80%;
+	/* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+	border: 1px solid #f1f1f1;
+	margin-bottom: 25px;
+}
+
+/* The Modal Close Button (x) */
+.close {
+	position: absolute;
+	right: 35px;
+	top: 15px;
+	font-size: 40px;
+	font-weight: bold;
+	color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+	color: #f44336;
+	cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+/* Change styles for cancel button and delete button on extra small screens */
+@media screen and (max-width: 300px) {
+
+	.cancelbtn,
+	.deletebtn {
+		width: 100%;
+	}
+}
+
+/*
+************************************
+******** FEDD.CSS ******************
+************************************
+*/
+.nav-list>* {
+	padding: 0.5rem 1rem;
+}
+
+.nav-list>li,
+.nav-list>a {
+	border-radius: 0.5rem;
+	transition: all 0.1s ease-in-out;
+}
+
+.nav-list>li:hover,
+.nav-list>a:hover {
+	background-color: var(--tecla-blue-light);
+	cursor: pointer;
+	color: var(--tecla-white);
+}
+
+.left-column {
+	min-width: 15rem;
+}
+
+.middle-column {
+	max-width: 50rem;
+}
+
+.right-column {
+	min-width: 15rem;
+}
+
+.posts {
+	min-height: min-content;
+}
+
+.icon-wrapper {
+	width: 2.5rem;
+	height: 2.5rem;
+	display: flex;
+	justify-content: center;
+	border-radius: 100%;
+	background-color: #f8f9fa;
+}
+
+.icon-wrapper--small {
+	padding: 0.25rem;
+}
+
+.icon {
+	/* Bootstrap icon size */
+	font-size: 1.5rem;
+}
+
+img.icon {
+	width: 2rem;
+	height: 2rem;
+}
+
+.icon--small {
+	font-size: 1rem;
+}
+
+.icon--primary {
+	color: var(--color-primary);
+}
+
+.icon--white {
+	color: white;
+}
+
+.story {
+	min-width: 10rem;
+	height: 14rem;
+	border-radius: 0.8rem;
+	background-color: black;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	color: white;
+	font-weight: bold;
+	font-size: 0.8rem;
+	gap: 0.5rem;
+}
+
+.story--image-background {
+	background-image: url(https://unsplash.com/photos/r1SwcagHVG0/download?ixid=MnwxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjc4NDUwNDIw&force=true&w=640);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.avatar {
+	border-radius: 100%;
+	background-color: white;
+	width: 3rem;
+	height: 3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.avatar img {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 100%;
+}
+
+.avatar--image {
+	background-image: url(https://img.freepik.com/psd-premium/ilustracion-3d-hombre-caucasico-sonriente-retrato-cerca-dibujos-animados-hombre-caucasico-pie-sobre-fondo-amarillo-avatar-3d-ui-ux_1020-5081.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.flex-col {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.card {
+	padding: 1rem;
+	background: white;
+	border-radius: 0.8rem;
+}
+
+.post__user-info {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.doble-texto p {
+	margin: 0;
+}
+
+.doble-texto p:first-child {
+	font-weight: bold;
+}
+
+.doble-texto p:nth-child(2) {
+	color: gray;
+	font-size: 0.8rem;
+}
+
+
+.event {
+	width: 4rem;
+	height: 4rem;
+	border-radius: 25%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	color: white;
+}
+
+.event p {
+	margin: 0;
+}
+
+.friend-card {
+	min-width: 12rem;
+}
+
+@media screen and (max-width: 527px) {
+	.friend-card {
+		width: 100%;
+	}
+}
+
+.active {
+	background-color: var(--tecla-teal-dark);
+	border-radius: 0.5rem;
+}
+
+.hover-scale:hover {
+	scale: 1.05;
+	transition: all 0.1s ease-in-out;
+}
+
+.hover-scale-md:hover {
+	scale: 1.2;
+	transition: all 0.1s ease-in-out;
+}

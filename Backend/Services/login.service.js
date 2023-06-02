@@ -1,33 +1,31 @@
 import { validationResult } from "express-validator";
+import config from "../Settings/config.js";
 import { connect } from "../Database/mysql.js";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+import { USERTYPE } from "../common/enums.js";
 
 export const isUser = async (request, response) => {
-	// Recoger validaciones express-validator
-	const validationResults = validationResult(request);
-	// Ejemplo formato de los errores que devuelve
-	/*
-		location: 'body'
-		msg: 'Invalid value'
-		path: 'email'
-		type: 'field'
-		value: 'a'
-	*/
-	if (!validationResults.isEmpty()) {
-		const fieldNames = validationResults.errors.map((error) => error.path).join();
-		return response.status(400).json({ msg: `Error en los siguientes campos: ${fieldNames}` });
-	}
-
 	// Recoger del body request email y password
 	const { email, password } = request.body;
 
 	try {
 		const connection = await connect();
-		const [rows, fields] = await connection.execute("SELECT email, password, user_id FROM users");
+		const [rows, fields] = await connection.execute("SELECT email, password, user_id, userType FROM users");
 		connection.end();
 		// Comprobar credenciales válidas
 		const userLogged = rows.find((item) => item.email === email.toLowerCase());
-		if (userLogged && userLogged.password === password) {
-			response.status(200).json({ user_id: userLogged.user_id });
+
+		// Si el usuario es valido, se envia su token
+		if (userLogged && bcrypt.compareSync(password, userLogged.password)) {
+			const token = jwt.sign({ user_id: userLogged.user_id, userType: userLogged.userType }, config.jwt.clave);
+			const responseBody = {
+				token: token,
+				user_id: userLogged.user_id,
+			};
+			// Si el usuario es admin, se añade la propiedad userType a la respuesta
+			if (userLogged.userType === USERTYPE.ADMIN) responseBody.userType = userLogged.userType;
+			return response.status(200).json(responseBody);
 		} else {
 			// ⚠ Si queremos enviar un status custom y un json, tenemos que usar status().
 			// Si usamos sendStatus(), no podemos enviar el json porque ya envió la respuesta

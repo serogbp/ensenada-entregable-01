@@ -1,5 +1,7 @@
 import { connect } from "../Database/mysql.js";
 import { validationResult } from "express-validator";
+import jwt from "jsonwebtoken";
+import config from "../Settings/config.js";
 
 const FRIEND_STATUS = Object.freeze({
 	PENDING: 0,
@@ -7,11 +9,16 @@ const FRIEND_STATUS = Object.freeze({
 });
 
 export const getUser = async (request, response) => {
-	const user_id = request.params.user_id;
+	let user_id = request.params.id;
+	// Si hay user_id es el logeado, si no es el amigo
+	if (!user_id) {
+		user_id = request.tokenDecoded.user_id;
+	}
+
 	try {
 		const connection = await connect();
 
-		const [rows, fields] = await connection.query("SELECT * FROM users WHERE user_id = ?", [user_id]);
+		const [rows, fields] = await connection.query("SELECT username, name, surname1, surname2, email, age, city, country, studies, languages, linkedin, hobbies, role, picture FROM users WHERE user_id = ?", [user_id]);
 		connection.end();
 		if (rows.isEmpty) return response.status(404).json({ msg: "El usuario no existe" });
 
@@ -23,13 +30,10 @@ export const getUser = async (request, response) => {
 };
 
 export const updateUser = async (request, response) => {
-	const validationResults = validationResult(request);
-	if (!validationResults.isEmpty()) {
-		const fieldNames = validationResults.errors.map((error) => error.path).join();
-		return response.status(400).json({ msg: `Error en los siguientes campos: ${fieldNames}` });
-	}
+	const token = request.get("Authorization");
+	const decoded = jwt.verify(token, config.jwt.clave);
+	let user_id = decoded.user_id;
 
-	const user_id = request.params.user_id;
 	const { email, name, surname1, surname2, username, age, city, country, studies, role, languages, linkedin, hobbies } = request.body;
 	try {
 		const connection = await connect();
@@ -42,7 +46,10 @@ export const updateUser = async (request, response) => {
 };
 
 export const deleteUser = async (request, response) => {
-	const user_id = request.params.user_id;
+	const token = request.get("Authorization");
+	const decoded = jwt.verify(token, config.jwt.clave);
+	let user_id = decoded.user_id;
+
 	try {
 		const connection = await connect();
 		await connection.query("DELETE FROM users WHERE user_id = ?", [user_id]);
@@ -57,7 +64,8 @@ export const deleteUser = async (request, response) => {
 	Obtener amigos de un usuario a partir del user_id del usuario logeado
 */
 export const getFriends = async (request, response) => {
-	const user_id = request.params.user_id;
+	const user_id = request.tokenDecoded.user_id;
+
 	try {
 		const connection = await connect();
 		const [rows, fields] = await connection.query(
@@ -77,7 +85,7 @@ export const getFriends = async (request, response) => {
 };
 
 export const getNoFriends = async (request, response) => {
-	const user_id = request.params.user_id;
+	const user_id = request.tokenDecoded.user_id;
 	try {
 		const connection = await connect();
 		const [rows, fields] = await connection.query(

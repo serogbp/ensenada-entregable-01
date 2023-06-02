@@ -1,10 +1,12 @@
 let user;
 
+/*
 // cargar emailLogged desde localstorage y liberarlo
 const getIdLogged = () => {
 	const idLogged = localStorage.getItem("idLogged");
 	return idLogged;
 };
+*/
 
 const getUserData = () => {
 	let newUser = {};
@@ -40,10 +42,11 @@ const renderUserData = (user) => {
 };
 
 const updateUser = (updatedUser) => {
-	fetch(`http://localhost:3000/user/${getIdLogged()}`, {
+	fetch(`http://localhost:3000/user`, {
 		method: "PATCH",
 		headers: {
 			"Content-Type": "application/json",
+			Authorization: `${localStorage.getItem("token")}`,
 		},
 		body: JSON.stringify(updatedUser),
 	}).then(async (response) => {
@@ -61,9 +64,12 @@ elementUser.addEventListener("click", () => {
 	updateUser(getUserData());
 });
 
-const user_id = localStorage.getItem("idLogged");
-fetch(`http://localhost:3000/user/${user_id}`, {
+//const user_id = localStorage.getItem("idLogged");
+fetch(`http://localhost:3000/user`, {
 	method: "GET",
+	headers: {
+		Authorization: `${localStorage.getItem("token")}`,
+	},
 }).then(async (response) => {
 	const json = await response.json();
 	renderUserData(json);

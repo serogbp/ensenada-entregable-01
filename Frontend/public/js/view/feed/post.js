@@ -120,10 +120,7 @@ const insertLike = (post_id, mode) => {
 		body: JSON.stringify({ mode: mode }),
 	})
 		.then(async (response) => {
-			if (response.status === 200) {
-				// TODO refrescar por js el corazon
-				/* window.location.href = "/pages/perfil-de-usuario.html"; */
-			} else {
+			if (response.status !== 200) {
 				const data = await response.json();
 				alert(data.msg);
 			}
