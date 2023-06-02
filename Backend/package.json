@@ -9,6 +9,8 @@
 		"mysql2": "^3.2.3"
 	},
 	"devDependencies": {
+		"chai": "^4.3.7",
+		"mocha": "^10.2.0",
 		"nodemon": "^2.0.22"
 	},
 	"name": "backend",
@@ -17,7 +19,8 @@
 	"main": "app.js",
 	"type": "module",
 	"scripts": {
-		"dev": "npx nodemon app.js"
+		"dev": "npx nodemon app.js",
+		"test": "mocha"
 	},
 	"author": "grupo 2",
 	"license": "ISC"

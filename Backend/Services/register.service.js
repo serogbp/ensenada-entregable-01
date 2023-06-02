@@ -4,12 +4,6 @@ import { connect } from "../Database/mysql.js";
 import bcrypt from "bcrypt";
 
 export const register = async (request, response) => {
-	const validationResults = validationResult(request);
-	if (!validationResults.isEmpty()) {
-		const fieldNames = validationResults.errors.map((error) => error.path).join();
-		return response.status(400).json({ msg: `Error en los siguientes campos: ${fieldNames}` });
-	}
-
 	const user = new User(request.body);
 	const hash = bcrypt.hashSync(user.password, 10);
 	user.password = hash;

@@ -2,12 +2,6 @@ import { connect } from "../Database/mysql.js";
 import { validationResult } from "express-validator";
 
 export const getPosts = async (request, response) => {
-	const validationResults = validationResult(request);
-	if (!validationResults.isEmpty()) {
-		const fieldNames = validationResults.errors.map((error) => error.path).join();
-		return response.status(400).json({ msg: `Error en los siguientes campos: ${fieldNames}` });
-	}
-
 	const user_id = request.tokenDecoded.user_id;
 	try {
 		const connection = await connect();
@@ -51,11 +45,6 @@ export const getPosts = async (request, response) => {
 };
 
 export const savePost = async (request, response) => {
-	const validationResults = validationResult(request);
-	if (!validationResults.isEmpty()) {
-		const fieldNames = validationResults.errors.map((error) => error.path).join();
-		return response.status(400).json({ msg: `Error en los siguientes campos: ${fieldNames}` });
-	}
 	const { content } = request.body;
 	const user_id = request.tokenDecoded.user_id;
 	try {

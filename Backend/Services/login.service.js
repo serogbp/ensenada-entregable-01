@@ -6,21 +6,6 @@ import bcrypt from "bcrypt";
 import { USERTYPE } from "../common/enums.js";
 
 export const isUser = async (request, response) => {
-	// Recoger validaciones express-validator
-	const validationResults = validationResult(request);
-	// Ejemplo formato de los errores que devuelve
-	/*
-		location: 'body'
-		msg: 'Invalid value'
-		path: 'email'
-		type: 'field'
-		value: 'a'
-	*/
-	if (!validationResults.isEmpty()) {
-		const fieldNames = validationResults.errors.map((error) => error.path).join();
-		return response.status(400).json({ msg: `Error en los siguientes campos: ${fieldNames}` });
-	}
-
 	// Recoger del body request email y password
 	const { email, password } = request.body;
 

@@ -30,12 +30,6 @@ export const getUser = async (request, response) => {
 };
 
 export const updateUser = async (request, response) => {
-	const validationResults = validationResult(request);
-	if (!validationResults.isEmpty()) {
-		const fieldNames = validationResults.errors.map((error) => error.path).join();
-		return response.status(400).json({ msg: `Error en los siguientes campos: ${fieldNames}` });
-	}
-
 	const token = request.get("Authorization");
 	const decoded = jwt.verify(token, config.jwt.clave);
 	let user_id = decoded.user_id;
